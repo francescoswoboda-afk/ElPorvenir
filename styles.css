@@ -1494,7 +1494,7 @@ body.pecan-page {
 
 .contact-hero {
   min-height: var(--section-hero-height);
-  padding: clamp(8px, 1.2vw, 14px) clamp(12px, 3vw, 38px) 26px;
+  padding: clamp(8px, 1.2vw, 14px) clamp(12px, 3vw, 38px) 24px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1507,7 +1507,7 @@ body.pecan-page {
 }
 
 .contact-hero-content {
-  margin-top: clamp(18px, 3vh, 44px);
+  margin-top: clamp(22px, 3vh, 46px);
   margin-left: auto;
   margin-right: auto;
   width: min(980px, 100%);
@@ -1516,19 +1516,20 @@ body.pecan-page {
 
 .contact-hero-content h1 {
   margin: 0;
-  max-width: 470px;
+  max-width: none;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(42px, 4.8vw, 64px);
-  line-height: 0.92;
+  font-size: clamp(32px, 4.2vw, 56px);
+  line-height: 0.95;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .contact-hero-divider {
   display: inline-block;
-  width: 32px;
+  width: clamp(28px, 3vw, 36px);
   height: 2px;
-  margin: 12px 0 14px;
-  background: #d8b65f;
+  margin: 14px 0 16px;
+  background: #d6b96d;
 }
 
 .contact-hero-content p {
@@ -1563,18 +1564,9 @@ body.pecan-page {
   padding-left: clamp(16px, 2vw, 24px);
 }
 
-.contact-mini-title {
-  margin: 0;
-  color: #4d5b3c;
-}
-
-.contact-mini-title::after {
-  content: "";
-  display: block;
-  width: 24px;
-  height: 2px;
-  margin: 10px 0 14px;
-  background: #d8b65f;
+.contact-form-wrap .section-divider,
+.contact-info-wrap .section-divider {
+  margin: 8px 0 14px;
 }
 
 .contact-form-wrap > p {
@@ -1779,6 +1771,7 @@ body.pecan-page {
   .contact-hero-content h1 {
     max-width: 320px;
     font-size: clamp(34px, 11vw, 44px);
+    white-space: normal;
   }
 
   .contact-hero-content p {
