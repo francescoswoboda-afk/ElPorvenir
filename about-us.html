@@ -9,8 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="prefetch" href="index.html" />
+  <link rel="prefetch" href="our-farm.html" />
 </head>
-<body class="about-page">
+<body class="about-page transitions-blocked">
   <main class="about-layout" role="main" aria-label="About us page">
     <section class="about-hero" aria-label="About us hero">
       <header class="topbar">
@@ -21,7 +22,7 @@
           <nav class="nav" aria-label="Main navigation">
             <a href="index.html">Home</a>
             <a class="active" href="about-us.html">About us</a>
-            <a href="#">Our farm</a>
+            <a href="our-farm.html">Our farm</a>
             <a href="#">Pecan nuts</a>
             <a href="#">Contact us</a>
           </nav>
@@ -110,7 +111,7 @@
       var supportsViewTransitions = typeof document.startViewTransition === 'function';
 
       try {
-        if (!supportsViewTransitions && !reduceMotion && sessionStorage.getItem('ep-page-transition') === 'enter') {
+        if (!supportsViewTransitions && sessionStorage.getItem('ep-page-transition') === 'enter') {
           sessionStorage.removeItem('ep-page-transition');
           document.body.classList.add('page-enter');
           window.setTimeout(function () {
@@ -123,11 +124,11 @@
 
       // Fallback navigation transition only when native View Transitions are unavailable.
       document.addEventListener('click', function (event) {
-        if (supportsViewTransitions || reduceMotion) {
+        if (supportsViewTransitions) {
           return;
         }
 
-        var link = event.target.closest('a[href="about-us.html"], a[href="index.html"]');
+        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="index.html"]');
 
         if (!link) {
           return;

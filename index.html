@@ -9,8 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="prefetch" href="about-us.html" />
+  <link rel="prefetch" href="our-farm.html" />
 </head>
-<body>
+<body class="home-page transitions-blocked">
   <main class="homepage" role="main" aria-label="El Porvenir Farm homepage">
     <section class="hero" aria-label="Hero section">
       <header class="topbar">
@@ -21,7 +22,7 @@
           <nav class="nav" aria-label="Main navigation">
             <a class="active" href="index.html">Home</a>
             <a href="about-us.html">About us</a>
-            <a href="#">Our farm</a>
+            <a href="our-farm.html">Our farm</a>
             <a href="#">Pecan nuts</a>
             <a href="#">Contact us</a>
           </nav>
@@ -37,34 +38,11 @@
         <h1><span>Rooted in nature.</span><span>Growing the future.</span></h1>
         <span class="hero-divider" aria-hidden="true"></span>
         <p>
-          El Porvenir Farm is dedicated to sustainable<br />
-          agriculture, producing high-quality pecans<br />
-          with respect for nature, our people<br />
-          and future generations.
-        </p>
-        <a class="cta" href="#home-story">
-          <span class="cta-label">Discover our farm</span>
-          <span class="cta-icon" aria-hidden="true">&#8250;</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="home-transition page-transition-target" aria-hidden="true">
-      <span class="transition-glow"></span>
-    </section>
-
-    <section class="home-story page-transition-target reveal-on-scroll" id="home-story" aria-label="El Porvenir story section">
-      <div class="home-story-inner reveal-on-scroll">
-        <img class="home-story-logo reveal-on-scroll" src="ElPorvenir-Logo (2).png" alt="El Porvenir Farm" loading="lazy" decoding="async" />
-        <p>
-          El Porvenir is a family owned and operated working pecan farm,<br />
-          with over 20 years<br />
-          experience in agriculture and farming and since 2014 we are chasing our passion for dry fruits.<br />
-          The idea was born with the goal to oppose climate change and to grow healthy food for the human beings. Preserving the beauty of nature is another fundamental objective of our company and this is why our products are 100% Organic.
+          El Porvenir is a family-owned, working pecan farm. With over 20 years of experience in agriculture,<br />
+          since 2014 we have pursued our passion for dried fruits.
         </p>
       </div>
     </section>
-
   </main>
 
   <script>
@@ -73,7 +51,7 @@
       var supportsViewTransitions = typeof document.startViewTransition === 'function';
 
       try {
-        if (!supportsViewTransitions && !reduceMotion && sessionStorage.getItem('ep-page-transition') === 'enter') {
+        if (!supportsViewTransitions && sessionStorage.getItem('ep-page-transition') === 'enter') {
           sessionStorage.removeItem('ep-page-transition');
           document.body.classList.add('page-enter');
           window.setTimeout(function () {
@@ -86,11 +64,11 @@
 
       // Fallback navigation transition only when native View Transitions are unavailable.
       document.addEventListener('click', function (event) {
-        if (supportsViewTransitions || reduceMotion) {
+        if (supportsViewTransitions) {
           return;
         }
 
-        var link = event.target.closest('a[href="about-us.html"], a[href="index.html"]');
+        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="index.html"]');
         if (!link) {
           return;
         }

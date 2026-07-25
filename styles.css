@@ -7,6 +7,20 @@
   --page-transition-duration: 300ms;
   --page-transition-distance: 8px;
   --page-transition-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --section-hero-height: clamp(290px, 34vw, 420px);
+}
+
+/* Temporary global motion block requested by user. */
+body.transitions-blocked,
+body.transitions-blocked * ,
+body.transitions-blocked *::before,
+body.transitions-blocked *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.transitions-blocked {
+  scroll-behavior: auto !important;
 }
 
 @view-transition {
@@ -16,6 +30,13 @@
 ::view-transition-old(root),
 ::view-transition-new(root) {
   will-change: transform, opacity;
+}
+
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  animation: none !important;
 }
 
 ::view-transition-old(root) {
@@ -56,6 +77,11 @@ body {
   display: block;
 }
 
+body.home-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
 /* Fallback entry transition for browsers without View Transitions API support. */
 body.page-enter .page-transition-target {
   animation: page-fallback-enter var(--page-transition-duration) var(--page-transition-ease) both;
@@ -83,14 +109,14 @@ body:not(.about-page) {
 .homepage {
   width: 100%;
   max-width: none;
-  height: auto;
+  height: 100vh;
   min-height: 0;
   margin: 0;
   position: relative;
 }
 
 .hero {
-  min-height: 100vh;
+  min-height: 100%;
   padding: clamp(8px, 1.2vw, 14px) clamp(12px, 3vw, 38px) 0;
   display: flex;
   flex-direction: column;
@@ -359,8 +385,19 @@ body:not(.about-page) {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
-  ::view-transition-old(root),
-  ::view-transition-new(root),
+  :root {
+    --page-transition-duration: 180ms;
+    --page-transition-distance: 0px;
+  }
+
+  ::view-transition-old(root) {
+    animation: page-reduced-fade-out var(--page-transition-duration) linear both !important;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-reduced-fade-in var(--page-transition-duration) linear both !important;
+  }
+
   ::view-transition-old(site-nav),
   ::view-transition-new(site-nav) {
     animation: none !important;
@@ -375,11 +412,25 @@ body:not(.about-page) {
     will-change: auto;
   }
 
+  body.page-enter .page-transition-target {
+    animation: page-reduced-fade-in var(--page-transition-duration) linear both;
+  }
+
   .home-transition::after,
   .transition-glow,
   .home-story-logo {
     animation: none;
   }
+}
+
+@keyframes page-reduced-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0.94; }
+}
+
+@keyframes page-reduced-fade-in {
+  from { opacity: 0.94; }
+  to { opacity: 1; }
 }
 
 body.about-page {
@@ -406,6 +457,7 @@ html.about-page-root {
 
 .about-hero {
   position: relative;
+  min-height: var(--section-hero-height);
   padding: clamp(8px, 1.2vw, 14px) clamp(12px, 3vw, 38px) 24px;
   background-image: linear-gradient(180deg, rgba(12, 18, 10, 0.36) 0%, rgba(13, 18, 10, 0.68) 100%), linear-gradient(90deg, rgba(10, 12, 8, 0.48) 0%, rgba(10, 12, 8, 0.2) 48%, rgba(10, 12, 8, 0) 100%), url("ElPorvenir-AboutUs.png");
   background-size: cover;
@@ -512,4 +564,264 @@ html.about-page-root {
   .about-quote { min-height: 160px; background-position: 64% center; }
   .about-quote-panel { width: 100%; max-width: none; padding: 14px 14px 16px; background: linear-gradient(90deg, rgba(24, 41, 23, 0.88) 0%, rgba(24, 41, 23, 0.66) 62%, rgba(24, 41, 23, 0.2) 100%); }
   .about-quote-text { font-size: clamp(15px, 5vw, 19px); max-width: 250px; }
+}
+
+/* Our Farm page */
+body.farm-page {
+  background: #f5f1e7;
+}
+
+.farm-layout {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f1e7;
+}
+
+.farm-hero {
+  min-height: var(--section-hero-height);
+}
+
+.farm-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(20px, 3.2vw, 40px) 0 clamp(24px, 3.8vw, 44px);
+  color: #2e3128;
+}
+
+.farm-split {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(340px, 1.45fr);
+  gap: clamp(22px, 3vw, 36px);
+  align-items: start;
+}
+
+.farm-copy h2 {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(13px, 0.95vw, 15px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4d5b3c;
+}
+
+.farm-copy .section-divider {
+  margin: 10px 0 14px;
+}
+
+.farm-copy p {
+  margin: 0 0 18px;
+  max-width: 525px;
+  font-size: clamp(13px, 0.92vw, 15px);
+  line-height: 1.78;
+  color: rgba(39, 42, 34, 0.92);
+}
+
+.farm-image-wrap {
+  margin: 0;
+}
+
+.farm-image {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  object-fit: cover;
+  min-height: clamp(230px, 34vw, 392px);
+  border: 1px solid rgba(89, 94, 76, 0.12);
+}
+
+.farm-stats {
+  margin-top: clamp(16px, 2.2vw, 26px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(248, 244, 235, 0.92) 100%);
+  border: 1px solid rgba(106, 112, 90, 0.12);
+  border-radius: 8px;
+  padding: clamp(16px, 2.2vw, 24px) clamp(10px, 2vw, 20px) clamp(12px, 1.8vw, 18px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.farm-stats + .farm-split {
+  margin-top: clamp(24px, 3.2vw, 40px);
+}
+
+.farm-stat-item {
+  text-align: center;
+  padding: 0 clamp(8px, 1.3vw, 14px);
+  border-left: 1px solid rgba(120, 125, 105, 0.2);
+}
+
+.farm-stat-item:first-child {
+  border-left: none;
+}
+
+.farm-stat-icon {
+  width: 29px;
+  height: 29px;
+  margin: 0 auto 7px;
+  color: #5d7050;
+  display: inline-flex;
+}
+
+.farm-stat-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.farm-stat-item strong {
+  display: block;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #2f352a;
+  font-size: clamp(24px, 2.4vw, 38px);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.farm-stat-item h3 {
+  margin: 0 0 4px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4f6042;
+  font-size: clamp(11px, 0.86vw, 13px);
+  font-weight: 500;
+}
+
+.farm-stat-item p {
+  margin: 0;
+  font-size: clamp(11px, 0.78vw, 12px);
+  line-height: 1.62;
+  color: rgba(42, 45, 36, 0.88);
+}
+
+.farm-stats-note {
+  margin: 12px 0 20px;
+  text-align: center;
+  color: #4c583e;
+  font-size: clamp(14px, 1.08vw, 20px);
+  font-weight: 500;
+}
+
+.farm-commitment {
+  margin-top: clamp(24px, 3.6vw, 42px);
+  border-radius: 6px;
+  min-height: clamp(220px, 30vw, 300px);
+  overflow: hidden;
+  background-image:
+    linear-gradient(90deg, rgba(13, 23, 15, 0.84) 0%, rgba(13, 23, 15, 0.64) 34%, rgba(13, 23, 15, 0.1) 70%),
+    url("ElPorvenir-Homepage.png");
+  background-size: cover;
+  background-position: center center;
+  border: 1px solid rgba(85, 91, 74, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.farm-commitment-copy {
+  max-width: min(520px, 90%);
+  padding: clamp(20px, 3.4vw, 42px);
+  color: #ecf0df;
+}
+
+.farm-commitment-copy h2 {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(13px, 0.95vw, 15px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #afbf8e;
+}
+
+.farm-commitment-copy .section-divider {
+  margin: 10px 0 18px;
+  background: #93a375;
+}
+
+.farm-commitment-title {
+  margin: 0 0 10px;
+}
+
+.farm-commitment-copy p {
+  margin: 0;
+  max-width: 430px;
+  font-size: clamp(14px, 1vw, 18px);
+  line-height: 1.5;
+  color: rgba(236, 240, 223, 0.92);
+}
+
+.farm-commitment-body {
+  max-width: 430px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 0.92vw, 15px) !important;
+  line-height: 1.8 !important;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.farm-commitment-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(36px, 4vw, 58px) !important;
+  line-height: 0.95 !important;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(236, 240, 223, 0.92);
+}
+
+@media (max-width: 940px) {
+  .farm-split {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .farm-image {
+    min-height: clamp(210px, 46vw, 320px);
+  }
+
+  .farm-copy p {
+    max-width: none;
+  }
+
+  .farm-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 14px;
+  }
+
+  .farm-stat-item:nth-child(odd) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .farm-content {
+    padding: 22px 16px 30px;
+  }
+
+  .farm-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-stat-item {
+    border-left: none;
+    border-top: 1px solid rgba(120, 125, 105, 0.2);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+
+  .farm-stat-item:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .farm-commitment {
+    min-height: 208px;
+    background-position: 58% center;
+  }
 }
