@@ -154,7 +154,63 @@ body:not(.about-page) {
 }
 
 .brand { text-decoration: none; display: inline-block; margin-left: -4px; margin-top: 4px; }
+body.home-page .brand { margin-left: 57px; }
+body.home-page .brand-logo { transform: translateX(-47px); }
 .brand-logo { display: block; width: clamp(152px, 20vw, 274px); height: auto; }
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50px;
+  height: 44px;
+  border: 1px solid rgba(231, 218, 181, 0.46);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(14, 20, 14, 0.66) 0%, rgba(10, 14, 10, 0.66) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 24;
+  gap: 4px;
+}
+
+.menu-toggle-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(247, 241, 225, 0.96);
+  border-radius: 2px;
+  transition: transform 180ms var(--page-transition-ease), opacity 180ms var(--page-transition-ease);
+}
+
+.menu-toggle-line:nth-child(1) {
+  width: 18px;
+  margin-left: 6px;
+}
+
+.menu-toggle-line:nth-child(3) {
+  width: 14px;
+  margin-left: 10px;
+}
+
+.topbar.menu-open .menu-toggle-line:nth-child(1) {
+  width: 24px;
+  margin-left: 0;
+  transform: translateY(6px) rotate(45deg);
+}
+
+.topbar.menu-open .menu-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.topbar.menu-open .menu-toggle-line:nth-child(3) {
+  width: 24px;
+  margin-left: 0;
+  transform: translateY(-6px) rotate(-45deg);
+}
 
 .nav-wrap {
   position: absolute;
@@ -531,6 +587,89 @@ html.about-page-root {
   opacity: 1;
 }
 
+@media (max-width: 820px) {
+  .topbar {
+    align-items: center;
+    min-height: 72px;
+    padding-right: 0;
+  }
+
+  .brand {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .brand-logo {
+    width: clamp(148px, 42vw, 214px);
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .nav-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    border: none;
+    background:
+      linear-gradient(180deg, rgba(14, 20, 14, 0.97) 0%, rgba(10, 16, 10, 0.96) 58%, rgba(10, 16, 10, 0.92) 100%),
+      radial-gradient(circle at 85% 10%, rgba(208, 179, 113, 0.16) 0%, rgba(208, 179, 113, 0) 44%);
+    box-shadow: none;
+    padding: 102px 24px 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 20px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+    transform: translateY(-108%);
+    transition:
+      transform 280ms var(--page-transition-ease),
+      opacity 280ms var(--page-transition-ease);
+    z-index: 21;
+  }
+
+  .topbar.menu-open .nav-wrap {
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .nav a {
+    width: 100%;
+    font-size: clamp(22px, 5.8vw, 30px);
+    font-weight: 500;
+    letter-spacing: 0.045em;
+    padding: 0 0 12px;
+    border-bottom-width: 1px;
+  }
+
+  .lang-switch {
+    width: fit-content;
+    margin-top: 8px;
+    font-size: clamp(16px, 3.9vw, 20px);
+  }
+
+  body.mobile-nav-open {
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 860px) {
   .about-layout { width: 100%; max-width: none; margin: 0; }
   .about-content { padding: 22px 16px 30px; }
@@ -545,12 +684,22 @@ html.about-page-root {
 
 @media (max-width: 620px) {
   html, body { overflow-x: hidden; overflow-y: auto; }
-  .hero { padding: 18px 18px 0; }
-  .topbar { flex-direction: column; gap: 12px; }
-  .nav-wrap { position: static; transform: none; width: 100%; justify-content: space-between; gap: 16px; }
-  .nav { flex-wrap: wrap; gap: 12px 18px; }
-  .nav a, .lang-switch { font-size: 16px; }
-  .hero-content { margin-top: 34px; margin-left: 0; }
+  .hero { padding: 14px 12px 0; }
+  body.home-page .brand { margin-left: 0; }
+  body.home-page .brand-logo { transform: translateX(-27px); }
+  .hero-content { margin-top: 24px; margin-left: 0; max-width: 100%; }
+  .hero-content h1 {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    font-size: clamp(26px, 8.8vw, 40px);
+    line-height: 0.98;
+  }
+  .hero-content h1 span { white-space: normal; }
+  .hero-content p {
+    font-size: clamp(12px, 3.7vw, 16px);
+    line-height: 1.56;
+  }
   .home-transition { min-height: 120px; }
   .transition-glow { width: min(78vw, 520px); height: 44px; }
   .home-story { padding: 48px 16px 62px; }

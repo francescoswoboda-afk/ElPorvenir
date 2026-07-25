@@ -18,7 +18,12 @@
         <a class="brand" href="index.html" aria-label="El Porvenir Farm home">
           <img class="brand-logo" src="ElPorvenir-Logo (2).png" alt="El Porvenir Farm" />
         </a>
-        <div class="nav-wrap">
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-menu">
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+        </button>
+        <div class="nav-wrap" id="site-menu">
           <nav class="nav" aria-label="Main navigation">
             <a href="index.html">Home</a>
             <a href="about-us.html">About us</a>
@@ -158,6 +163,60 @@
         }
         window.location.assign(href);
       }, true);
+
+      var topbar = document.querySelector('.topbar');
+      var menuToggle = topbar ? topbar.querySelector('.menu-toggle') : null;
+      var navWrap = topbar ? topbar.querySelector('.nav-wrap') : null;
+
+      function closeMenu() {
+        if (!topbar || !menuToggle) {
+          return;
+        }
+        topbar.classList.remove('menu-open');
+        document.body.classList.remove('mobile-nav-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      if (menuToggle && navWrap && topbar) {
+        menuToggle.addEventListener('click', function () {
+          var willOpen = !topbar.classList.contains('menu-open');
+          topbar.classList.toggle('menu-open', willOpen);
+          document.body.classList.toggle('mobile-nav-open', willOpen);
+          menuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        });
+
+        navWrap.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+
+        navWrap.addEventListener('click', function (event) {
+          if (event.target === navWrap) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener('click', function (event) {
+          if (!topbar.classList.contains('menu-open')) {
+            return;
+          }
+          if (topbar.contains(event.target)) {
+            return;
+          }
+          closeMenu();
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            closeMenu();
+          }
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 820) {
+            closeMenu();
+          }
+        });
+      }
 
       var revealElements = document.querySelectorAll('.reveal-on-scroll');
       if (!revealElements.length) {
