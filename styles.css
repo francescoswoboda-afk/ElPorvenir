@@ -155,7 +155,9 @@ body:not(.about-page) {
 
 .brand { text-decoration: none; display: inline-block; margin-left: -4px; margin-top: 4px; }
 body.home-page .brand { margin-left: 57px; }
+body.about-page .brand { margin-left: 57px; }
 body.home-page .brand-logo { transform: translateX(-47px); }
+body.about-page .brand-logo { transform: translateX(-47px); }
 .brand-logo { display: block; width: clamp(152px, 20vw, 274px); height: auto; }
 
 .menu-toggle {
@@ -259,7 +261,7 @@ body.home-page .brand-logo { transform: translateX(-47px); }
 .lang-switch a { color: inherit; text-decoration: none; }
 .lang-switch a.active { color: #f0a23a; }
 
-.hero-content { margin-top: clamp(52px, 10vh, 120px); margin-left: 57px; max-width: clamp(340px, 40vw, 460px); }
+.hero-content { margin-top: clamp(76px, 13.5vh, 148px); margin-left: 57px; max-width: clamp(340px, 40vw, 460px); }
 
 .hero-content h1 {
   margin: 0;
@@ -501,6 +503,11 @@ html.about-page-root {
   background: #f4eadb;
 }
 
+html.home-page-root {
+  overflow: hidden;
+  height: 100%;
+}
+
 .about-layout {
   width: 100%;
   min-height: 100vh;
@@ -684,10 +691,14 @@ html.about-page-root {
 
 @media (max-width: 620px) {
   html, body { overflow-x: hidden; overflow-y: auto; }
+  html.home-page-root,
+  body.home-page { overflow: hidden; }
   .hero { padding: 14px 12px 0; }
   body.home-page .brand { margin-left: 0; }
+  body.about-page .brand { margin-left: 0; }
   body.home-page .brand-logo { transform: translateX(-27px); }
-  .hero-content { margin-top: 24px; margin-left: 0; max-width: 100%; }
+  body.about-page .brand-logo { transform: translateX(-27px); }
+  .hero-content { margin-top: 50px; margin-left: 0; max-width: 100%; }
   .hero-content h1 {
     width: 100%;
     max-width: 100%;
