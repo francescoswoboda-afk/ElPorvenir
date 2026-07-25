@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Farm | El Porvenir Farm</title>
+  <title>Contact Us | El Porvenir Farm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="about-us.html" />
+  <link rel="prefetch" href="our-farm.html" />
   <link rel="prefetch" href="pecan-nuts.html" />
-  <link rel="prefetch" href="contact-us.html" />
 </head>
-<body class="about-page transitions-blocked farm-page">
-  <main class="farm-layout" role="main" aria-label="Our farm page">
-    <section class="about-hero farm-hero" aria-label="Our farm header">
+<body class="about-page transitions-blocked contact-page">
+  <main class="contact-layout" role="main" aria-label="Contact us page">
+    <section class="contact-hero" aria-label="Contact us hero">
       <header class="topbar">
         <a class="brand" href="index.html" aria-label="El Porvenir Farm home">
           <img class="brand-logo" src="ElPorvenir-Logo (2).png" alt="El Porvenir Farm" />
@@ -29,9 +29,9 @@
           <nav class="nav" aria-label="Main navigation">
             <a href="index.html" data-i18n="nav.home">Home</a>
             <a href="about-us.html" data-i18n="nav.about">About us</a>
-            <a class="active" href="our-farm.html" data-i18n="nav.farm">Our farm</a>
+            <a href="our-farm.html" data-i18n="nav.farm">Our farm</a>
             <a href="pecan-nuts.html" data-i18n="nav.pecan">Pecan nuts</a>
-            <a href="contact-us.html" data-i18n="nav.contact">Contact us</a>
+            <a class="active" href="contact-us.html" data-i18n="nav.contact">Contact us</a>
           </nav>
           <div class="lang-switch" aria-label="Language selector">
             <a class="active" href="#" data-lang="en">EN</a>
@@ -41,81 +41,81 @@
         </div>
       </header>
 
-      <div class="about-hero-content page-transition-target reveal-on-scroll">
-        <h1>Our Farm</h1>
-        <span class="about-hero-divider" aria-hidden="true"></span>
-        <p>Sustainability is at the heart of our farm. Of our 72 hectares, 35 are cultivated with pecans, while the remaining land is conserved to protect the natural environment.</p>
+      <div class="contact-hero-content page-transition-target reveal-on-scroll">
+        <h1 data-i18n="contact.hero.title">Let's grow something great together.</h1>
+        <span class="contact-hero-divider" aria-hidden="true"></span>
+        <p data-i18n="contact.hero.body">We are always open to conversations that share our values - quality, responsibility and a long-term vision for the land.</p>
       </div>
     </section>
 
-    <section class="farm-content page-transition-target" aria-label="Farm details">
-      <article class="farm-split reveal-on-scroll" aria-label="Our fields and production">
-        <div class="farm-copy">
-          <h2 class="section-mini-title">Our Fields & Production</h2>
-          <span class="section-divider" aria-hidden="true"></span>
-          <p>Before planting the first tree, we spent months researching the regions where pecan orchards could grow under the best possible conditions.</p>
-          <p>We selected land that did not require deforestation and began developing the farm with a clear plan: to create a productive orchard while preserving the surrounding natural environment.</p>
-          <p>El Porvenir Farm is located in Monte Alverne, near Santa Cruz do Sul, in Rio Grande do Sul, southern Brazil. The region's soil and climate provide favourable conditions for pecan cultivation.</p>
-          <p>After years of study and field testing, four pecan varieties were selected for their adaptability, productivity and resistance to diseases and pests.</p>
-        </div>
-        <figure class="farm-image-wrap">
-          <img class="farm-image" src="ElPorvenir-Homepage.png" alt="Pecan orchard rows at El Porvenir Farm" loading="lazy" decoding="async" />
-        </figure>
-      </article>
+    <section class="contact-content page-transition-target" aria-label="Contact details and message form">
+      <section class="contact-panel reveal-on-scroll" aria-label="Message and contact information">
+        <article class="contact-form-wrap" aria-label="Send message form">
+          <h2 class="section-mini-title contact-mini-title" data-i18n="contact.form.title">Send us a message</h2>
+          <p data-i18n="contact.form.body">Whether you have a question about our farm, our pecans, partnership opportunities or anything else, we'd love to hear from you.</p>
 
-      <section class="farm-stats reveal-on-scroll" aria-label="Farm statistics">
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 3v18" /><path d="M7 8c0 2.4 2.2 4.1 5 4.1s5 1.7 5 4.1-2.2 4.1-5 4.1-5-1.7-5-4.1" /></svg>
-          </span>
-          <strong>70</strong>
-          <h3>Hectares</h3>
-          <p>Planted with pecan trees</p>
+          <form class="contact-form" action="#" method="post" novalidate>
+            <div class="contact-form-row">
+              <input type="text" name="fullName" data-i18n-placeholder="contact.form.name" placeholder="Full Name" />
+              <input type="email" name="email" data-i18n-placeholder="contact.form.email" placeholder="Email Address" />
+            </div>
+            <input type="text" name="subject" data-i18n-placeholder="contact.form.subject" placeholder="Subject" />
+            <textarea name="message" rows="5" data-i18n-placeholder="contact.form.message" placeholder="Message"></textarea>
+            <button type="submit" data-i18n="contact.form.submit">Send Message</button>
+          </form>
         </article>
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 15c6-1.3 10-5.3 12-11 2.2 4.8 1.3 10.2-2.8 13.8" /><path d="M6 20c3.2-1.1 5.8-3.5 7.5-6.7" /></svg>
-          </span>
-          <strong>4</strong>
-          <h3>Varieties</h3>
-          <p>Selected through research and testing</p>
-        </article>
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" /><circle cx="12" cy="11" r="2.3" /></svg>
-          </span>
-          <strong>Monte Alverne</strong>
-          <h3>Santa Cruz do Sul</h3>
-          <p>Rio Grande do Sul, Brazil</p>
-        </article>
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M3 16h18" /><path d="M12 16V5" /><path d="M7 10c0-1.7 1.3-3 3-3" /><path d="M17 10c0-1.7-1.3-3-3-3" /></svg>
-          </span>
-          <strong>200</strong>
-          <h3>Additional Hectares</h3>
-          <p>Part of the farm's long-term expansion plan</p>
+
+        <article class="contact-info-wrap" aria-label="Get in touch details">
+          <h2 class="section-mini-title contact-mini-title" data-i18n="contact.touch.title">Get in touch</h2>
+
+          <ul class="contact-info-list">
+            <li>
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.4-7-10a7 7 0 1 1 14 0c0 4.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.3"/></svg>
+              </span>
+              <div>
+                <h3 data-i18n="contact.touch.visit">Visit us</h3>
+                <p data-i18n="contact.touch.address">Monte Alverne, Santa Cruz do Sul, Rio Grande do Sul, Brazil</p>
+              </div>
+            </li>
+            <li>
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+              </span>
+              <div>
+                <h3 data-i18n="contact.touch.email">Email</h3>
+                <p>hello@elporvenirfarm.com</p>
+              </div>
+            </li>
+            <li>
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 16.8v2.4a1.8 1.8 0 0 1-2 1.8 17.8 17.8 0 0 1-7.8-2.8 17.2 17.2 0 0 1-5.3-5.3A17.8 17.8 0 0 1 3 5.1a1.8 1.8 0 0 1 1.8-2H7.2a1.8 1.8 0 0 1 1.8 1.5c.1.9.3 1.7.6 2.5a1.8 1.8 0 0 1-.4 1.9L8.2 10a14.4 14.4 0 0 0 5.8 5.8l1-1a1.8 1.8 0 0 1 1.9-.4c.8.3 1.6.5 2.5.6A1.8 1.8 0 0 1 21 16.8Z"/></svg>
+              </span>
+              <div>
+                <h3 data-i18n="contact.touch.phone">Phone / WhatsApp</h3>
+                <p>+55 51 99999-9999</p>
+              </div>
+            </li>
+            <li>
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+              </span>
+              <div>
+                <h3 data-i18n="contact.touch.instagram">Instagram</h3>
+                <p>@elporvenirfarm</p>
+              </div>
+            </li>
+          </ul>
+
+          <p class="contact-info-note" data-i18n="contact.touch.quote">We believe the best partnerships start with trust and shared purpose.</p>
         </article>
       </section>
 
-      <article class="farm-split reveal-on-scroll" aria-label="Working with nature">
-        <div class="farm-copy">
-          <h2 class="section-mini-title">Working with Nature</h2>
-          <span class="section-divider" aria-hidden="true"></span>
-          <p>Because we care deeply about the natural environment, we manage the land with attention to the soil, surrounding vegetation and local biodiversity.</p>
-          <p>Flowering plants are introduced throughout the fields to support bees and improve pollination. This creates a healthier ecosystem around the orchard while encouraging greater biological diversity.</p>
-          <p>As this project develops, El Porvenir also plans to produce its own raw honey directly from the farm.</p>
-        </div>
-        <figure class="farm-image-wrap">
-          <img class="farm-image" src="ElPorvenir-AboutUs.png" alt="Natural pollination and biodiversity at El Porvenir Farm" loading="lazy" decoding="async" />
-        </figure>
-      </article>
-
-      <section class="farm-commitment reveal-on-scroll" aria-label="Our commitment">
-        <div class="farm-commitment-copy">
-          <h2 class="section-mini-title">Our Commitment</h2>
-          <span class="section-divider" aria-hidden="true"></span>
-          <p class="farm-commitment-body">We farm for today, with respect for tomorrow. El Porvenir Farm is our home, our heritage and our commitment to future generations.</p>
+      <section class="contact-bottom reveal-on-scroll" aria-label="Contact closing message">
+        <div class="contact-bottom-overlay">
+          <p class="section-mini-title contact-bottom-kicker" data-i18n="contact.footer.kicker">We'd love to hear from you</p>
+          <h2 data-i18n="contact.footer.title">Together, we can build a better tomorrow.</h2>
+          <p data-i18n="contact.footer.body">Thank you for your interest in El Porvenir Farm.</p>
         </div>
       </section>
     </section>
