@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="about-us.html" />
+  <link rel="prefetch" href="pecan-nuts.html" />
 </head>
 <body class="about-page transitions-blocked farm-page">
   <main class="farm-layout" role="main" aria-label="Our farm page">
@@ -28,7 +29,7 @@
             <a href="index.html">Home</a>
             <a href="about-us.html">About us</a>
             <a class="active" href="our-farm.html">Our farm</a>
-            <a href="#">Pecan nuts</a>
+            <a href="pecan-nuts.html">Pecan nuts</a>
             <a href="#">Contact us</a>
           </nav>
           <div class="lang-switch" aria-label="Language selector">
@@ -49,7 +50,7 @@
     <section class="farm-content page-transition-target" aria-label="Farm details">
       <article class="farm-split reveal-on-scroll" aria-label="Our fields and production">
         <div class="farm-copy">
-          <h2>Our Fields & Production</h2>
+          <h2 class="section-mini-title">Our Fields & Production</h2>
           <span class="section-divider" aria-hidden="true"></span>
           <p>Before planting the first tree, we spent months researching the regions where pecan orchards could grow under the best possible conditions.</p>
           <p>We selected land that did not require deforestation and began developing the farm with a clear plan: to create a productive orchard while preserving the surrounding natural environment.</p>
@@ -98,7 +99,7 @@
 
       <article class="farm-split reveal-on-scroll" aria-label="Working with nature">
         <div class="farm-copy">
-          <h2>Working with Nature</h2>
+          <h2 class="section-mini-title">Working with Nature</h2>
           <span class="section-divider" aria-hidden="true"></span>
           <p>Because we care deeply about the natural environment, we manage the land with attention to the soil, surrounding vegetation and local biodiversity.</p>
           <p>Flowering plants are introduced throughout the fields to support bees and improve pollination. This creates a healthier ecosystem around the orchard while encouraging greater biological diversity.</p>
@@ -111,7 +112,7 @@
 
       <section class="farm-commitment reveal-on-scroll" aria-label="Our commitment">
         <div class="farm-commitment-copy">
-          <h2>Our Commitment</h2>
+          <h2 class="section-mini-title">Our Commitment</h2>
           <span class="section-divider" aria-hidden="true"></span>
           <p class="farm-commitment-body">We farm for today, with respect for tomorrow. El Porvenir Farm is our home, our heritage and our commitment to future generations.</p>
         </div>
@@ -141,7 +142,7 @@
           return;
         }
 
-        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="index.html"]');
+        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="pecan-nuts.html"], a[href="index.html"]');
         if (!link) {
           return;
         }

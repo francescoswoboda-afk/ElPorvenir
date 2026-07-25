@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="our-farm.html" />
+  <link rel="prefetch" href="pecan-nuts.html" />
 </head>
 <body class="about-page transitions-blocked">
   <main class="about-layout" role="main" aria-label="About us page">
@@ -28,7 +29,7 @@
             <a href="index.html">Home</a>
             <a class="active" href="about-us.html">About us</a>
             <a href="our-farm.html">Our farm</a>
-            <a href="#">Pecan nuts</a>
+            <a href="pecan-nuts.html">Pecan nuts</a>
             <a href="#">Contact us</a>
           </nav>
           <div class="lang-switch" aria-label="Language selector">
@@ -48,7 +49,7 @@
 
     <section class="about-content page-transition-target" aria-label="About us details">
       <article class="story-block reveal-on-scroll">
-        <h2>Our Story</h2>
+        <h2 class="section-mini-title">Our Story</h2>
         <span class="section-divider" aria-hidden="true"></span>
         <p>El Porvenir Farm was born from a passion for the land and a vision for the future. What began as a dream to create something lasting has grown into a farm that combines tradition, innovation and responsibility.</p>
         <p>We care for our trees, our soil and our community, always with the goal of producing with purpose and leaving a positive legacy for generations to come.</p>
@@ -73,7 +74,7 @@
       </section>
 
       <section class="values-block reveal-on-scroll" aria-label="Our values">
-        <h2>Our Values</h2>
+        <h2 class="section-mini-title">Our Values</h2>
         <span class="section-divider" aria-hidden="true"></span>
 
         <div class="values-grid-ref">
@@ -133,7 +134,7 @@
           return;
         }
 
-        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="index.html"]');
+        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="pecan-nuts.html"], a[href="index.html"]');
 
         if (!link) {
           return;
