@@ -1095,34 +1095,35 @@ body.pecan-page {
 .pecan-benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 12px;
 }
 
 .pecan-benefit {
-  text-align: center;
-  padding: 14px 10px 12px;
-  border: none;
-}
-
-.pecan-benefit:nth-child(3n + 2),
-.pecan-benefit:nth-child(3n + 3) {
-  border-left: 1px solid rgba(126, 113, 86, 0.2);
-}
-
-.pecan-benefit:nth-child(n + 4) {
-  border-top: 1px solid rgba(126, 113, 86, 0.2);
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  text-align: left;
+  padding: 16px 14px;
+  border: 1px solid rgba(126, 113, 86, 0.16);
+  background: linear-gradient(180deg, rgba(255, 251, 244, 0.88) 0%, rgba(248, 241, 229, 0.94) 100%);
+  box-shadow: 0 12px 28px rgba(62, 50, 31, 0.06);
 }
 
 .pecan-benefit-icon {
   width: 34px;
   height: 34px;
-  margin: 0 auto 8px;
+  margin: 2px 0 0;
   border-radius: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #6f7359;
   border: none;
+}
+
+.pecan-benefit-copy {
+  min-width: 0;
 }
 
 .pecan-benefit-icon svg {
@@ -1136,19 +1137,19 @@ body.pecan-page {
 }
 
 .pecan-benefit h3 {
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   font-family: "Oswald", sans-serif;
-  font-size: clamp(9.5px, 0.7vw, 10px);
+  font-size: clamp(11px, 0.86vw, 13px);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #4a4538;
 }
 
 .pecan-benefit p {
-  margin: 0 auto;
-  max-width: 152px;
-  font-size: clamp(8.8px, 0.64vw, 9.8px);
-  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  font-size: clamp(11px, 0.78vw, 12.5px);
+  line-height: 1.58;
   color: rgba(51, 45, 32, 0.88);
 }
 
@@ -1179,6 +1180,10 @@ body.pecan-page {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
+}
+
+.pecan-products-slider {
+  position: relative;
 }
 
 .pecan-product-item {
@@ -1222,6 +1227,53 @@ body.pecan-page {
   color: rgba(56, 48, 35, 0.86);
 }
 
+.pecan-slider-controls {
+  display: none;
+}
+
+.pecan-slider-button,
+.pecan-slider-dot {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.pecan-slider-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(77, 91, 60, 0.08);
+  color: #4d5b3c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pecan-slider-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pecan-slider-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pecan-slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(77, 91, 60, 0.24);
+  cursor: pointer;
+}
+
+.pecan-slider-dot.active {
+  background: #4d5b3c;
+}
+
 .pecan-nutrition {
   margin-top: 10px;
   border-top: none;
@@ -1246,50 +1298,57 @@ body.pecan-page {
 .pecan-nutrition-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0;
+  gap: 12px;
 }
 
-.pecan-nutrition-grid article {
-  min-height: 90px;
-  border-left: 1px solid rgba(123, 105, 72, 0.16);
-  padding: 2px 12px 0;
+.pecan-nutrition-item {
+  min-height: 132px;
+  padding: 16px 14px 14px;
   display: grid;
-  grid-template-rows: auto auto auto;
   align-content: start;
-  row-gap: 2px;
+  row-gap: 6px;
+  border: 1px solid rgba(123, 105, 72, 0.15);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.98) 0%, rgba(246, 239, 228, 0.92) 100%);
+  box-shadow: 0 12px 30px rgba(55, 46, 29, 0.05);
 }
 
-.pecan-nutrition-grid article:first-child {
-  border-left: none;
-  padding-left: 0;
+.pecan-nutrition-item-highlight {
+  background: linear-gradient(180deg, rgba(82, 96, 61, 0.95) 0%, rgba(67, 79, 49, 0.96) 100%);
+  border-color: rgba(72, 84, 54, 0.34);
 }
 
-.pecan-nutrition-grid strong {
+.pecan-nutrition-item strong {
   display: block;
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: clamp(28px, 2.3vw, 38px);
+  font-size: clamp(28px, 2.2vw, 36px);
   line-height: 0.95;
   color: #473d2e;
 }
 
-.pecan-nutrition-grid h3 {
+.pecan-nutrition-item h3 {
   margin: 0;
   font-family: "Oswald", sans-serif;
-  font-size: clamp(10px, 0.76vw, 11px);
+  font-size: clamp(11px, 0.82vw, 12px);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #4a4538;
 }
 
-.pecan-nutrition-grid p {
+.pecan-nutrition-item p {
   margin: 0;
-  font-size: clamp(10px, 0.72vw, 11px);
-  line-height: 1.4;
+  font-size: clamp(10.5px, 0.76vw, 11.5px);
+  line-height: 1.48;
   color: rgba(62, 55, 41, 0.86);
 }
 
-.pecan-nutrition-grid article:last-child strong {
+.pecan-nutrition-item-highlight strong,
+.pecan-nutrition-item-highlight h3,
+.pecan-nutrition-item-highlight p {
+  color: #f3ecd9;
+}
+
+.pecan-nutrition-item-highlight strong {
   font-size: clamp(20px, 1.5vw, 24px);
   line-height: 1.05;
 }
@@ -1351,14 +1410,7 @@ body.pecan-page {
   }
 
   .pecan-benefit {
-    border-left: none !important;
-    border-top: none;
-    border-right: 1px solid rgba(126, 113, 86, 0.2);
-    border-bottom: 1px solid rgba(126, 113, 86, 0.2);
-  }
-
-  .pecan-benefit:nth-child(2n) {
-    border-right: none;
+    min-height: 100%;
   }
 
   .pecan-products-grid {
@@ -1368,12 +1420,7 @@ body.pecan-page {
 
   .pecan-nutrition-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 10px;
-  }
-
-  .pecan-nutrition-grid article:nth-child(4) {
-    border-left: none;
-    padding-left: 0;
+    row-gap: 12px;
   }
 }
 
@@ -1392,10 +1439,11 @@ body.pecan-page {
   .pecan-hero-content h1 {
     max-width: 100%;
     font-size: clamp(30px, 10.2vw, 42px);
+    white-space: normal;
   }
 
   .pecan-hero-content p {
-    max-width: 320px;
+    max-width: 100%;
     font-size: clamp(12px, 3.5vw, 15px);
   }
 
@@ -1404,41 +1452,42 @@ body.pecan-page {
   }
 
   .pecan-intro {
-    padding: 14px 12px;
+    gap: 16px;
+    padding: 16px 14px;
   }
 
-  .pecan-intro-copy h2 {
-    font-size: clamp(32px, 10vw, 44px);
+  .pecan-intro-copy p:not(.pecan-kicker) {
+    max-width: none;
+    font-size: clamp(12px, 3.5vw, 15px);
+    line-height: 1.66;
   }
 
   .pecan-benefits-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .pecan-benefit {
-    text-align: left;
-    border: none !important;
-    border-top: 1px solid rgba(123, 105, 72, 0.16) !important;
-    padding: 12px 0 0;
-  }
-
-  .pecan-benefit:first-child {
-    border-top: none;
-    padding-top: 0;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px 12px;
   }
 
   .pecan-benefit-icon {
-    margin: 0 0 8px;
+    margin: 0;
   }
 
   .pecan-benefit p {
-    margin-left: 0;
     max-width: none;
+    font-size: clamp(12px, 3.5vw, 14px);
+  }
+
+  .pecan-benefit h3 {
+    font-size: clamp(13px, 4vw, 16px);
   }
 
   .pecan-products {
-    padding: 14px 10px 16px;
+    padding: 16px 0 18px;
   }
 
   .pecan-products h2 {
@@ -1446,7 +1495,27 @@ body.pecan-page {
   }
 
   .pecan-products-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+    margin-inline: -2px;
+  }
+
+  .pecan-products-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pecan-product-item {
+    min-width: 100%;
+    scroll-snap-align: start;
+    border: 1px solid rgba(122, 103, 69, 0.16);
+    background: rgba(251, 246, 239, 0.94);
+    padding: 12px;
   }
 
   .pecan-product-photo {
@@ -1455,31 +1524,67 @@ body.pecan-page {
 
   .pecan-product-item h3 {
     min-height: 0;
+    font-size: clamp(14px, 4.4vw, 18px);
+    margin-top: 10px;
+   }
+
+  .pecan-product-item p {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.56;
+  }
+
+  .pecan-slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
   }
 
   .pecan-nutrition {
-    padding: 12px 2px;
+    padding: 16px 2px 8px;
   }
 
   .pecan-nutrition-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .pecan-nutrition-grid article {
-    border-left: none;
-    border-top: 1px solid rgba(123, 105, 72, 0.16);
-    padding: 10px 0 0;
+  .pecan-nutrition-item {
     min-height: 0;
+    padding: 14px 12px;
+    row-gap: 4px;
   }
 
-  .pecan-nutrition-grid article:first-child {
-    border-top: none;
-    padding-top: 0;
+  .pecan-nutrition-item strong {
+    font-size: clamp(30px, 9.2vw, 40px);
+  }
+
+  .pecan-nutrition-item h3 {
+    font-size: clamp(13px, 4vw, 16px);
+  }
+
+  .pecan-nutrition-item p {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.5;
   }
 
   .pecan-cta {
     min-height: 148px;
     background-position: 64% center;
+  }
+
+  .pecan-cta-overlay {
+    padding: 18px 16px;
+  }
+
+  .pecan-cta-overlay h2 {
+    font-size: clamp(26px, 8.4vw, 34px);
+  }
+
+  .pecan-cta-overlay p {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.5;
   }
 }
 
@@ -1783,16 +1888,90 @@ body.pecan-page {
     padding: 16px 12px 24px;
   }
 
+  .contact-panel {
+    padding: 16px 14px 18px;
+    gap: 18px;
+  }
+
+  .contact-form-wrap > p,
+  .contact-info-list p,
+  .contact-info-note {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.62;
+  }
+
+  .contact-info-list h3 {
+    font-size: clamp(12px, 3.8vw, 14px);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+    padding: 12px;
+  }
+
   .contact-form-row {
     grid-template-columns: 1fr;
   }
 
   .contact-form button {
     width: 100%;
+    min-height: 46px;
+    font-size: 12px;
   }
 
   .contact-bottom {
     min-height: 180px;
     background-position: 60% center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero {
+    min-height: 280px;
+  }
+
+  .contact-hero-content {
+    margin-top: 26px;
+  }
+
+  .contact-hero-content p {
+    max-width: 100%;
+  }
+
+  .contact-content {
+    padding: 14px 10px 22px;
+  }
+
+  .contact-panel {
+    padding: 14px 12px 16px;
+  }
+
+  .contact-info-list {
+    gap: 14px;
+  }
+
+  .contact-info-list li {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .contact-info-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .contact-bottom-overlay {
+    padding: 18px 16px;
+  }
+
+  .contact-bottom-overlay h2 {
+    font-size: clamp(28px, 9vw, 36px);
+    line-height: 0.98;
+  }
+
+  .contact-bottom-overlay p {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.5;
   }
 }
