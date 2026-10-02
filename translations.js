@@ -11,10 +11,11 @@
       "nav.farm": "Our farm",
       "nav.pecan": "Pecan nuts",
       "nav.contact": "Contact us",
+      "menu.open": "Open menu",
       "home.hero.title": "<span>Rooted in nature.</span><span>Growing the future.</span>",
       "home.hero.body": "El Porvenir is a family-owned, working pecan farm. With over 20 years of experience in agriculture,<br />since 2014 we have pursued our passion for dried fruits.",
       "about.hero.title": "About Us",
-      "about.hero.body": "<span>El Porvenir Farm is a family-owned farm dedicated to</span><span class=\"about-hero-line\">cultivating a better future with respect for nature, people and the land.</span>",
+      "about.hero.body": "El Porvenir Farm is a family-owned farm dedicated to cultivating a better future with respect for nature, people and the land.",
       "about.story.title": "Our Story",
       "about.story.body1": "El Porvenir Farm was born from a passion for the land and a vision for the future. What began as a dream to create something lasting has grown into a farm that combines tradition, innovation and responsibility.",
       "about.story.body2": "We care for our trees, our soil and our community, always with the goal of producing with purpose and leaving a positive legacy for generations to come.",
@@ -70,12 +71,12 @@
       "pecan.benefits.nutrition.body": "Rich in healthy fats, fiber, protein, vitamins and essential minerals.",
       "pecan.benefits.anti.title": "Anti-inflammatory",
       "pecan.benefits.anti.body": "Contains monounsaturated fats and compounds that support overall wellness.",
-      "pecan.products.title": "Our Pecans - Available in Different Forms",
+      "pecan.products.title": "Our Pecans, Available in Different Forms",
       "pecan.products.previous": "Previous product",
       "pecan.products.next": "Next product",
-      "pecan.products.mammoth.title": "Mammoth<br />Pecan Halves",
+      "pecan.products.mammoth.title": "Mammoth Pecan Halves",
       "pecan.products.mammoth.body": "Extra large, beautiful halves with a rich, buttery flavor.",
-      "pecan.products.junior.title": "Junior Mammoth<br />Pecan Halves",
+      "pecan.products.junior.title": "Junior Mammoth Pecan Halves",
       "pecan.products.junior.body": "Perfectly sized halves. Ideal for snacking and recipes.",
       "pecan.products.granules.title": "Granules",
       "pecan.products.granules.body": "Finely chopped pecans, great for baking and toppings.",
@@ -98,11 +99,11 @@
       "pecan.cta.title": "From our trees to your table,<br />quality you can taste.",
       "pecan.cta.body": "Grown with passion. Harvested with care. Shared with you.",
       "contact.hero.title": "Let's grow something great together.",
-      "contact.hero.body": "We are always open to conversations that share our values - quality, responsibility and a long-term vision for the land.",
-      "contact.form.title": "Send us a message",
+      "contact.hero.body": "We are always open to conversations that share our values: quality, responsibility and a long-term vision for the land.",
+      "contact.form.title": "Send Us a Message",
       "contact.form.body": "Whether you have a question about our farm, our pecans, partnership opportunities or anything else, we'd love to hear from you.",
-      "contact.form.name": "Full Name",
-      "contact.form.email": "Email Address",
+      "contact.form.name": "Full name",
+      "contact.form.email": "Email address",
       "contact.form.subject": "Subject",
       "contact.form.message": "Message",
       "contact.form.submit": "Send Message",
@@ -128,10 +129,11 @@
       "nav.farm": "Nuestra finca",
       "nav.pecan": "Nueces pecan",
       "nav.contact": "Contacto",
+      "menu.open": "Abrir menu",
       "home.hero.title": "<span>Arraigados en la naturaleza.</span><span>Cultivando el futuro.</span>",
       "home.hero.body": "El Porvenir es una finca de pecanas familiar y en produccion. Con mas de 20 anos de experiencia en la agricultura,<br />desde 2014 seguimos nuestra pasion por los frutos secos.",
       "about.hero.title": "Nosotros",
-      "about.hero.body": "<span>El Porvenir Farm es una finca familiar dedicada a</span><span class=\"about-hero-line\">cultivar un mejor futuro con respeto por la naturaleza, las personas y la tierra.</span>",
+      "about.hero.body": "El Porvenir Farm es una finca familiar dedicada a cultivar un mejor futuro con respeto por la naturaleza, las personas y la tierra.",
       "about.story.title": "Nuestra historia",
       "about.story.body1": "El Porvenir Farm nacio de una pasion por la tierra y una vision para el futuro. Lo que comenzo como un sueno de crear algo duradero se convirtio en una finca que combina tradicion, innovacion y responsabilidad.",
       "about.story.body2": "Cuidamos nuestros arboles, nuestro suelo y nuestra comunidad, siempre con el objetivo de producir con proposito y dejar un legado positivo para las generaciones futuras.",
@@ -187,12 +189,12 @@
       "pecan.benefits.nutrition.body": "Ricas en grasas saludables, fibra, proteina, vitaminas y minerales esenciales.",
       "pecan.benefits.anti.title": "Antiinflamatorias",
       "pecan.benefits.anti.body": "Contienen grasas monoinsaturadas y compuestos que apoyan el bienestar general.",
-      "pecan.products.title": "Nuestras pecanas - Disponibles en diferentes presentaciones",
+      "pecan.products.title": "Nuestras pecanas, disponibles en diferentes presentaciones",
       "pecan.products.previous": "Producto anterior",
       "pecan.products.next": "Siguiente producto",
-      "pecan.products.mammoth.title": "Mitades<br />Mammoth",
+      "pecan.products.mammoth.title": "Mitades Mammoth",
       "pecan.products.mammoth.body": "Mitades extra grandes y hermosas, con un sabor intenso y mantecoso.",
-      "pecan.products.junior.title": "Mitades Junior<br />Mammoth",
+      "pecan.products.junior.title": "Mitades Junior Mammoth",
       "pecan.products.junior.body": "Mitades de tamano ideal. Perfectas para comer solas y para recetas.",
       "pecan.products.granules.title": "Granulos",
       "pecan.products.granules.body": "Pecanas finamente picadas, excelentes para hornear y usar como topping.",
@@ -325,10 +327,12 @@
     applyLanguage(resolveLanguage());
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeLanguageSwitcher);
-  } else {
+  // Loaded at the end of <body>, so the content is already parsed: translate before
+  // first paint so page transitions never capture the English text mid-swap.
+  if (document.body) {
     initializeLanguageSwitcher();
+  } else {
+    document.addEventListener("DOMContentLoaded", initializeLanguageSwitcher);
   }
 
   window.ElPorvenirI18n = {

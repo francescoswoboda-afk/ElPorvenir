@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="about-page-root">
+<html lang="en" class="inner-page-root theme-dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,218 +8,113 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="site-nav.js"></script>
+  <link rel="preload" as="image" href="ElPorvenir-Homepage.jpg" fetchpriority="high" />
+  <link rel="prefetch" as="image" href="ElPorvenir-AboutUs.jpg" />
+  <link rel="prefetch" as="image" href="ElPorvenir-PecanNutHeader.jpg" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="about-us.html" />
   <link rel="prefetch" href="pecan-nuts.html" />
   <link rel="prefetch" href="contact-us.html" />
 </head>
-<body class="about-page transitions-blocked farm-page">
-  <main class="farm-layout" role="main" aria-label="Our farm page">
-    <section class="about-hero farm-hero" aria-label="Our farm header">
-      <header class="topbar">
+<body class="inner-page page-farm transitions-blocked">
+  <div class="side-menu" data-side-menu>
+    <div class="side-menu-zone" aria-hidden="true"></div>
+    <button class="side-menu-handle" type="button" aria-expanded="false" aria-controls="side-menu-panel" aria-label="Open menu" data-i18n-aria-label="menu.open"></button>
+    <nav class="side-menu-panel" id="side-menu-panel" aria-label="Main navigation">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about-us.html" data-i18n="nav.about">About us</a>
+      <a href="our-farm.html" data-i18n="nav.farm" aria-current="page">Our farm</a>
+      <a href="pecan-nuts.html" data-i18n="nav.pecan">Pecan nuts</a>
+      <a href="contact-us.html" data-i18n="nav.contact">Contact us</a>
+    </nav>
+  </div>
+
+  <main class="inner-main" aria-label="Our farm page">
+    <div class="page-shell">
+      <header class="topbar page-topbar">
         <a class="brand" href="index.html" aria-label="El Porvenir Farm home">
-          <img class="brand-logo" src="ElPorvenir-Logo (2).png" alt="El Porvenir Farm" />
+          <img class="brand-logo" src="el-porvenir-logo-light.png" alt="El Porvenir Farm" width="345" height="209" />
         </a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-menu">
-          <span class="menu-toggle-line" aria-hidden="true"></span>
-          <span class="menu-toggle-line" aria-hidden="true"></span>
-          <span class="menu-toggle-line" aria-hidden="true"></span>
-        </button>
-        <div class="nav-wrap" id="site-menu">
-          <nav class="nav" aria-label="Main navigation">
-            <a href="index.html" data-i18n="nav.home">Home</a>
-            <a href="about-us.html" data-i18n="nav.about">About us</a>
-            <a class="active" href="our-farm.html" data-i18n="nav.farm">Our farm</a>
-            <a href="pecan-nuts.html" data-i18n="nav.pecan">Pecan nuts</a>
-            <a href="contact-us.html" data-i18n="nav.contact">Contact us</a>
-          </nav>
-          <div class="lang-switch" aria-label="Language selector">
-            <a class="active" href="#" data-lang="en">EN</a>
-            <span>|</span>
-            <a href="#" data-lang="es">ES</a>
-          </div>
+        <div class="lang-switch" aria-label="Language selector">
+          <a class="active" href="#" data-lang="en">EN</a>
+          <span>|</span>
+          <a href="#" data-lang="es">ES</a>
         </div>
       </header>
 
-      <div class="about-hero-content page-transition-target reveal-on-scroll">
-        <h1 data-i18n="farm.hero.title">Our Farm</h1>
-        <span class="about-hero-divider" aria-hidden="true"></span>
-        <p data-i18n="farm.hero.body">Sustainability is at the heart of our farm. Of our 72 hectares, 35 are cultivated with pecans, while the remaining land is conserved to protect the natural environment.</p>
-      </div>
-    </section>
-
-    <section class="farm-content page-transition-target" aria-label="Farm details">
-      <article class="farm-split reveal-on-scroll" aria-label="Our fields and production">
-        <div class="farm-copy">
-          <h2 class="section-mini-title" data-i18n="farm.fields.title">Our Fields & Production</h2>
-          <span class="section-divider" aria-hidden="true"></span>
-          <p data-i18n="farm.fields.body1">Before planting the first tree, we spent months researching the regions where pecan orchards could grow under the best possible conditions.</p>
-          <p data-i18n="farm.fields.body2">We selected land that did not require deforestation and began developing the farm with a clear plan: to create a productive orchard while preserving the surrounding natural environment.</p>
-          <p data-i18n="farm.fields.body3">El Porvenir Farm is located in Monte Alverne, near Santa Cruz do Sul, in Rio Grande do Sul, southern Brazil. The region's soil and climate provide favourable conditions for pecan cultivation.</p>
-          <p data-i18n="farm.fields.body4">After years of study and field testing, four pecan varieties were selected for their adaptability, productivity and resistance to diseases and pests.</p>
+      <section class="split-hero" aria-label="Our farm">
+        <div class="split-hero-copy">
+          <p class="eyebrow"><span>03</span><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="nav.farm">Our farm</span></p>
+          <h1 class="display-title display-title-lg" data-i18n="farm.hero.title">Our Farm</h1>
+          <p class="lede" data-i18n="farm.hero.body">Sustainability is at the heart of our farm. Of our 72 hectares, 35 are cultivated with pecans, while the remaining land is conserved to protect the natural environment.</p>
         </div>
-        <figure class="farm-image-wrap">
-          <img class="farm-image" src="ElPorvenir-Homepage.png" alt="Pecan orchard rows at El Porvenir Farm" loading="lazy" decoding="async" />
+        <figure class="split-hero-media">
+          <img src="ElPorvenir-Homepage.jpg" alt="Aerial view of the pecan orchards at El Porvenir Farm" width="1672" height="941" fetchpriority="high" decoding="async" />
         </figure>
-      </article>
+      </section>
 
-      <section class="farm-stats reveal-on-scroll" aria-label="Farm statistics">
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 3v18" /><path d="M7 8c0 2.4 2.2 4.1 5 4.1s5 1.7 5 4.1-2.2 4.1-5 4.1-5-1.7-5-4.1" /></svg>
-          </span>
-          <strong>70</strong>
-          <h3 data-i18n="farm.stats.hectares.title">Hectares</h3>
+      <section class="stats-row reveal-on-scroll" aria-label="Farm statistics">
+        <article class="stat">
+          <strong class="stat-value">70</strong>
+          <h3 class="stat-label" data-i18n="farm.stats.hectares.title">Hectares</h3>
           <p data-i18n="farm.stats.hectares.body">Planted with pecan trees</p>
         </article>
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 15c6-1.3 10-5.3 12-11 2.2 4.8 1.3 10.2-2.8 13.8" /><path d="M6 20c3.2-1.1 5.8-3.5 7.5-6.7" /></svg>
-          </span>
-          <strong>4</strong>
-          <h3 data-i18n="farm.stats.varieties.title">Varieties</h3>
+        <article class="stat">
+          <strong class="stat-value">4</strong>
+          <h3 class="stat-label" data-i18n="farm.stats.varieties.title">Varieties</h3>
           <p data-i18n="farm.stats.varieties.body">Selected through research and testing</p>
         </article>
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" /><circle cx="12" cy="11" r="2.3" /></svg>
-          </span>
-          <strong>Monte Alverne</strong>
-          <h3 data-i18n="farm.stats.location.title">Santa Cruz do Sul</h3>
+        <article class="stat">
+          <strong class="stat-value stat-value-text">Monte Alverne</strong>
+          <h3 class="stat-label" data-i18n="farm.stats.location.title">Santa Cruz do Sul</h3>
           <p data-i18n="farm.stats.location.body">Rio Grande do Sul, Brazil</p>
         </article>
-        <article class="farm-stat-item">
-          <span class="farm-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M3 16h18" /><path d="M12 16V5" /><path d="M7 10c0-1.7 1.3-3 3-3" /><path d="M17 10c0-1.7-1.3-3-3-3" /></svg>
-          </span>
-          <strong>200</strong>
-          <h3 data-i18n="farm.stats.additional.title">Additional Hectares</h3>
+        <article class="stat">
+          <strong class="stat-value">200</strong>
+          <h3 class="stat-label" data-i18n="farm.stats.additional.title">Additional Hectares</h3>
           <p data-i18n="farm.stats.additional.body">Part of the farm's long-term expansion plan</p>
         </article>
       </section>
 
-      <article class="farm-split reveal-on-scroll" aria-label="Working with nature">
-        <div class="farm-copy">
-          <h2 class="section-mini-title" data-i18n="farm.nature.title">Working with Nature</h2>
-          <span class="section-divider" aria-hidden="true"></span>
-          <p data-i18n="farm.nature.body1">Because we care deeply about the natural environment, we manage the land with attention to the soil, surrounding vegetation and local biodiversity.</p>
-          <p data-i18n="farm.nature.body2">Flowering plants are introduced throughout the fields to support bees and improve pollination. This creates a healthier ecosystem around the orchard while encouraging greater biological diversity.</p>
-          <p data-i18n="farm.nature.body3">As this project develops, El Porvenir also plans to produce its own raw honey directly from the farm.</p>
+      <section class="text-columns reveal-on-scroll" aria-labelledby="farm-fields-title">
+        <h2 class="section-title" id="farm-fields-title" data-i18n="farm.fields.title">Our Fields &amp; Production</h2>
+        <div class="body-copy">
+          <p data-i18n="farm.fields.body1">Before planting the first tree, we spent months researching the regions where pecan orchards could grow under the best possible conditions.</p>
+          <p data-i18n="farm.fields.body2">We selected land that did not require deforestation and began developing the farm with a clear plan: to create a productive orchard while preserving the surrounding natural environment.</p>
         </div>
-        <figure class="farm-image-wrap">
-          <img class="farm-image" src="ElPorvenir-AboutUs.png" alt="Natural pollination and biodiversity at El Porvenir Farm" loading="lazy" decoding="async" />
-        </figure>
-      </article>
-
-      <section class="farm-commitment reveal-on-scroll" aria-label="Our commitment">
-        <div class="farm-commitment-copy">
-          <h2 class="section-mini-title" data-i18n="farm.commitment.title">Our Commitment</h2>
-          <span class="section-divider" aria-hidden="true"></span>
-          <p class="farm-commitment-body" data-i18n="farm.commitment.body">We farm for today, with respect for tomorrow. El Porvenir Farm is our home, our heritage and our commitment to future generations.</p>
+        <div class="body-copy">
+          <p data-i18n="farm.fields.body3">El Porvenir Farm is located in Monte Alverne, near Santa Cruz do Sul, in Rio Grande do Sul, southern Brazil. The region's soil and climate provide favourable conditions for pecan cultivation.</p>
+          <p data-i18n="farm.fields.body4">After years of study and field testing, four pecan varieties were selected for their adaptability, productivity and resistance to diseases and pests.</p>
         </div>
       </section>
-    </section>
+
+      <section class="media-split reveal-on-scroll" aria-labelledby="farm-nature-title">
+        <div>
+          <h2 class="section-title" id="farm-nature-title" data-i18n="farm.nature.title">Working with Nature</h2>
+          <div class="body-copy">
+            <p data-i18n="farm.nature.body1">Because we care deeply about the natural environment, we manage the land with attention to the soil, surrounding vegetation and local biodiversity.</p>
+            <p data-i18n="farm.nature.body2">Flowering plants are introduced throughout the fields to support bees and improve pollination. This creates a healthier ecosystem around the orchard while encouraging greater biological diversity.</p>
+            <p data-i18n="farm.nature.body3">As this project develops, El Porvenir also plans to produce its own raw honey directly from the farm.</p>
+          </div>
+        </div>
+        <figure class="media-split-image">
+          <img src="ElPorvenir-AboutUs.jpg" alt="Rows of pecan trees surrounded by native vegetation" width="1672" height="941" loading="lazy" decoding="async" />
+        </figure>
+      </section>
+
+      <section class="image-banner image-banner-farm reveal-on-scroll" aria-labelledby="farm-commitment-title">
+        <h2 class="banner-kicker" id="farm-commitment-title" data-i18n="farm.commitment.title">Our Commitment</h2>
+        <p class="image-banner-title" data-i18n="farm.commitment.body">We farm for today, with respect for tomorrow. El Porvenir Farm is our home, our heritage and our commitment to future generations.</p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </section>
+    </div>
   </main>
 
   <script src="translations.js"></script>
   <script>
     (function () {
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var supportsViewTransitions = typeof document.startViewTransition === 'function';
-
-      try {
-        if (!supportsViewTransitions && sessionStorage.getItem('ep-page-transition') === 'enter') {
-          sessionStorage.removeItem('ep-page-transition');
-          document.body.classList.add('page-enter');
-          window.setTimeout(function () {
-            document.body.classList.remove('page-enter');
-          }, 340);
-        }
-      } catch (error) {
-        // Ignore storage failures and continue normal behavior.
-      }
-
-      document.addEventListener('click', function (event) {
-        if (supportsViewTransitions) {
-          return;
-        }
-
-        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="pecan-nuts.html"], a[href="index.html"], a[href="contact-us.html"]');
-        if (!link) {
-          return;
-        }
-
-        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-          return;
-        }
-
-        var href = link.getAttribute('href');
-        if (!href) {
-          return;
-        }
-
-        event.preventDefault();
-        try {
-          sessionStorage.setItem('ep-page-transition', 'enter');
-        } catch (error) {
-          // Ignore storage failures and continue navigation.
-        }
-        window.location.assign(href);
-      }, true);
-
-      var topbar = document.querySelector('.topbar');
-      var menuToggle = topbar ? topbar.querySelector('.menu-toggle') : null;
-      var navWrap = topbar ? topbar.querySelector('.nav-wrap') : null;
-
-      function closeMenu() {
-        if (!topbar || !menuToggle) {
-          return;
-        }
-        topbar.classList.remove('menu-open');
-        document.body.classList.remove('mobile-nav-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-
-      if (menuToggle && navWrap && topbar) {
-        menuToggle.addEventListener('click', function () {
-          var willOpen = !topbar.classList.contains('menu-open');
-          topbar.classList.toggle('menu-open', willOpen);
-          document.body.classList.toggle('mobile-nav-open', willOpen);
-          menuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-        });
-
-        navWrap.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', closeMenu);
-        });
-
-        navWrap.addEventListener('click', function (event) {
-          if (event.target === navWrap) {
-            closeMenu();
-          }
-        });
-
-        document.addEventListener('click', function (event) {
-          if (!topbar.classList.contains('menu-open')) {
-            return;
-          }
-          if (topbar.contains(event.target)) {
-            return;
-          }
-          closeMenu();
-        });
-
-        document.addEventListener('keydown', function (event) {
-          if (event.key === 'Escape') {
-            closeMenu();
-          }
-        });
-
-        window.addEventListener('resize', function () {
-          if (window.innerWidth > 820) {
-            closeMenu();
-          }
-        });
-      }
 
       var revealElements = document.querySelectorAll('.reveal-on-scroll');
       if (!revealElements.length) {

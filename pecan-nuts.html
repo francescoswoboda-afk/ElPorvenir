@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="about-page-root">
+<html lang="en" class="inner-page-root theme-cream">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,141 +8,120 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="site-nav.js"></script>
+  <link rel="preload" as="image" href="ElPorvenir-PecanNutHeader.jpg" fetchpriority="high" />
+  <link rel="prefetch" as="image" href="ElPorvenir-Homepage.jpg" />
+  <link rel="prefetch" as="image" href="ElPorvenir-AboutUs.jpg" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="about-us.html" />
   <link rel="prefetch" href="our-farm.html" />
   <link rel="prefetch" href="contact-us.html" />
 </head>
-<body class="about-page transitions-blocked pecan-page">
-  <main class="pecan-layout" role="main" aria-label="Pecan nuts page">
-    <section class="pecan-hero" aria-label="Pecan nuts hero">
-      <header class="topbar">
+<body class="inner-page page-pecan transitions-blocked">
+  <div class="side-menu" data-side-menu>
+    <div class="side-menu-zone" aria-hidden="true"></div>
+    <button class="side-menu-handle" type="button" aria-expanded="false" aria-controls="side-menu-panel" aria-label="Open menu" data-i18n-aria-label="menu.open"></button>
+    <nav class="side-menu-panel" id="side-menu-panel" aria-label="Main navigation">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about-us.html" data-i18n="nav.about">About us</a>
+      <a href="our-farm.html" data-i18n="nav.farm">Our farm</a>
+      <a href="pecan-nuts.html" data-i18n="nav.pecan" aria-current="page">Pecan nuts</a>
+      <a href="contact-us.html" data-i18n="nav.contact">Contact us</a>
+    </nav>
+  </div>
+
+  <main class="inner-main" aria-label="Pecan nuts page">
+    <div class="page-shell">
+      <header class="topbar page-topbar">
         <a class="brand" href="index.html" aria-label="El Porvenir Farm home">
-          <img class="brand-logo" src="ElPorvenir-Logo (2).png" alt="El Porvenir Farm" />
+          <img class="brand-logo" src="el-porvenir-logo-dark.png" alt="El Porvenir Farm" width="408" height="247" />
         </a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-menu">
-          <span class="menu-toggle-line" aria-hidden="true"></span>
-          <span class="menu-toggle-line" aria-hidden="true"></span>
-          <span class="menu-toggle-line" aria-hidden="true"></span>
-        </button>
-        <div class="nav-wrap" id="site-menu">
-          <nav class="nav" aria-label="Main navigation">
-            <a href="index.html" data-i18n="nav.home">Home</a>
-            <a href="about-us.html" data-i18n="nav.about">About us</a>
-            <a href="our-farm.html" data-i18n="nav.farm">Our farm</a>
-            <a class="active" href="pecan-nuts.html" data-i18n="nav.pecan">Pecan nuts</a>
-            <a href="contact-us.html" data-i18n="nav.contact">Contact us</a>
-          </nav>
-          <div class="lang-switch" aria-label="Language selector">
-            <a class="active" href="#" data-lang="en">EN</a>
-            <span>|</span>
-            <a href="#" data-lang="es">ES</a>
-          </div>
+        <div class="lang-switch" aria-label="Language selector">
+          <a class="active" href="#" data-lang="en">EN</a>
+          <span>|</span>
+          <a href="#" data-lang="es">ES</a>
         </div>
       </header>
 
-      <div class="pecan-hero-content page-transition-target reveal-on-scroll">
-        <h1 data-i18n="pecan.hero.title">Nature's perfect nut.</h1>
-        <span class="pecan-hero-divider" aria-hidden="true"></span>
-        <p data-i18n="pecan.hero.body">Hand selected, nutrient rich and full of natural goodness. Our pecans are grown with care to bring you the highest quality in every bite.</p>
-      </div>
-    </section>
+      <section class="centered-hero" aria-label="Pecan nuts">
+        <p class="eyebrow"><span>04</span><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="nav.pecan">Pecan nuts</span></p>
+        <h1 class="display-title display-title-md" data-i18n="pecan.hero.title">Nature's perfect nut.</h1>
+        <p class="lede" data-i18n="pecan.hero.body">Hand selected, nutrient rich and full of natural goodness. Our pecans are grown with care to bring you the highest quality in every bite.</p>
+      </section>
 
-    <section class="pecan-content page-transition-target" aria-label="Pecan nuts details">
-      <article class="pecan-intro reveal-on-scroll" aria-label="Pecan introduction and benefits">
-        <div class="pecan-intro-copy">
-          <p class="pecan-kicker section-mini-title" data-i18n="pecan.intro.kicker">The El Porvenir Pecan</p>
-          <p data-i18n="pecan.intro.body1">El Porvenir Pecans are premium, hand selected and current year harvest pecans. Taste the freshness, the crispness and the rich, natural flavor of our Brazilian pecans.</p>
-          <p data-i18n="pecan.intro.body2">We have responsibly farmed these raw pecans for maximum nutrition, using sustainable practices that respect the land and future generations.</p>
+      <div class="wide-banner" role="img" aria-label="Close-up of a pecan shell"></div>
+
+      <section class="pecan-intro reveal-on-scroll" aria-labelledby="pecan-intro-title">
+        <div>
+          <h2 class="section-title" id="pecan-intro-title" data-i18n="pecan.intro.kicker">The El Porvenir Pecan</h2>
+          <div class="body-copy">
+            <p data-i18n="pecan.intro.body1">El Porvenir Pecans are premium, hand selected and current year harvest pecans. Taste the freshness, the crispness and the rich, natural flavor of our Brazilian pecans.</p>
+            <p data-i18n="pecan.intro.body2">We have responsibly farmed these raw pecans for maximum nutrition, using sustainable practices that respect the land and future generations.</p>
+          </div>
         </div>
-
-        <div class="pecan-benefits-grid">
-          <article class="pecan-benefit">
-            <span class="pecan-benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3c4.7 0 8.5 3.8 8.5 8.5S16.7 20 12 20 3.5 16.2 3.5 11.5 7.3 3 12 3Z"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-            </span>
-            <div class="pecan-benefit-copy">
-              <h3 data-i18n="pecan.benefits.energy.title">Energy Boost</h3>
-              <p data-i18n="pecan.benefits.energy.body">Pecan nuts are a rich source of energy, with 690 calories per 100 g.</p>
-            </div>
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z" /></svg></span>
+            <h3 data-i18n="pecan.benefits.energy.title">Energy Boost</h3>
+            <p data-i18n="pecan.benefits.energy.body">Pecan nuts are a rich source of energy, with 690 calories per 100 g.</p>
           </article>
-          <article class="pecan-benefit">
-            <span class="pecan-benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.6 7.9 7 10 4.4-2.1 7-5.2 7-10V6l-7-3Z"/><path d="M8.8 12h6.4"/><path d="M12 8.8v6.4"/></svg>
-            </span>
-            <div class="pecan-benefit-copy">
-              <h3 data-i18n="pecan.benefits.antioxidants.title">Rich in Antioxidants</h3>
-              <p data-i18n="pecan.benefits.antioxidants.body">High levels of antioxidants and vitamin E that help protect the body.</p>
-            </div>
+          <article class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3 5 6v5c0 4.8 2.6 7.9 7 10 4.4-2.1 7-5.2 7-10V6l-7-3Z" /><path d="m9 12 2.2 2.2L15.5 10" /></svg></span>
+            <h3 data-i18n="pecan.benefits.antioxidants.title">Rich in Antioxidants</h3>
+            <p data-i18n="pecan.benefits.antioxidants.body">High levels of antioxidants and vitamin E that help protect the body.</p>
           </article>
-          <article class="pecan-benefit">
-            <span class="pecan-benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.7-7-10.6a4.3 4.3 0 0 1 7-3.2 4.3 4.3 0 0 1 7 3.2C19 16.3 12 21 12 21Z"/></svg>
-            </span>
-            <div class="pecan-benefit-copy">
-              <h3 data-i18n="pecan.benefits.heart.title">Heart Health</h3>
-              <p data-i18n="pecan.benefits.heart.body">Helps to reduce bad cholesterol (LDL) and increase good cholesterol (HDL).</p>
-            </div>
+          <article class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z" /></svg></span>
+            <h3 data-i18n="pecan.benefits.heart.title">Heart Health</h3>
+            <p data-i18n="pecan.benefits.heart.body">Helps to reduce bad cholesterol (LDL) and increase good cholesterol (HDL).</p>
           </article>
-          <article class="pecan-benefit">
-            <span class="pecan-benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8.5 13.5c1.5.4 2.5 1.6 2.7 3.1.3-1.6 1.8-2.8 3.5-2.8 1.9 0 3.5 1.6 3.5 3.5S16.6 21 14.7 21H9.8C7.2 21 5 18.8 5 16.2c0-2.2 1.6-4.1 3.5-4.6"/><path d="M10 9a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/></svg>
-            </span>
-            <div class="pecan-benefit-copy">
-              <h3 data-i18n="pecan.benefits.brain.title">Brain Function</h3>
-              <p data-i18n="pecan.benefits.brain.body">Excellent source of phenolic antioxidants with a positive cognitive health effect.</p>
-            </div>
+          <article class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 18h6" /><path d="M10 21h4" /><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3Z" /></svg></span>
+            <h3 data-i18n="pecan.benefits.brain.title">Brain Function</h3>
+            <p data-i18n="pecan.benefits.brain.body">Excellent source of phenolic antioxidants with a positive cognitive health effect.</p>
           </article>
-          <article class="pecan-benefit">
-            <span class="pecan-benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 14c3.7-3 6.4-3 9.7 0 1.6 1.5 3.2 1.4 4.3-.2"/><path d="M7 10c2.2-1.8 3.9-1.8 6.1 0"/><path d="M4 18h16"/></svg>
-            </span>
-            <div class="pecan-benefit-copy">
-              <h3 data-i18n="pecan.benefits.nutrition.title">Good Nutrition</h3>
-              <p data-i18n="pecan.benefits.nutrition.body">Rich in healthy fats, fiber, protein, vitamins and essential minerals.</p>
-            </div>
+          <article class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 11h16a8 8 0 0 1-16 0Z" /><path d="M9 7.5c0-1.2 1-1.6 1-2.8" /><path d="M13.5 7.5c0-1.2 1-1.6 1-2.8" /></svg></span>
+            <h3 data-i18n="pecan.benefits.nutrition.title">Good Nutrition</h3>
+            <p data-i18n="pecan.benefits.nutrition.body">Rich in healthy fats, fiber, protein, vitamins and essential minerals.</p>
           </article>
-          <article class="pecan-benefit">
-            <span class="pecan-benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3c2.2 3 3.9 5.8 3.9 8.3A3.9 3.9 0 1 1 8 11.3C8 8.8 9.8 6 12 3Z"/><path d="M6 17.5c2.3 1.7 4 2.5 6 2.5s3.7-.8 6-2.5"/></svg>
-            </span>
-            <div class="pecan-benefit-copy">
-              <h3 data-i18n="pecan.benefits.anti.title">Anti-inflammatory</h3>
-              <p data-i18n="pecan.benefits.anti.body">Contains monounsaturated fats and compounds that support overall wellness.</p>
-            </div>
+          <article class="benefit-card">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3c3 4 5.5 7 5.5 10.2a5.5 5.5 0 0 1-11 0C6.5 10 9 7 12 3Z" /></svg></span>
+            <h3 data-i18n="pecan.benefits.anti.title">Anti-inflammatory</h3>
+            <p data-i18n="pecan.benefits.anti.body">Contains monounsaturated fats and compounds that support overall wellness.</p>
           </article>
         </div>
-      </article>
+      </section>
 
-      <section class="pecan-products reveal-on-scroll" aria-label="Pecan product formats">
-        <h2 class="section-mini-title" data-i18n="pecan.products.title">Our Pecans - Available in Different Forms</h2>
+      <section class="page-section reveal-on-scroll" aria-labelledby="pecan-products-title">
+        <h2 class="section-title" id="pecan-products-title" data-i18n="pecan.products.title">Our Pecans, Available in Different Forms</h2>
         <div class="pecan-products-slider" data-product-slider>
           <div class="pecan-products-grid" data-slider-track>
-          <article class="pecan-product-item">
-            <div class="pecan-product-photo pecan-photo-mammoth" role="img" aria-label="Mammoth pecan halves"></div>
-            <h3 data-i18n-html="pecan.products.mammoth.title">Mammoth<br />Pecan Halves</h3>
-            <p data-i18n="pecan.products.mammoth.body">Extra large, beautiful halves with a rich, buttery flavor.</p>
-          </article>
-          <article class="pecan-product-item">
-            <div class="pecan-product-photo pecan-photo-junior" role="img" aria-label="Junior mammoth pecan halves"></div>
-            <h3 data-i18n-html="pecan.products.junior.title">Junior Mammoth<br />Pecan Halves</h3>
-            <p data-i18n="pecan.products.junior.body">Perfectly sized halves. Ideal for snacking and recipes.</p>
-          </article>
-          <article class="pecan-product-item">
-            <div class="pecan-product-photo pecan-photo-granules" role="img" aria-label="Pecan granules"></div>
-            <h3 data-i18n="pecan.products.granules.title">Granules</h3>
-            <p data-i18n="pecan.products.granules.body">Finely chopped pecans, great for baking and toppings.</p>
-          </article>
-          <article class="pecan-product-item">
-            <div class="pecan-product-photo pecan-photo-meal" role="img" aria-label="Pecan meal"></div>
-            <h3 data-i18n="pecan.products.meal.title">Meal</h3>
-            <p data-i18n="pecan.products.meal.body">Finely ground pecans, ideal for healthy recipes and gluten free baking.</p>
-          </article>
-          <article class="pecan-product-item">
-            <div class="pecan-product-photo pecan-photo-whole" role="img" aria-label="Whole pecan nuts"></div>
-            <h3 data-i18n="pecan.products.whole.title">Whole Nuts</h3>
-            <p data-i18n="pecan.products.whole.body">In shell, natural and ready for your favorite preparations.</p>
-          </article>
+            <article class="pecan-product-item">
+              <div class="pecan-product-photo pecan-photo-mammoth" role="img" aria-label="Mammoth pecan halves"></div>
+              <h3 data-i18n="pecan.products.mammoth.title">Mammoth Pecan Halves</h3>
+              <p data-i18n="pecan.products.mammoth.body">Extra large, beautiful halves with a rich, buttery flavor.</p>
+            </article>
+            <article class="pecan-product-item">
+              <div class="pecan-product-photo pecan-photo-junior" role="img" aria-label="Junior mammoth pecan halves"></div>
+              <h3 data-i18n="pecan.products.junior.title">Junior Mammoth Pecan Halves</h3>
+              <p data-i18n="pecan.products.junior.body">Perfectly sized halves. Ideal for snacking and recipes.</p>
+            </article>
+            <article class="pecan-product-item">
+              <div class="pecan-product-photo pecan-photo-granules" role="img" aria-label="Pecan granules"></div>
+              <h3 data-i18n="pecan.products.granules.title">Granules</h3>
+              <p data-i18n="pecan.products.granules.body">Finely chopped pecans, great for baking and toppings.</p>
+            </article>
+            <article class="pecan-product-item">
+              <div class="pecan-product-photo pecan-photo-meal" role="img" aria-label="Pecan meal"></div>
+              <h3 data-i18n="pecan.products.meal.title">Meal</h3>
+              <p data-i18n="pecan.products.meal.body">Finely ground pecans, ideal for healthy recipes and gluten free baking.</p>
+            </article>
+            <article class="pecan-product-item">
+              <div class="pecan-product-photo pecan-photo-whole" role="img" aria-label="Whole pecan nuts"></div>
+              <h3 data-i18n="pecan.products.whole.title">Whole Nuts</h3>
+              <p data-i18n="pecan.products.whole.body">In shell, natural and ready for your favorite preparations.</p>
+            </article>
           </div>
           <div class="pecan-slider-controls" aria-label="Product slider controls">
             <button class="pecan-slider-button" type="button" data-slider-prev data-i18n-aria-label="pecan.products.previous" aria-label="Previous product">
@@ -156,30 +135,30 @@
         </div>
       </section>
 
-      <section class="pecan-nutrition reveal-on-scroll" aria-label="Nutrition facts">
-        <p class="pecan-nutrition-title section-mini-title" data-i18n="pecan.nutrition.title">Nutrition Facts</p>
-        <div class="pecan-nutrition-grid">
-          <article class="pecan-nutrition-item">
+      <section class="page-section reveal-on-scroll" aria-labelledby="pecan-nutrition-title">
+        <h2 class="section-title" id="pecan-nutrition-title" data-i18n="pecan.nutrition.title">Nutrition Facts</h2>
+        <div class="nutrition-grid">
+          <article class="nutrition-item">
             <strong>200</strong>
             <h3 data-i18n="pecan.nutrition.calories.title">Calories</h3>
             <p data-i18n="pecan.nutrition.calories.body">Per 28 g serving</p>
           </article>
-          <article class="pecan-nutrition-item">
+          <article class="nutrition-item">
             <strong>3 g</strong>
             <h3 data-i18n="pecan.nutrition.protein.title">Protein</h3>
             <p data-i18n="pecan.nutrition.protein.body">Plant based fuel</p>
           </article>
-          <article class="pecan-nutrition-item">
+          <article class="nutrition-item">
             <strong>19 g</strong>
             <h3 data-i18n="pecan.nutrition.fats.title">Healthy Fats</h3>
             <p data-i18n="pecan.nutrition.fats.body">Mostly monounsaturated</p>
           </article>
-          <article class="pecan-nutrition-item">
+          <article class="nutrition-item">
             <strong>3 g</strong>
             <h3 data-i18n="pecan.nutrition.fiber.title">Fiber</h3>
             <p data-i18n="pecan.nutrition.fiber.body">Supports digestion</p>
           </article>
-          <article class="pecan-nutrition-item pecan-nutrition-item-highlight">
+          <article class="nutrition-item nutrition-item-highlight">
             <strong data-i18n="pecan.nutrition.vitamin.lead">Rich in</strong>
             <h3 data-i18n="pecan.nutrition.vitamin.title">Vitamin E</h3>
             <p data-i18n="pecan.nutrition.vitamin.body">And B vitamins</p>
@@ -187,115 +166,18 @@
         </div>
       </section>
 
-      <section class="pecan-cta reveal-on-scroll" aria-label="Pecan closing message">
-        <div class="pecan-cta-overlay">
-          <p class="pecan-cta-mark" aria-hidden="true">❦</p>
-          <h2 data-i18n-html="pecan.cta.title">From our trees to your table,<br />quality you can taste.</h2>
-          <p data-i18n="pecan.cta.body">Grown with passion. Harvested with care. Shared with you.</p>
-        </div>
+      <section class="image-banner image-banner-pecan reveal-on-scroll" aria-labelledby="pecan-cta-title">
+        <h2 class="image-banner-title" id="pecan-cta-title" data-i18n-html="pecan.cta.title">From our trees to your table,<br />quality you can taste.</h2>
+        <span class="accent-line" aria-hidden="true"></span>
+        <p class="image-banner-body" data-i18n="pecan.cta.body">Grown with passion. Harvested with care. Shared with you.</p>
       </section>
-    </section>
+    </div>
   </main>
 
   <script src="translations.js"></script>
   <script>
     (function () {
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var supportsViewTransitions = typeof document.startViewTransition === 'function';
-
-      try {
-        if (!supportsViewTransitions && sessionStorage.getItem('ep-page-transition') === 'enter') {
-          sessionStorage.removeItem('ep-page-transition');
-          document.body.classList.add('page-enter');
-          window.setTimeout(function () {
-            document.body.classList.remove('page-enter');
-          }, 340);
-        }
-      } catch (error) {
-        // Ignore storage failures and continue normal behavior.
-      }
-
-      document.addEventListener('click', function (event) {
-        if (supportsViewTransitions) {
-          return;
-        }
-
-        var link = event.target.closest('a[href="about-us.html"], a[href="our-farm.html"], a[href="index.html"], a[href="pecan-nuts.html"], a[href="contact-us.html"]');
-        if (!link) {
-          return;
-        }
-
-        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-          return;
-        }
-
-        var href = link.getAttribute('href');
-        if (!href) {
-          return;
-        }
-
-        event.preventDefault();
-        try {
-          sessionStorage.setItem('ep-page-transition', 'enter');
-        } catch (error) {
-          // Ignore storage failures and continue navigation.
-        }
-        window.location.assign(href);
-      }, true);
-
-      var topbar = document.querySelector('.topbar');
-      var menuToggle = topbar ? topbar.querySelector('.menu-toggle') : null;
-      var navWrap = topbar ? topbar.querySelector('.nav-wrap') : null;
-
-      function closeMenu() {
-        if (!topbar || !menuToggle) {
-          return;
-        }
-        topbar.classList.remove('menu-open');
-        document.body.classList.remove('mobile-nav-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-
-      if (menuToggle && navWrap && topbar) {
-        menuToggle.addEventListener('click', function () {
-          var willOpen = !topbar.classList.contains('menu-open');
-          topbar.classList.toggle('menu-open', willOpen);
-          document.body.classList.toggle('mobile-nav-open', willOpen);
-          menuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-        });
-
-        navWrap.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', closeMenu);
-        });
-
-        navWrap.addEventListener('click', function (event) {
-          if (event.target === navWrap) {
-            closeMenu();
-          }
-        });
-
-        document.addEventListener('click', function (event) {
-          if (!topbar.classList.contains('menu-open')) {
-            return;
-          }
-          if (topbar.contains(event.target)) {
-            return;
-          }
-          closeMenu();
-        });
-
-        document.addEventListener('keydown', function (event) {
-          if (event.key === 'Escape') {
-            closeMenu();
-          }
-        });
-
-        window.addEventListener('resize', function () {
-          if (window.innerWidth > 820) {
-            closeMenu();
-          }
-        });
-      }
 
       var revealElements = document.querySelectorAll('.reveal-on-scroll');
       if (!revealElements.length) {
