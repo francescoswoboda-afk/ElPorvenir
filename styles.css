@@ -197,7 +197,11 @@ body {
   overflow-y: auto;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* A hard swipe past the top goes to the previous page (site-nav.js), so pull-to-refresh is off. */
+  overscroll-behavior-y: none;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
