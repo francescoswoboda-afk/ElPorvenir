@@ -286,7 +286,7 @@
   P.rain = function (n) {
     for (var i = 0; i < n; i++) {
       var self = this;
-      (function (k) { setTimeout(function () { self.dropNut(Math.random() * self.w * .9 + self.w * .05, -30, 12, self.h * .8, true); }, k * 110); })(i);
+      (function (k) { setTimeout(function () { self.dropNut(Math.random() * self.w * .9 + self.w * .05, -30, 20, self.h * .8, true); }, k * 110); })(i);
     }
   };
 
