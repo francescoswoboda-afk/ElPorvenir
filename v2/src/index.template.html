@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>El Porvenir Farm · A pecan orchard in southern Brazil</title>
+<meta name="description" content="El Porvenir is a family pecan orchard in Rio Grande do Sul, southern Brazil. A digital walk through the land, the trees and the seasons." />
+<meta name="theme-color" content="#f3ecd9" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..800,0..100;1,9..144,200..800,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@500;600&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<style>/*CSS*/</style>
+</head>
+<body>
+<a class="skip" href="#about" data-t="skip">Skip to content</a>
+
+<!-- fixed layers -->
+<div class="sky" aria-hidden="true"></div>
+<canvas id="tree" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- brand -->
+<a class="brand" href="#home" data-nav="home" aria-label="El Porvenir Farm">
+  <img src="{{IMG_TREE}}" alt="" width="32" height="26" />
+  <span>El Porvenir</span>
+</a>
+
+<!-- language + sound -->
+<div class="controls">
+  <div class="langs" role="group" aria-label="Language / Idioma">
+    <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="pt" lang="pt" aria-pressed="false">PT</button>
+    <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
+  </div>
+  <button type="button" class="sound" aria-pressed="false">
+    <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="sound-label" data-t="ui.sound.off">Sound off</span>
+  </button>
+</div>
+
+<!-- right dock navigation -->
+<nav class="dock" aria-label="Sections">
+  <div class="dock-strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <ul class="dock-list">
+    <li><a href="#home" data-nav="home"><b>01</b><span data-t="nav.home">Home</span></a></li>
+    <li><a href="#about" data-nav="about"><b>02</b><span data-t="nav.about">The family</span></a></li>
+    <li><a href="#land" data-nav="land"><b>03</b><span data-t="nav.land">The land</span></a></li>
+    <li><a href="#year" data-nav="year"><b>04</b><span data-t="nav.year">The orchard year</span></a></li>
+    <li><a href="#harvest" data-nav="harvest"><b>05</b><span data-t="nav.harvest">From tree to nut</span></a></li>
+    <li><a href="#gallery" data-nav="gallery"><b>06</b><span data-t="nav.gallery">Gallery</span></a></li>
+    <li><a href="#numbers" data-nav="numbers"><b>07</b><span data-t="nav.numbers">In numbers</span></a></li>
+    <li><a href="#contact" data-nav="contact"><b>08</b><span data-t="nav.contact">Contact</span></a></li>
+  </ul>
+</nav>
+<button type="button" class="tab" aria-expanded="false" aria-controls="drawer">
+  <span class="tab-grip" aria-hidden="true"></span>
+  <span class="tab-label" data-t="ui.menu">Menu</span>
+</button>
+<div class="drawer-scrim" hidden></div>
+<nav class="drawer" id="drawer" aria-label="Sections" hidden>
+  <ul>
+    <li><a href="#home" data-nav="home"><b>01</b><span data-t="nav.home">Home</span></a></li>
+    <li><a href="#about" data-nav="about"><b>02</b><span data-t="nav.about">The family</span></a></li>
+    <li><a href="#land" data-nav="land"><b>03</b><span data-t="nav.land">The land</span></a></li>
+    <li><a href="#year" data-nav="year"><b>04</b><span data-t="nav.year">The orchard year</span></a></li>
+    <li><a href="#harvest" data-nav="harvest"><b>05</b><span data-t="nav.harvest">From tree to nut</span></a></li>
+    <li><a href="#gallery" data-nav="gallery"><b>06</b><span data-t="nav.gallery">Gallery</span></a></li>
+    <li><a href="#numbers" data-nav="numbers"><b>07</b><span data-t="nav.numbers">In numbers</span></a></li>
+    <li><a href="#contact" data-nav="contact"><b>08</b><span data-t="nav.contact">Contact</span></a></li>
+  </ul>
+  <div class="drawer-foot"></div>
+</nav>
+
+<main id="main">
+
+  <!-- 01 HOME -->
+  <section class="sec hero" id="home" data-sec="home">
+    <h1 class="wordmark behind" aria-label="El Porvenir"><span class="wm-el">El</span><span class="wm-p">Porvenir</span></h1>
+    <div class="hero-top">
+      <p class="label" data-t="hero.place">Rio Grande do Sul · Brasil</p>
+      <p class="def" data-t="hero.def"></p>
+    </div>
+    <div class="hero-bottom">
+      <p class="hero-line split" data-t="hero.line">A family pecan orchard in southern Brazil, where time is measured in seasons.</p>
+      <p class="scroll-hint"><span class="scroll-line" aria-hidden="true"></span><span data-t="ui.scroll">Scroll to walk through the year</span></p>
+    </div>
+  </section>
+
+  <!-- 02 THE FAMILY -->
+  <section class="sec about" id="about" data-sec="about">
+    <div class="col">
+      <p class="label"><span class="n">02</span> <span data-t="about.kicker">The family</span></p>
+      <h2 class="h1 split" data-t="about.title">A family, a hillside and a great deal of patience.</h2>
+      <p class="lead reveal" data-t="about.lead"></p>
+      <p class="body reveal" data-t="about.p1"></p>
+      <p class="body reveal" data-t="about.p2"></p>
+      <ul class="people">
+        <li class="person reveal">
+          <div class="portrait" aria-hidden="true"><span>E</span></div>
+          <h3>Enrique Swoboda</h3><p data-t="about.enrique"></p><p class="ph-line" data-t="about.photo"></p>
+        </li>
+        <li class="person reveal">
+          <div class="portrait" aria-hidden="true"><span>F</span></div>
+          <h3>Francesco Swoboda</h3><p data-t="about.francesco"></p><p class="ph-line" data-t="about.photo"></p>
+        </li>
+        <li class="person reveal">
+          <div class="portrait" aria-hidden="true"><span>A</span></div>
+          <h3>Alessandro Swoboda</h3><p data-t="about.alessandro"></p><p class="ph-line" data-t="about.photo"></p>
+        </li>
+      </ul>
+      <figure class="name-note reveal">
+        <figcaption class="label" data-t="about.quoteLabel">Why “El Porvenir”?</figcaption>
+        <blockquote data-t="about.quote"></blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 03 THE LAND -->
+  <section class="sec land" id="land" data-sec="land">
+    <div class="sticky land-stage">
+      <div class="map-wrap">
+        <svg class="map" id="map" viewBox="0 0 100 100" role="img" aria-labelledby="map-title"><title id="map-title">Map: South America, Rio Grande do Sul and the farm near Santa Cruz do Sul</title></svg>
+        <figure class="land-photo">
+          <img src="{{IMG_AERIAL}}" alt="" data-alt="land.photo" />
+          <figcaption data-t="land.photo"></figcaption>
+        </figure>
+      </div>
+      <p class="label land-label"><span class="n">03</span> <span data-t="land.kicker">The land</span></p>
+    </div>
+    <div class="land-steps">
+      <div class="step" data-step="0"><h2 class="h2" data-t="land.s1t">South America.</h2><p data-t="land.s1"></p></div>
+      <div class="step" data-step="1"><h2 class="h2" data-t="land.s2t">Rio Grande do Sul.</h2><p data-t="land.s2"></p></div>
+      <div class="step" data-step="2"><h2 class="h2" data-t="land.s3t">Monte Alverne.</h2><p data-t="land.s3"></p></div>
+      <div class="step" data-step="3"><h2 class="h2" data-t="land.s4t">El Porvenir.</h2><p data-t="land.s4"></p></div>
+    </div>
+  </section>
+
+  <!-- 04 THE ORCHARD YEAR -->
+  <section class="sec year" id="year" data-sec="year">
+    <div class="sticky year-stage">
+      <div class="year-head">
+        <p class="label"><span class="n">04</span> <span data-t="year.kicker">The orchard year</span></p>
+        <h2 class="h3 year-title" data-t="year.title">One tree. Four seasons. A whole year of work.</h2>
+      </div>
+      <div class="dial" aria-hidden="true">
+        <svg viewBox="-60 -60 120 120"><g class="dial-arcs"></g><g class="dial-months"></g><g class="dial-needle"><line x1="0" y1="0" x2="0" y2="-44" /><circle r="2.4" /></g></svg>
+      </div>
+      <div class="seasons">
+        <article class="season" data-season="0">
+          <p class="s-months" data-t="year.w.months"></p>
+          <h3 class="s-name" data-t="year.w.name">Winter</h3>
+          <p class="s-task" data-t="year.w.task"></p>
+          <p class="s-text" data-t="year.w.p"></p>
+        </article>
+        <article class="season" data-season="1">
+          <p class="s-months" data-t="year.sp.months"></p>
+          <h3 class="s-name" data-t="year.sp.name">Spring</h3>
+          <p class="s-task" data-t="year.sp.task"></p>
+          <p class="s-text" data-t="year.sp.p"></p>
+        </article>
+        <article class="season" data-season="2">
+          <p class="s-months" data-t="year.su.months"></p>
+          <h3 class="s-name" data-t="year.su.name">Summer</h3>
+          <p class="s-task" data-t="year.su.task"></p>
+          <p class="s-text" data-t="year.su.p"></p>
+        </article>
+        <article class="season" data-season="3">
+          <p class="s-months" data-t="year.au.months"></p>
+          <h3 class="s-name" data-t="year.au.name">Autumn</h3>
+          <p class="s-task" data-t="year.au.task"></p>
+          <p class="s-text" data-t="year.au.p"></p>
+        </article>
+      </div>
+      <div class="year-progress" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- 05 FROM TREE TO NUT -->
+  <section class="sec harvest" id="harvest" data-sec="harvest">
+    <div class="sticky harvest-stage">
+      <div class="harvest-head">
+        <p class="label"><span class="n">05</span> <span data-t="harvest.kicker">From tree to nut</span></p>
+        <h2 class="h2 split" data-t="harvest.title">What happens after the harvest.</h2>
+      </div>
+      <div class="track">
+        <article class="scene" data-scene="collect">
+          <svg viewBox="0 0 320 220" aria-hidden="true">
+            <path class="g-ground" d="M0 176 C80 168 240 168 320 176 L320 220 L0 220Z" />
+            <g class="leafs"><path d="M40 170 q8 -10 18 -2 q-8 6 -18 2z" /><path d="M262 172 q8 -9 17 -1 q-8 5 -17 1z" /></g>
+            <g class="fall">
+              <g class="nut n1"><ellipse cx="0" cy="0" rx="7" ry="10" /><path d="M0 -9 V9" /></g>
+              <g class="nut n2"><ellipse cx="0" cy="0" rx="7" ry="10" /><path d="M0 -9 V9" /></g>
+              <g class="nut n3"><ellipse cx="0" cy="0" rx="7" ry="10" /><path d="M0 -9 V9" /></g>
+            </g>
+            <g class="pile"><ellipse cx="150" cy="168" rx="8" ry="6" /><ellipse cx="165" cy="170" rx="8" ry="6" /><ellipse cx="180" cy="168" rx="8" ry="6" /><ellipse cx="158" cy="160" rx="8" ry="6" /><ellipse cx="173" cy="160" rx="8" ry="6" /><ellipse cx="166" cy="152" rx="8" ry="6" /></g>
+            <g class="basket"><path d="M200 132 h70 l-8 46 h-54z" /><path class="weave" d="M206 145 h58 M208 158 h54 M210 170 h50" /></g>
+          </svg>
+          <div class="scene-text"><span class="scene-n">i</span><h3 data-t="harvest.c.t">Collecting</h3><p data-t="harvest.c.p"></p></div>
+        </article>
+        <article class="scene" data-scene="dry">
+          <svg viewBox="0 0 320 220" aria-hidden="true">
+            <circle class="sun" cx="250" cy="52" r="20" />
+            <g class="rays"><path d="M250 18 v-10 M250 86 v10 M216 52 h-10 M284 52 h10 M226 28 l-7 -7 M274 76 l7 7 M226 76 l-7 7 M274 28 l7 -7" /></g>
+            <g class="air"><path d="M30 70 q20 -10 40 0 t40 0" /><path d="M50 95 q20 -10 40 0 t40 0" /><path d="M20 120 q20 -10 40 0 t40 0" /></g>
+            <path class="rack" d="M40 160 h240 M40 160 l20 -18 h200 l20 18 M60 160 v40 M260 160 v40" />
+            <g class="tray"><ellipse cx="80" cy="150" rx="8" ry="5.5" /><ellipse cx="100" cy="148" rx="8" ry="5.5" /><ellipse cx="120" cy="151" rx="8" ry="5.5" /><ellipse cx="140" cy="148" rx="8" ry="5.5" /><ellipse cx="160" cy="150" rx="8" ry="5.5" /><ellipse cx="180" cy="148" rx="8" ry="5.5" /><ellipse cx="200" cy="151" rx="8" ry="5.5" /><ellipse cx="220" cy="148" rx="8" ry="5.5" /><ellipse cx="240" cy="150" rx="8" ry="5.5" /></g>
+            <g class="drops"><circle cx="100" cy="132" r="2" /><circle cx="160" cy="128" r="2" /><circle cx="220" cy="131" r="2" /></g>
+          </svg>
+          <div class="scene-text"><span class="scene-n">ii</span><h3 data-t="harvest.d.t">Drying</h3><p data-t="harvest.d.p"></p></div>
+        </article>
+        <article class="scene" data-scene="clean">
+          <svg viewBox="0 0 320 220" aria-hidden="true">
+            <g class="drum"><circle cx="160" cy="110" r="62" /><g class="spokes"><path d="M160 48 V172 M98 110 H222 M116 66 L204 154 M204 66 L116 154" /></g><g class="tumble"><ellipse cx="140" cy="140" rx="8" ry="5.5" /><ellipse cx="160" cy="150" rx="8" ry="5.5" /><ellipse cx="182" cy="142" rx="8" ry="5.5" /><ellipse cx="170" cy="128" rx="8" ry="5.5" /></g></g>
+            <g class="dust"><circle cx="232" cy="80" r="2" /><circle cx="248" cy="96" r="1.6" /><circle cx="240" cy="64" r="1.4" /><path d="M236 120 q10 -6 18 -2" /><path d="M76 92 q-10 -6 -18 -2" /><circle cx="80" cy="70" r="1.8" /></g>
+            <path class="g-ground" d="M0 196 H320 V220 H0z" />
+          </svg>
+          <div class="scene-text"><span class="scene-n">iii</span><h3 data-t="harvest.l.t">Cleaning</h3><p data-t="harvest.l.p"></p></div>
+        </article>
+        <article class="scene" data-scene="sort">
+          <svg viewBox="0 0 320 220" aria-hidden="true">
+            <path class="chute" d="M20 60 L180 110" />
+            <g class="slide"><ellipse class="s1" cx="0" cy="0" rx="9" ry="6.5" /><ellipse class="s2" cx="0" cy="0" rx="7" ry="5" /><ellipse class="s3" cx="0" cy="0" rx="9" ry="6.5" /></g>
+            <g class="bins"><path d="M180 140 h50 v50 h-50z" /><path d="M240 140 h50 v50 h-50z" /><g class="binfill"><ellipse cx="195" cy="180" rx="9" ry="6.5" /><ellipse cx="214" cy="181" rx="9" ry="6.5" /><ellipse cx="205" cy="171" rx="9" ry="6.5" /><ellipse cx="255" cy="182" rx="7" ry="5" /><ellipse cx="272" cy="181" rx="7" ry="5" /><ellipse cx="264" cy="173" rx="7" ry="5" /></g></g>
+            <g class="eye"><path d="M110 40 q20 -18 40 0 q-20 18 -40 0z" /><circle cx="130" cy="40" r="6" /></g>
+          </svg>
+          <div class="scene-text"><span class="scene-n">iv</span><h3 data-t="harvest.s.t">Sorting</h3><p data-t="harvest.s.p"></p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 GALLERY -->
+  <section class="sec gallery" id="gallery" data-sec="gallery">
+    <div class="col wide">
+      <p class="label"><span class="n">06</span> <span data-t="gallery.kicker">Gallery</span></p>
+      <h2 class="h1 split" data-t="gallery.title">The farm, as it is.</h2>
+      <p class="hint" data-t="gallery.hint"></p>
+    </div>
+    <div class="wall" role="list">
+      <figure class="frame f-l" role="listitem"><button type="button" class="frame-btn" data-i="0"><img src="{{IMG_AERIAL_S}}" alt="" data-alt="gallery.1" loading="lazy" /></button><figcaption><span class="cat">I</span><span data-t="gallery.1"></span></figcaption></figure>
+      <figure class="frame f-p tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t1"></span></div><figcaption><span class="cat">II</span><span data-t="gallery.t1"></span></figcaption></figure>
+      <figure class="frame f-m" role="listitem"><button type="button" class="frame-btn" data-i="1"><img src="{{IMG_ORCHARD_S}}" alt="" data-alt="gallery.2" loading="lazy" /></button><figcaption><span class="cat">III</span><span data-t="gallery.2"></span></figcaption></figure>
+      <figure class="frame f-s tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t2"></span></div><figcaption><span class="cat">IV</span><span data-t="gallery.t2"></span></figcaption></figure>
+      <figure class="frame f-p tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t3"></span></div><figcaption><span class="cat">V</span><span data-t="gallery.t3"></span></figcaption></figure>
+      <figure class="frame f-m tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t4"></span></div><figcaption><span class="cat">VI</span><span data-t="gallery.t4"></span></figcaption></figure>
+      <figure class="frame f-s tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t5"></span></div><figcaption><span class="cat">VII</span><span data-t="gallery.t5"></span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 07 NUMBERS -->
+  <section class="sec numbers" id="numbers" data-sec="numbers">
+    <div class="col wide">
+      <p class="label"><span class="n">07</span> <span data-t="num.kicker">In numbers</span></p>
+      <h2 class="h1 split" data-t="num.title">The farm, counted.</h2>
+      <dl class="nums">
+        <div class="num reveal"><dt data-t="num.trees"></dt><dd><span class="count" data-to="6000" data-sep="1">6,000</span></dd></div>
+        <div class="num reveal"><dt data-t="num.ha"></dt><dd><span class="count" data-to="72">72</span></dd></div>
+        <div class="num reveal"><dt data-t="num.years"></dt><dd><span class="count" data-to="12">12</span></dd></div>
+        <div class="num reveal"><dt data-t="num.harvests"></dt><dd><span class="count tbd-num">—</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 08 CONTACT -->
+  <section class="sec contact" id="contact" data-sec="contact">
+    <div class="col">
+      <p class="label"><span class="n">08</span> <span data-t="contact.kicker">Contact</span></p>
+      <h2 class="h1 split" data-t="contact.title">Come and see the trees. Or just say hello.</h2>
+      <dl class="contact-list">
+        <div class="reveal"><dt data-t="contact.email">Email</dt><dd><a class="big-link" href="mailto:info@elporvenir.farm">info@elporvenir.farm</a> <mark class="ph" data-k="VERIFY">VERIFY</mark> <button type="button" class="copy" data-copy="info@elporvenir.farm" data-t="ui.copy">Copy</button></dd></div>
+        <div class="reveal"><dt data-t="contact.phone">Phone</dt><dd><mark class="ph" data-k="TBD">TBD</mark></dd></div>
+        <div class="reveal"><dt data-t="contact.wa">WhatsApp</dt><dd><mark class="ph" data-k="TBD">TBD</mark></dd></div>
+        <div class="reveal"><dt data-t="contact.addr">The farm</dt><dd data-t="contact.addrv"></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 09 FOOTER: the orchard at rest -->
+  <footer class="sec rest" id="rest" data-sec="rest">
+    <div class="rest-inner">
+      <img class="logo" src="{{IMG_LOGO}}" alt="El Porvenir Farm" width="200" height="121" />
+      <p class="rest-line" data-t="foot.line"></p>
+      <p class="legal">
+        <button type="button" class="legal-btn" data-t="foot.privacy">Privacy</button>
+        <span aria-hidden="true">·</span>
+        <button type="button" class="legal-btn" data-t="foot.imprint">Imprint</button>
+        <span aria-hidden="true">·</span>
+        <span>© <span class="yr">2026</span> <span data-t="foot.rights">El Porvenir Farm</span></span>
+      </p>
+    </div>
+  </footer>
+</main>
+
+<!-- gallery viewer -->
+<div class="viewer" role="dialog" aria-modal="true" aria-label="Gallery" hidden>
+  <figure class="viewer-fig"><img alt="" /><figcaption></figcaption></figure>
+  <button type="button" class="v-btn v-prev" data-t-aria="ui.prev" aria-label="Previous photo">←</button>
+  <button type="button" class="v-btn v-next" data-t-aria="ui.next" aria-label="Next photo">→</button>
+  <button type="button" class="v-btn v-close" data-t-aria="ui.close" aria-label="Close">×</button>
+  <p class="v-count"></p>
+</div>
+
+<!-- legal placeholder -->
+<div class="legal-dlg" role="dialog" aria-modal="true" aria-labelledby="legal-h" hidden>
+  <div class="legal-card"><h2 id="legal-h"></h2><p data-t="foot.legal"></p><button type="button" class="legal-close" data-t="ui.close">Close</button></div>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<div class="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"></span><span class="c-label"></span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>/*JS*/</script>
+</body>
+</html>
