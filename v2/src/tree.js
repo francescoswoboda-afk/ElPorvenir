@@ -37,7 +37,8 @@
 
   P.build = function (seed) {
     var r = rng(seed), nodes = [], leaves = [], catkins = [], husks = [], maxD = this.maxDepth, maxBirth = 0;
-    function add(parent, depth, len, w, a, birth) {
+    function add(parent, depth, len, w, a, birth, abs) {
+      abs = abs == null ? a : abs;
       var n = { p: parent, d: depth, len: len, w: w, a: a, bend: (r() - .5) * .35, birth: birth, ph: r() * TAU,
         sx: 0, sy: 0, ex: 0, ey: 0, wa: 0, g: 0 };
       nodes.push(n); var idx = nodes.length - 1; if (birth > maxBirth) maxBirth = birth;
@@ -45,24 +46,31 @@
       var k = depth === 0 ? 3 : depth < 3 ? (r() < .5 ? 3 : 2) : (r() < .8 ? 2 : 3);
       for (var i = 0; i < k; i++) {
         if (depth >= maxD - 2 && r() < .1) continue;
-        var spread = depth === 0 ? .66 : .48 + .14 * r();
-        var ai = (i - (k - 1) / 2) * spread * (.75 + .5 * r()) + (r() - .5) * .28;
-        // keep the crown broad and rounded, like a pecan: low limbs reach outward, high ones stay up
-        if (depth === 1) ai *= 1.25;
-        var cl = len * (depth === 0 ? .62 : .72 + .12 * r());
-        add(idx, depth + 1, cl, w * .66, ai, birth + .8 + .35 * r());
+        if (depth >= 3 && depth < maxD - 1 && r() < .16) continue;
+        var spread = depth === 0 ? .5 : .46 + .14 * r();
+        var ai = (i - (k - 1) / 2) * spread * (depth === 0 ? 1 : .8 + .4 * r()) + (depth === 0 ? 0 : (r() - .5) * .26);
+        var ab = abs + ai;
+        // a broad, rounded crown like a pecan: limbs bend back towards the light
+        if (depth >= 1) { var pull = depth === 1 ? .12 : depth < 4 ? .26 : .2; ai += (-Math.PI / 2 - ab) * pull; ab = abs + ai; }
+        if (depth === 0 && k === 3 && i === 1) ai += (r() - .5) * .1;
+        var cl = len * (depth === 0 ? .64 : depth === 1 ? .84 : .76 + .1 * r());
+        add(idx, depth + 1, cl, w * .64, ai, birth + .8 + .35 * r(), ab);
       }
       return idx;
     }
-    add(-1, 0, .3, .055, -Math.PI / 2, 0);
+    add(-1, 0, .24, .042, -Math.PI / 2, 0);
+    var kids = new Array(nodes.length).fill(0);
+    for (var z = 1; z < nodes.length; z++) kids[nodes[z].p]++;
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
-      if (n.d >= maxD - 1) {
-        var cnt = n.d === maxD ? 4 : 2;
-        for (var j = 0; j < cnt; j++) leaves.push({ n: i, off: .55 + r() * .45, ox: (r() - .5) * .05, oy: (r() - .5) * .05, a: (r() - .5) * 2.2,
-          sz: .75 + r() * .55, k: r(), k2: r(), k3: r(), b: (r() * 3) | 0, ph: r() * TAU, fallen: false });
-        if (n.d === maxD && r() < .33) catkins.push({ n: i, len: .035 + r() * .03, ph: r() * TAU });
-        if (n.d === maxD && r() < .16) {
+      if (n.d >= 3) {
+        // pecan leaves are compound: a stem with paired leaflets
+        var term = kids[i] === 0;
+        var cnt = term ? (r() < .6 ? 2 : 1) + (n.d < maxD - 1 ? 1 : 0) : n.d >= maxD - 2 ? (r() < .5 ? 1 : 0) : (r() < .22 ? 1 : 0);
+        for (var j = 0; j < cnt; j++) leaves.push({ n: i, off: term ? .7 + r() * .3 : .35 + r() * .6, ox: 0, oy: 0, a: (j ? 1 : -1) * (.5 + r() * .7) + (r() - .5) * .4,
+          sz: .8 + r() * .45, k: r(), k2: r(), k3: r(), b: (r() * 3) | 0, ph: r() * TAU, fallen: false, droop: .15 + r() * .35 });
+        if (term && r() < .33) catkins.push({ n: i, len: .035 + r() * .03, ph: r() * TAU });
+        if (term && r() < .16) {
           var nn = [], c2 = 2 + ((r() * 2) | 0);
           for (var q = 0; q < c2; q++) nn.push({ dx: (r() - .5) * .022, dy: (r() - .2) * .02, f: r(), fallen: false });
           husks.push({ n: i, nuts: nn });
@@ -72,7 +80,7 @@
     this.nodes = nodes; this.leaves = leaves; this.catkins = catkins; this.husks = husks; this.maxBirth = maxBirth;
     var bees = []; for (var b = 0; b < 7; b++) bees.push({ a: r() * TAU, sp: .4 + r() * .5, rx: .25 + r() * .25, ry: .12 + r() * .14, ph: r() * TAU });
     this.bees = bees;
-    var grass = []; for (var g = 0; g < (this.mobile ? 60 : 110); g++) grass.push({ x: (r() - .5) * 1.5, h: .015 + r() * .03, ph: r() * TAU, lean: (r() - .5) * .5 });
+    var grass = []; for (var g = 0; g < (this.mobile ? 110 : 220); g++) grass.push({ x: (r() - .5) * 1.3 * (.4 + .6 * r()), h: .008 + r() * .02, ph: r() * TAU, lean: (r() - .5) * .5 });
     this.grass = grass;
     var frost = []; for (var f = 0; f < 50; f++) frost.push({ x: (r() - .5) * 1.3, y: r() * .05, ph: r() * TAU });
     this.frostPts = frost;
@@ -138,6 +146,7 @@
     ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = rgb(bark);
     var thick = .35 + .65 * Math.min(1, G * 1.2);
     for (var d = 0; d <= md; d++) {
+      ctx.lineCap = d === 0 ? "butt" : "round";
       ctx.beginPath(); var any = false, lw = 0;
       for (i = 0; i < nodes.length; i++) {
         n = nodes[i]; if (n.d !== d || n.g <= 0) continue;
@@ -153,8 +162,8 @@
     if (tr.g > 0) {
       ctx.fillStyle = rgb(bark); ctx.beginPath();
       var tw = tr.w * H * thick;
-      ctx.moveTo(bx - tw * 1.1, by); ctx.quadraticCurveTo(bx - tw * .5, by - tw * 1.2, bx - tw * .5, by - tw * 2.5);
-      ctx.lineTo(bx + tw * .5, by - tw * 2.5); ctx.quadraticCurveTo(bx + tw * .5, by - tw * 1.2, bx + tw * 1.1, by); ctx.fill();
+      ctx.moveTo(bx - tw * .95, by); ctx.quadraticCurveTo(bx - tw * .5, by - tw * .8, bx - tw * .5, by - tw * 1.8);
+      ctx.lineTo(bx + tw * .5, by - tw * 1.8); ctx.quadraticCurveTo(bx + tw * .5, by - tw * .8, bx + tw * .95, by); ctx.fill();
     }
     var leafG = smooth(.8, 1, G);
     if (leafG <= 0) return;
@@ -169,7 +178,7 @@
     var base = mix(C.spring, C.summer, S.green), base2 = mix(C.spring, C.summer2, S.green), base3 = mix(C.spring, C.summer3, S.green);
     var cols = [base, base2, base3, C.yellow, C.amber, C.brown];
     var paths = [new Path2D(), new Path2D(), new Path2D(), new Path2D(), new Path2D(), new Path2D()];
-    var sz0 = .024 * H * S.leafSize * lg;
+    var sz0 = .0105 * H * S.leafSize * lg;
     for (var i = 0; i < leaves.length; i++) {
       var lf = leaves[i];
       if (lf.k > S.leaf) continue;
@@ -183,13 +192,18 @@
       var px = lerp(n.sx, n.ex, lf.off) + (lf.ox * c - lf.oy * s) * H;
       var py = lerp(n.sy, n.ey, lf.off) + (lf.ox * s + lf.oy * c) * H;
       lf.x = px; lf.y = py;
-      var ang = n.wa + lf.a + Math.sin(t * 3.1 + lf.ph) * .28 * wind;
-      var rx = sz0 * lf.sz, ry = rx * .38;
+      var ang = n.wa + lf.a + Math.sin(t * 2.6 + lf.ph) * .22 * wind;
       var bucket = lf.b;
       if (S.turn > lf.k2) bucket = S.turn - lf.k2 < .25 ? 3 : S.turn - lf.k2 < .5 ? 4 : 5;
-      var p = paths[bucket];
-      p.moveTo(px + Math.cos(ang) * rx, py + Math.sin(ang) * rx);
-      p.ellipse(px, py, rx, ry, ang, 0, TAU);
+      var p = paths[bucket], RL = sz0 * 2.2 * lf.sz, ca = Math.cos(ang), sa = Math.sin(ang), fl = Math.sin(t * 4.3 + lf.ph * 2) * .18 * wind;
+      // rachis gently droops
+      for (var q = 0; q < 4; q++) {
+        var tq = .28 + q * .24, lx = px + ca * RL * tq, ly = py + sa * RL * tq + lf.droop * RL * tq * tq, ll = sz0 * lf.sz * (q === 3 ? .95 : .78), lw = ll * .3;
+        if (q === 3) { p.moveTo(lx + ca * ll, ly + sa * ll); p.ellipse(lx + ca * ll * .6, ly + sa * ll * .6, ll, lw, ang, 0, TAU); break; }
+        var a1 = ang - .95 + fl, a2 = ang + .95 - fl;
+        p.moveTo(lx + Math.cos(a1) * ll * 1.6, ly + Math.sin(a1) * ll * 1.6); p.ellipse(lx + Math.cos(a1) * ll * .8, ly + Math.sin(a1) * ll * .8, ll, lw, a1, 0, TAU);
+        p.moveTo(lx + Math.cos(a2) * ll * 1.6, ly + Math.sin(a2) * ll * 1.6); p.ellipse(lx + Math.cos(a2) * ll * .8, ly + Math.sin(a2) * ll * .8, ll, lw, a2, 0, TAU);
+      }
     }
     for (var b = 0; b < 6; b++) { ctx.fillStyle = rgb(mix(cols[b], C.barkDusk, dusk * .7)); ctx.fill(paths[b]); }
   };
@@ -265,7 +279,7 @@
   P.spawnLeaf = function (lf, H, S) {
     var bucket = S.turn - lf.k2 < .3 ? C.yellow : S.turn - lf.k2 < .55 ? C.amber : C.brown;
     this.parts.leaves.push({ x: lf.x, y: lf.y, vx: (Math.random() - .5) * 20, vy: 18 + Math.random() * 20, rot: Math.random() * TAU, vr: (Math.random() - .5) * 3,
-      c: bucket, s: .024 * H * lf.sz, ph: Math.random() * TAU, gy: this.state.base + Math.random() * .03 * H, life: 0 });
+      c: bucket, s: .012 * H * lf.sz, ph: Math.random() * TAU, gy: this.state.base + Math.random() * .03 * H, life: 0 });
   };
   P.rain = function (n) {
     for (var i = 0; i < n; i++) {
@@ -325,7 +339,7 @@
     ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(bx, by, H * .6, 0, TAU); ctx.fill(); ctx.restore();
     // grass
     var gc = mix(mix([110, 138, 64], C.frost, S.frost * .55), C.barkDusk, dusk * .7);
-    ctx.strokeStyle = rgb(gc, .75 * a); ctx.lineWidth = 1.3; ctx.beginPath();
+    ctx.strokeStyle = rgb(gc, .7 * a); ctx.lineWidth = 1; ctx.beginPath();
     for (var i = 0; i < this.grass.length; i++) {
       var g = this.grass[i], x = bx + g.x * H, h = g.h * H, sw = Math.sin(t * 1.8 + g.ph) * .35 * wind + g.lean;
       ctx.moveTo(x, by + 2); ctx.quadraticCurveTo(x + sw * h * .3, by - h * .5, x + sw * h, by - h);

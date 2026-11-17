@@ -96,7 +96,7 @@
   var SEC = {}, VH = 0, VW = 0, MAXY = 1, keysPose = [], keysS = [];
   // season at the start and end of each section; tree pose [x, base, H, alpha] for desktop and mobile
   var SEASON = { home: [2, 2], about: [2.05, 2.5], land: [2.55, 2.9], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
-  var POSE_D = { home: [.5, .9, 1, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.43, .93, 1, 1], harvest: [.92, .97, .48, .3], gallery: [.9, .97, .5, 0], numbers: [.8, .95, .82, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
+  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.43, .93, 1, 1], harvest: [.92, .97, .48, .3], gallery: [.9, .97, .5, 0], numbers: [.8, .95, .82, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
   var POSE_M = { home: [.5, .87, 1, 1], about: [.5, .92, .9, .3], land: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, .2], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
 
   function measure() {
@@ -404,7 +404,7 @@
       if (el.classList.contains("reveal")) { el.classList.add("in"); io.unobserve(el); }
       if (el.classList.contains("split") && animated && !el.dataset.seen) {
         el.dataset.seen = "1";
-        gsap.fromTo(el.querySelectorAll(".w > span"), { yPercent: 108 }, { yPercent: 0, duration: 1.25, ease: "expo.out", stagger: .045, onComplete: function () { el.classList.add("done"); } });
+        gsap.fromTo(el.querySelectorAll(".w > span"), { yPercent: 108, y: 0 }, { yPercent: 0, y: 0, duration: 1.25, ease: "expo.out", stagger: .045, onComplete: function () { el.classList.add("done"); } });
         gsap.fromTo(el, { "--wght": 220 }, { "--wght": 360, duration: 1.8, ease: "power2.out" });
         io.unobserve(el);
       }
@@ -449,7 +449,7 @@
       .from(".hero-top > *", { opacity: 0, y: 14, duration: 1.2, ease: "expo.out", stagger: .12 }, .5)
       .to(st, { seed: 1, duration: 1.6, ease: "none" }, .4)
       .to(st, { G: 1, duration: 4.6, ease: "power2.inOut" }, 2.0)
-      .fromTo(".hero-line .w > span", { yPercent: 108 }, { yPercent: 0, duration: 1.3, ease: "expo.out", stagger: .04, onComplete: function () { $(".hero-line").classList.add("done"); } }, 3.6)
+      .fromTo(".hero-line .w > span", { yPercent: 108, y: 0 }, { yPercent: 0, y: 0, duration: 1.3, ease: "expo.out", stagger: .04, onComplete: function () { $(".hero-line").classList.add("done"); } }, 3.6)
       .from(".scroll-hint", { opacity: 0, duration: 1 }, 5.2);
   }
 
@@ -472,6 +472,7 @@
   window.addEventListener("load", function () { measure(); if (location.hash && doc.getElementById(location.hash.slice(1))) setTimeout(function () { goTo(location.hash.slice(1)); }, 300); });
   $(".yr").textContent = new Date().getFullYear();
 
+  window.__ep = { lenis: lenis, goTo: goTo, tree: tree, jump: jump, SEC: SEC };
   // a note for the curious
   try { console.log("%cEl Porvenir", "font: 300 32px Fraunces, serif; color:#43612a", "\nThe tree has secrets. Knock on its trunk three times, or type “pecan”.\nA árvore tem segredos. / El árbol tiene secretos."); } catch (e) {}
 })();
