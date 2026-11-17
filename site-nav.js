@@ -168,16 +168,19 @@
   });
 
   // ---------- Hard scroll past the top/bottom edge moves to the previous/next page ----------
-  // Only a gesture that *starts* at the edge counts, so the momentum that carried the visitor
-  // to the bottom never flips the page by itself.
-  var WHEEL_THRESHOLD = 240; // wheel distance (px) needed within one gesture (about 2-3 wheel notches)
+  // Once the page is at its edge, a little more scrolling the same way moves on. A fresh scroll
+  // that starts at the edge needs only a nudge; a scroll that is still running when it reaches
+  // the edge needs a bit more push, so a fast scroll down a long page doesn't skip past it.
+  var WHEEL_PUSH_FROM_EDGE = 100; // px past the edge when the scroll started there (about one wheel notch)
+  var WHEEL_PUSH_CARRIED = 350; // px past the edge when the scroll reached the edge mid-gesture
   var WHEEL_GESTURE_GAP = 200; // ms without wheel events that ends a gesture
-  var SWIPE_THRESHOLD = 60; // finger travel (px) on touch screens
+  var SWIPE_THRESHOLD = 40; // finger travel (px) on touch screens
   var SWIPE_MAX_DURATION = 1000; // ms; slower drags are ordinary scrolling
-  var EDGE_ARM_DELAY = 1000; // ms after arriving before the edges react (covers the 650ms transition)
+  var EDGE_ARM_DELAY = 700; // ms after arriving before the edges react (covers the 650ms transition)
   var SCROLL_ARRIVAL_KEY = 'ep-scroll-arrival';
   var armedAt = window.performance.now() + EDGE_ARM_DELAY;
-  var wheelGesture = null;
+  var edgePush = null; // { direction, total, needed, last } while pushing against an edge
+  var lastWheel = null; // { direction, time } of the previous wheel event
   var touchStart = null;
 
   // Reached by a hard scroll: the flick's leftover momentum keeps arriving here, so it is
@@ -214,27 +217,38 @@
 
     var now = window.performance.now();
     var direction = deltaY > 0 ? 1 : -1;
-    var newGesture = !wheelGesture || now - wheelGesture.last > WHEEL_GESTURE_GAP || direction !== wheelGesture.direction;
-    if (newGesture) {
-      var inTextField = event.target.closest && event.target.closest('textarea');
-      wheelGesture = {
+    var continuing = lastWheel && lastWheel.direction === direction && now - lastWheel.time <= WHEEL_GESTURE_GAP;
+    lastWheel = { direction: direction, time: now };
+
+    if (now < armedAt) {
+      // Leftover momentum from the scroll that brought the visitor here: keep the new page at its top.
+      // Only for the short arrival window, so scrolling is never blocked after that.
+      if (swallowArrivalMomentum) {
+        event.preventDefault();
+      }
+      return;
+    }
+
+    var inTextField = event.target.closest && event.target.closest('textarea');
+    var atEdge = direction > 0 ? atBottom() : atTop();
+    if (!atEdge || inTextField) {
+      edgePush = null;
+      return;
+    }
+
+    var freshPush = !edgePush || edgePush.direction !== direction || now - edgePush.last > WHEEL_GESTURE_GAP;
+    if (freshPush) {
+      edgePush = {
         direction: direction,
         total: 0,
-        leftover: swallowArrivalMomentum && now < armedAt,
-        counts: now >= armedAt && !inTextField && (direction > 0 ? atBottom() : atTop())
+        // Still scrolling from before the edge was reached: ask for a bit more push.
+        needed: continuing && !edgePush ? WHEEL_PUSH_CARRIED : WHEEL_PUSH_FROM_EDGE
       };
     }
-    wheelGesture.last = now;
-    if (wheelGesture.leftover) {
-      event.preventDefault();
-      return;
-    }
-    if (!wheelGesture.counts) {
-      return;
-    }
-    wheelGesture.total += Math.abs(deltaY);
-    if (wheelGesture.total >= WHEEL_THRESHOLD) {
-      wheelGesture.counts = false;
+    edgePush.last = now;
+    edgePush.total += Math.abs(deltaY);
+    if (edgePush.total >= edgePush.needed) {
+      edgePush = null;
       goToPage(currentIndex + direction, true);
     }
   }, { passive: false });
