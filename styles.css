@@ -23,6 +23,40 @@ body.transitions-blocked {
   scroll-behavior: auto !important;
 }
 
+/* ---------- Page transition: the five pages behave like one tall stack ---------- */
+/* site-nav.js sets data-nav-direction on <html>: "down" = moving further down the menu order. */
+@view-transition {
+  navigation: auto;
+}
+
+/* Soft hand-off: the old page stays put while the new one fades in on top, drifting a short way
+   in the direction of travel and easing gently to rest. The old page stays opaque, so the fade
+   never shows a blank background between the dark and cream pages. */
+::view-transition-group(root) {
+  animation-duration: 450ms;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  mix-blend-mode: normal;
+}
+
+html[data-nav-direction]::view-transition-old(root) { animation-name: page-hold; }
+html[data-nav-direction="down"]::view-transition-new(root) { animation-name: page-soft-in-from-below; }
+html[data-nav-direction="up"]::view-transition-new(root) { animation-name: page-soft-in-from-above; }
+
+/* The menu has its own snapshots, so it stays fixed while the pages move; an open panel slides away. */
+::view-transition-group(side-menu-handle) {
+  animation-duration: 280ms;
+}
+
+::view-transition-old(side-menu-panel) {
+  animation: side-menu-panel-out 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 /* ---------- Side menu: right edge, hidden like the macOS Dock ---------- */
 .side-menu {
   --side-menu-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -60,6 +94,7 @@ body.transitions-blocked {
   background: #0c0e0a;
   cursor: pointer;
   transition: opacity 280ms var(--side-menu-ease);
+  view-transition-name: side-menu-handle;
 }
 
 /* Wider invisible hit area so the thin pill is easy to tap. */
@@ -107,6 +142,8 @@ body.transitions-blocked {
     transform 280ms var(--side-menu-ease),
     opacity 280ms var(--side-menu-ease),
     visibility 0s linear 0s;
+  /* Named only while open, so a page change can slide the open panel away. */
+  view-transition-name: side-menu-panel;
 }
 
 .side-menu-panel a {
@@ -164,6 +201,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* A hard swipe past the top goes to the previous page (site-nav.js), so pull-to-refresh is off. */
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -457,8 +496,32 @@ body.home-page .lang-switch a:hover { color: #f2c14e; }
   text-align: center;
 }
 
+@keyframes page-hold {
+  from, to { opacity: 1; }
+}
+
+@keyframes page-soft-in-from-below {
+  from { opacity: 0; transform: translateY(3%); }
+}
+
+@keyframes page-soft-in-from-above {
+  from { opacity: 0; transform: translateY(-3%); }
+}
+
+@keyframes side-menu-panel-out {
+  to {
+    opacity: 0;
+    transform: translateX(calc(100% + 40px));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+
+  /* Switch pages instantly instead of sliding. */
+  @view-transition {
+    navigation: none;
+  }
 
   .reveal-on-scroll {
     animation: none;
