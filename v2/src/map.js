@@ -50,22 +50,22 @@
     // cities
     this.city(SCS, "Santa Cruz do Sul", 1);
     this.city(POA, "Porto Alegre", 1);
-    this.text(X(SCS[0]) + .02, Y(SCS[1]) + .035, "Santa Cruz do Sul", .028, 2);
+    this.text(X(SCS[0]) + .02, Y(SCS[1]) + .01, "Santa Cruz do Sul", .02, 2);
     var pin = el("g", { "class": "pin" }, g);
     this.halo = el("circle", { "class": "halo", cx: X(FARM[0]), cy: Y(FARM[1]), r: .2 }, pin);
     this.core = el("circle", { "class": "core", cx: X(FARM[0]), cy: Y(FARM[1]), r: .2 }, pin);
-    this.tropicLabel = this.text(X(-93), Y(-23.44) - .8, "", 1.5, 0, "tropic");
-    this.stateLabel = this.text(X(-56.4), Y(-28.7), "Rio Grande do Sul", .42, 1);
-    this.oceanLabel = this.text(X(-49.5), Y(-33.2), "", .36, 1, "ocean");
-    this.oceanLabel0 = this.text(X(-38), Y(-36), "", 1.9, 0, "ocean");
-    this.farmLabel = this.text(X(FARM[0]) + .025, Y(FARM[1]) - .025, "Monte Alverne", .03, 2);
+    this.tropicLabel = this.text(X(-95), Y(-23.44) - .8, "", 1.25, 0, "tropic");
+    this.stateLabel = this.text(X(-56.4), Y(-28.7), "Rio Grande do Sul", .33, 1);
+    this.oceanLabel = this.text(X(-49.5), Y(-33.2), "", .28, 1, "ocean");
+    this.oceanLabel0 = this.text(X(-38), Y(-36), "", 1.5, 0, "ocean");
+    this.farmLabel = this.text(X(FARM[0]) + .025, Y(FARM[1]) - .025, "Monte Alverne", .024, 2);
     this.approxLabel = this.text(X(FARM[0]) + .025, Y(FARM[1]) + .012, "", .009, 3, "approx");
     this.g = g;
     this.set(0);
   }
   var P = EPMap.prototype;
   P.city = function (ll, name, stage) {
-    el("circle", { "class": "city", cx: X(ll[0]), cy: Y(ll[1]), r: .045 }, this.g);
+    (this.cities = this.cities || []).push(el("circle", { "class": "city", cx: X(ll[0]), cy: Y(ll[1]), r: .045 }, this.g));
     this.text(X(ll[0]) + .1, Y(ll[1]) + .2, name, .17, stage);
   };
   P.text = function (x, y, str, size, stage, key) {
@@ -104,6 +104,7 @@
       L.el.style.opacity = o.toFixed(3);
     }
     var pr = span * .0055;
+    for (var c = 0; c < this.cities.length; c++) this.cities[c].setAttribute("r", (span * .004).toFixed(4));
     this.core.setAttribute("r", pr); this.halo.setAttribute("r", pr * (2.2 + Math.sin(Date.now() / 300) * .6));
     this.contours.style.opacity = Math.max(0, Math.min(1, (p - 1.6) * 1.5)).toFixed(3);
   };

@@ -301,7 +301,8 @@
     var sb = e.target.closest(".sound"); if (sb) { sound.toggle(); sound.setSeason(st.s); soundLabel(); return; }
     var cp = e.target.closest(".copy"); if (cp) {
       var txt = cp.dataset.copy;
-      (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(function () { cp.textContent = tr("ui.copied"); setTimeout(function () { cp.textContent = tr("ui.copy"); }, 1600); }, function () {});
+      var pr; try { pr = navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject(); } catch (er) { pr = Promise.reject(er); }
+      pr.then(function () { cp.textContent = tr("ui.copied"); setTimeout(function () { cp.textContent = tr("ui.copy"); }, 1600); }, function () {});
     }
   });
 
