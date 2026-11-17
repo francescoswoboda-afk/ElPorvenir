@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>El Porvenir — estudio tipográfico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;1,300&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..800,0..100;1,9..144,200..800,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hanken+Grotesk:wght@300..600&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #ece6d8; color: #1e2419; font-family: system-ui; }
+  .dir { min-height: 100vh; padding: 64px 7vw; box-sizing: border-box; display: grid; grid-template-columns: 1.3fr 1fr; gap: 6vw; align-items: center; border-bottom: 1px solid #0002; }
+  .tag { font: 600 11px/1 system-ui; letter-spacing: .2em; text-transform: uppercase; opacity: .55; margin-bottom: 32px; grid-column: 1 / -1; }
+  .num { font-size: clamp(110px, 15vw, 220px); line-height: .85; letter-spacing: -.04em; }
+  .num small { font-size: .18em; letter-spacing: .1em; vertical-align: top; opacity: .6; }
+  h1 { margin: 0 0 28px; }
+  p { max-width: 34em; margin: 0 0 1em; }
+  .chars { margin-top: 26px; font-size: 22px; opacity: .8; }
+
+  /* A — heritage */
+  .a { background: #e9e1cf; }
+  .a h1 { font: 600 clamp(48px, 6vw, 92px)/1.02 "Cormorant SC", serif; letter-spacing: .02em; }
+  .a h1 em { font: italic 400 1em "Cormorant Garamond", serif; text-transform: none; letter-spacing: 0; color: #6b4a2a; }
+  .a p { font: 300 18px/1.7 "Spectral", serif; }
+  .a .num { font-family: "Cormorant Garamond", serif; font-weight: 500; color: #4e3720; }
+
+  /* B — warm editorial */
+  .b { background: #f2ecdf; }
+  .b h1 { font: 380 clamp(54px, 7vw, 108px)/.98 "Fraunces", serif; font-variation-settings: "opsz" 144, "SOFT" 60; letter-spacing: -.025em; }
+  .b h1 em { font-weight: 300; font-style: italic; color: #5f7a3a; font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .b p { font: 400 18px/1.68 "Newsreader", serif; font-variation-settings: "opsz" 16; }
+  .b .num { font-family: "Fraunces", serif; font-weight: 250; font-variation-settings: "opsz" 144, "SOFT" 100; color: #2c4020; }
+  .b .alt p { font: 400 17px/1.65 "Instrument Sans", sans-serif; }
+
+  /* C — modern minimal */
+  .c { background: #1d261c; color: #eae4d4; }
+  .c h1 { font: 700 clamp(52px, 6.6vw, 104px)/.95 "Bricolage Grotesque", sans-serif; font-variation-settings: "opsz" 96; letter-spacing: -.045em; }
+  .c h1 em { font-style: normal; font-weight: 300; color: #d6a73d; }
+  .c p { font: 300 18px/1.7 "Hanken Grotesk", sans-serif; }
+  .c .num { font-family: "Bricolage Grotesque", sans-serif; font-weight: 200; color: #d6a73d; }
+</style>
+</head>
+<body>
+<section class="dir a">
+  <div class="tag">A · Herencia agrícola — Cormorant SC + Cormorant Garamond / Spectral</div>
+  <div>
+    <h1>Uma árvore<br /><em>leva anos.</em></h1>
+    <p>Un pecanero tarda años en dar su primera cosecha. En El Porvenir aprendimos a medir el tiempo en estaciones: la poda de invierno, la floración, el verano largo y la cosecha de otoño.</p>
+    <p>A tree takes years. We measure time in seasons, not in days.</p>
+    <p class="chars">ç ã õ ñ á é í ó ú â ê ü — Ação · Coração · Señor · Mañana</p>
+  </div>
+  <div class="num">6.000<small> [VERIFY]</small></div>
+</section>
+<section class="dir b">
+  <div class="tag">B · Editorial cálido — Fraunces (variable: opsz, wght, SOFT) + Newsreader</div>
+  <div>
+    <h1>Uma árvore<br /><em>leva anos.</em></h1>
+    <p>Un pecanero tarda años en dar su primera cosecha. En El Porvenir aprendimos a medir el tiempo en estaciones: la poda de invierno, la floración, el verano largo y la cosecha de otoño.</p>
+    <p>A tree takes years. We measure time in seasons, not in days.</p>
+    <p class="chars">ç ã õ ñ á é í ó ú â ê ü — Ação · Coração · Señor · Mañana</p>
+  </div>
+  <div class="num">6.000<small> [VERIFY]</small></div>
+</section>
+<section class="dir b">
+  <div class="tag">B2 · Editorial cálido — Fraunces + Instrument Sans (texto sans)</div>
+  <div class="alt">
+    <h1>A tree<br /><em>takes years.</em></h1>
+    <p>Un pecanero tarda años en dar su primera cosecha. En El Porvenir aprendimos a medir el tiempo en estaciones: la poda de invierno, la floración, el verano largo y la cosecha de otoño.</p>
+    <p>A tree takes years. We measure time in seasons, not in days.</p>
+  </div>
+  <div class="num">72<small> ha</small></div>
+</section>
+<section class="dir c">
+  <div class="tag">C · Moderno y mínimo — Bricolage Grotesque + Hanken Grotesk</div>
+  <div>
+    <h1>Uma árvore<br /><em>leva anos.</em></h1>
+    <p>Un pecanero tarda años en dar su primera cosecha. En El Porvenir aprendimos a medir el tiempo en estaciones: la poda de invierno, la floración, el verano largo y la cosecha de otoño.</p>
+    <p>A tree takes years. We measure time in seasons, not in days.</p>
+    <p class="chars">ç ã õ ñ á é í ó ú â ê ü — Ação · Coração · Señor · Mañana</p>
+  </div>
+  <div class="num">6.000<small> [VERIFY]</small></div>
+</section>
+</body>
+</html>
