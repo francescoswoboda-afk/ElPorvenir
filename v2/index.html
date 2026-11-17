@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>El Porvenir Farm · A pecan orchard in southern Brazil</title>
-<meta name="description" content="El Porvenir is a family pecan orchard in Rio Grande do Sul, southern Brazil. A digital walk through the land, the trees and the seasons." />
+<meta name="description" content="El Porvenir is a pecan orchard in Rio Grande do Sul, southern Brazil. A digital walk through the land, the trees and the seasons." />
 <meta name="theme-color" content="#f3ecd9" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -208,7 +208,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 /* 02 about */
 .about { padding: 22vh 0 18vh; }
 .about .col { max-width: 1440px; }
-.about .col > * { max-width: 46%; }
+.about .col > * { max-width: 56%; }
 .about .h1 { margin-bottom: 40px; }
 .about .lead { margin-bottom: 30px; }
 .people { list-style: none; padding: 0; margin: 64px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 46% !important; }
@@ -646,7 +646,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   <div class="dock-strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <ul class="dock-list">
     <li><a href="#home" data-nav="home"><b>01</b><span data-t="nav.home">Home</span></a></li>
-    <li><a href="#about" data-nav="about"><b>02</b><span data-t="nav.about">The family</span></a></li>
+    <li><a href="#about" data-nav="about"><b>02</b><span data-t="nav.about">Our story</span></a></li>
     <li><a href="#land" data-nav="land"><b>03</b><span data-t="nav.land">The land</span></a></li>
     <li><a href="#year" data-nav="year"><b>04</b><span data-t="nav.year">The orchard year</span></a></li>
     <li><a href="#harvest" data-nav="harvest"><b>05</b><span data-t="nav.harvest">From tree to nut</span></a></li>
@@ -663,7 +663,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
 <nav class="drawer" id="drawer" aria-label="Sections" hidden>
   <ul>
     <li><a href="#home" data-nav="home"><b>01</b><span data-t="nav.home">Home</span></a></li>
-    <li><a href="#about" data-nav="about"><b>02</b><span data-t="nav.about">The family</span></a></li>
+    <li><a href="#about" data-nav="about"><b>02</b><span data-t="nav.about">Our story</span></a></li>
     <li><a href="#land" data-nav="land"><b>03</b><span data-t="nav.land">The land</span></a></li>
     <li><a href="#year" data-nav="year"><b>04</b><span data-t="nav.year">The orchard year</span></a></li>
     <li><a href="#harvest" data-nav="harvest"><b>05</b><span data-t="nav.harvest">From tree to nut</span></a></li>
@@ -684,33 +684,18 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
       <p class="def" data-t="hero.def"></p>
     </div>
     <div class="hero-bottom">
-      <p class="hero-line split" data-t="hero.line">A family pecan orchard in southern Brazil, where time is measured in seasons.</p>
+      <p class="hero-line split" data-t="hero.line">A pecan orchard in southern Brazil, where time is measured in seasons.</p>
       <p class="scroll-hint"><span class="scroll-line" aria-hidden="true"></span><span data-t="ui.scroll">Scroll to walk through the year</span></p>
     </div>
   </section>
 
-  <!-- 02 THE FAMILY -->
+  <!-- 02 OUR STORY -->
   <section class="sec about" id="about" data-sec="about">
     <div class="col">
-      <p class="label"><span class="n">02</span> <span data-t="about.kicker">The family</span></p>
-      <h2 class="h1 split" data-t="about.title">A family, a hillside and a great deal of patience.</h2>
-      <p class="lead reveal" data-t="about.lead"></p>
+      <p class="label"><span class="n">02</span> <span data-t="about.kicker">Our story</span></p>
+      <h2 class="h1 split" data-t="about.title">A hillside and a great deal of patience.</h2>
       <p class="body reveal" data-t="about.p1"></p>
       <p class="body reveal" data-t="about.p2"></p>
-      <ul class="people">
-        <li class="person reveal">
-          <div class="portrait" aria-hidden="true"><span>E</span></div>
-          <h3>Enrique Swoboda</h3><p data-t="about.enrique"></p><p class="ph-line" data-t="about.photo"></p>
-        </li>
-        <li class="person reveal">
-          <div class="portrait" aria-hidden="true"><span>F</span></div>
-          <h3>Francesco Swoboda</h3><p data-t="about.francesco"></p><p class="ph-line" data-t="about.photo"></p>
-        </li>
-        <li class="person reveal">
-          <div class="portrait" aria-hidden="true"><span>A</span></div>
-          <h3>Alessandro Swoboda</h3><p data-t="about.alessandro"></p><p class="ph-line" data-t="about.photo"></p>
-        </li>
-      </ul>
       <figure class="name-note reveal">
         <figcaption class="label" data-t="about.quoteLabel">Why “El Porvenir”?</figcaption>
         <blockquote data-t="about.quote"></blockquote>
@@ -1017,18 +1002,17 @@ window.EP_I18N = {
     "ui.prev": "Previous photo", "ui.next": "Next photo",
     "ui.scroll": "Scroll to walk through the year",
     "ui.drag": "Drag",
-    "nav.home": "Home", "nav.about": "The family", "nav.land": "The land", "nav.year": "The orchard year",
+    "nav.home": "Home", "nav.about": "Our story", "nav.land": "The land", "nav.year": "The orchard year",
     "nav.harvest": "From tree to nut", "nav.gallery": "Gallery", "nav.numbers": "In numbers", "nav.contact": "Contact",
 
     "hero.place": "Rio Grande do Sul · Brasil",
     "hero.def": "<i>por·ve·nir</i> (Spanish) — the future; what is still to come.",
-    "hero.line": "A family pecan orchard in southern Brazil, where time is measured in seasons.",
+    "hero.line": "A pecan orchard in southern Brazil, where time is measured in seasons.",
 
-    "about.kicker": "The family",
-    "about.title": "A family, a hillside and a great deal of patience.",
-    "about.lead": "El Porvenir is run by Enrique Swoboda. His sons, Francesco and Alessandro, look after the farm's European side.",
-    "about.p1": "A pecan tree takes years before its first real harvest, so a farm like this is planted for the next generation as much as for this one. Perhaps that is why the family named it <i>the future</i>.",
-    "about.p2": "El Porvenir was born from a passion for the land and a vision for the future. What began as a dream to create something lasting has grown into a farm that combines tradition, innovation and responsibility. Over twenty years in agriculture, and working with nuts since 2014 «VERIFY». Dates and family stories: «TBD».",
+    "about.kicker": "Our story",
+    "about.title": "A hillside and a great deal of patience.",
+    "about.p1": "A pecan tree takes years before its first real harvest, so a farm like this is planted for the next generation as much as for this one. Perhaps that is why it is called <i>the future</i>.",
+    "about.p2": "El Porvenir was born from a passion for the land and a vision for the future. What began as a dream to create something lasting has grown into a farm that combines tradition, innovation and responsibility. Over twenty years in agriculture, and working with nuts since 2014 «VERIFY». Dates and stories: «TBD».",
     "values.kicker": "What we stand for",
     "values.mission.t": "Our mission",
     "values.mission": "To cultivate high-quality products through responsible farming, honouring the land and delivering long-term value to our families, partners and community.",
@@ -1056,12 +1040,8 @@ window.EP_I18N = {
     "contact.form.name": "Full name", "contact.form.email": "Email address", "contact.form.subject": "Subject", "contact.form.msg": "Message", "contact.form.send": "Send message",
     "contact.form.preview": "This is a preview, so nothing was sent. The form will send to the farm once the site is live on elporvenir.farm.",
     "contact.form.sending": "Sending…",
-    "about.enrique": "Runs the farm in Rio Grande do Sul.",
-    "about.francesco": "The farm's European side.",
-    "about.alessandro": "The farm's European side.",
-    "about.photo": "Portrait «TBD»",
     "about.quoteLabel": "Why “El Porvenir”?",
-    "about.quote": "«TBD: the story behind the name, told by the family»",
+    "about.quote": "«TBD: the story behind the name»",
 
     "land.kicker": "The land",
     "land.s1t": "South America.",
@@ -1100,7 +1080,7 @@ window.EP_I18N = {
     "gallery.hint": "Select a photo to see it full screen. Use the arrow keys to move between them.",
     "gallery.1": "The orchard from above: young pecan rows, the lake and the farmhouse.",
     "gallery.2": "Rows running down to the pond, with the hills behind.",
-    "gallery.t1": "The family at harvest «TBD»",
+    "gallery.t1": "Harvest day «TBD»",
     "gallery.t2": "Catkins in spring «TBD»",
     "gallery.t3": "Winter pruning «TBD»",
     "gallery.t4": "The first trees «TBD»",
@@ -1136,18 +1116,17 @@ window.EP_I18N = {
     "ui.prev": "Foto anterior", "ui.next": "Próxima foto",
     "ui.scroll": "Role para percorrer o ano",
     "ui.drag": "Arraste",
-    "nav.home": "Início", "nav.about": "A família", "nav.land": "A terra", "nav.year": "O ano do pomar",
+    "nav.home": "Início", "nav.about": "Nossa história", "nav.land": "A terra", "nav.year": "O ano do pomar",
     "nav.harvest": "Da árvore à noz", "nav.gallery": "Galeria", "nav.numbers": "Em números", "nav.contact": "Contato",
 
     "hero.place": "Rio Grande do Sul · Brasil",
     "hero.def": "<i>por·ve·nir</i> (espanhol) — o futuro; o que ainda está por vir.",
-    "hero.line": "Um pomar familiar de nozes-pecã no sul do Brasil, onde o tempo se mede em estações.",
+    "hero.line": "Um pomar de nozes-pecã no sul do Brasil, onde o tempo se mede em estações.",
 
-    "about.kicker": "A família",
-    "about.title": "Uma família, uma encosta e muita paciência.",
-    "about.lead": "A El Porvenir é dirigida por Enrique Swoboda. Os seus filhos, Francesco e Alessandro, cuidam do lado europeu da fazenda.",
-    "about.p1": "Uma nogueira-pecã leva anos até a primeira colheita de verdade, por isso uma fazenda assim é plantada tanto para a próxima geração como para esta. Talvez seja por isso que a família a chamou de <i>o futuro</i>.",
-    "about.p2": "A El Porvenir nasceu de uma paixão pela terra e de uma visão para o futuro. O que começou como o sonho de criar algo duradouro tornou-se uma fazenda que une tradição, inovação e responsabilidade. Mais de vinte anos na agricultura, e trabalhando com nozes desde 2014 «VERIFY». Datas e histórias da família: «TBD».",
+    "about.kicker": "Nossa história",
+    "about.title": "Uma encosta e muita paciência.",
+    "about.p1": "Uma nogueira-pecã leva anos até a primeira colheita de verdade, por isso uma fazenda assim é plantada tanto para a próxima geração como para esta. Talvez seja por isso que ela se chama <i>o futuro</i>.",
+    "about.p2": "A El Porvenir nasceu de uma paixão pela terra e de uma visão para o futuro. O que começou como o sonho de criar algo duradouro tornou-se uma fazenda que une tradição, inovação e responsabilidade. Mais de vinte anos na agricultura, e trabalhando com nozes desde 2014 «VERIFY». Datas e histórias: «TBD».",
     "values.kicker": "No que acreditamos",
     "values.mission.t": "Nossa missão",
     "values.mission": "Cultivar produtos de alta qualidade por meio de uma agricultura responsável, honrando a terra e gerando valor a longo prazo para as nossas famílias, parceiros e comunidade.",
@@ -1175,12 +1154,8 @@ window.EP_I18N = {
     "contact.form.name": "Nome completo", "contact.form.email": "E-mail", "contact.form.subject": "Assunto", "contact.form.msg": "Mensagem", "contact.form.send": "Enviar mensagem",
     "contact.form.preview": "Isto é uma pré-visualização, por isso nada foi enviado. O formulário vai enviar para a fazenda quando o site estiver no ar em elporvenir.farm.",
     "contact.form.sending": "Enviando…",
-    "about.enrique": "Dirige a fazenda no Rio Grande do Sul.",
-    "about.francesco": "O lado europeu da fazenda.",
-    "about.alessandro": "O lado europeu da fazenda.",
-    "about.photo": "Retrato «TBD»",
     "about.quoteLabel": "Por que “El Porvenir”?",
-    "about.quote": "«TBD: a história por trás do nome, contada pela família»",
+    "about.quote": "«TBD: a história por trás do nome»",
 
     "land.kicker": "A terra",
     "land.s1t": "América do Sul.",
@@ -1219,7 +1194,7 @@ window.EP_I18N = {
     "gallery.hint": "Selecione uma foto para vê-la em tela cheia. Use as setas do teclado para passar de uma a outra.",
     "gallery.1": "O pomar visto de cima: jovens fileiras de nogueiras-pecã, o lago e a casa da fazenda.",
     "gallery.2": "Fileiras descendo até o açude, com as colinas ao fundo.",
-    "gallery.t1": "A família na colheita «TBD»",
+    "gallery.t1": "Dia de colheita «TBD»",
     "gallery.t2": "Amentilhos na primavera «TBD»",
     "gallery.t3": "Poda de inverno «TBD»",
     "gallery.t4": "As primeiras árvores «TBD»",
@@ -1255,18 +1230,17 @@ window.EP_I18N = {
     "ui.prev": "Foto anterior", "ui.next": "Foto siguiente",
     "ui.scroll": "Desliza para recorrer el año",
     "ui.drag": "Arrastra",
-    "nav.home": "Inicio", "nav.about": "La familia", "nav.land": "La tierra", "nav.year": "El año del huerto",
+    "nav.home": "Inicio", "nav.about": "Nuestra historia", "nav.land": "La tierra", "nav.year": "El año del huerto",
     "nav.harvest": "Del árbol a la nuez", "nav.gallery": "Galería", "nav.numbers": "En números", "nav.contact": "Contacto",
 
     "hero.place": "Rio Grande do Sul · Brasil",
     "hero.def": "<i>por·ve·nir</i> — el futuro; lo que está por venir.",
-    "hero.line": "Un huerto familiar de pecanas en el sur de Brasil, donde el tiempo se mide en estaciones.",
+    "hero.line": "Un huerto de pecanas en el sur de Brasil, donde el tiempo se mide en estaciones.",
 
-    "about.kicker": "La familia",
-    "about.title": "Una familia, una ladera y mucha paciencia.",
-    "about.lead": "El Porvenir lo dirige Enrique Swoboda. Sus hijos, Francesco y Alessandro, se ocupan del lado europeo de la finca.",
-    "about.p1": "Un pecanero tarda años en dar su primera cosecha de verdad, así que una finca como esta se planta tanto para la próxima generación como para esta. Quizá por eso la familia la llamó <i>el porvenir</i>.",
-    "about.p2": "El Porvenir nació de una pasión por la tierra y de una visión de futuro. Lo que comenzó como el sueño de crear algo duradero se convirtió en una finca que combina tradición, innovación y responsabilidad. Más de veinte años en la agricultura, y trabajando con nueces desde 2014 «VERIFY». Fechas e historias de la familia: «TBD».",
+    "about.kicker": "Nuestra historia",
+    "about.title": "Una ladera y mucha paciencia.",
+    "about.p1": "Un pecanero tarda años en dar su primera cosecha de verdad, así que una finca como esta se planta tanto para la próxima generación como para esta. Quizá por eso se llama <i>el porvenir</i>.",
+    "about.p2": "El Porvenir nació de una pasión por la tierra y de una visión de futuro. Lo que comenzó como el sueño de crear algo duradero se convirtió en una finca que combina tradición, innovación y responsabilidad. Más de veinte años en la agricultura, y trabajando con nueces desde 2014 «VERIFY». Fechas e historias: «TBD».",
     "values.kicker": "Lo que defendemos",
     "values.mission.t": "Nuestra misión",
     "values.mission": "Cultivar productos de alta calidad mediante una agricultura responsable, honrando la tierra y entregando valor a largo plazo a nuestras familias, socios y comunidad.",
@@ -1294,12 +1268,8 @@ window.EP_I18N = {
     "contact.form.name": "Nombre completo", "contact.form.email": "Correo electrónico", "contact.form.subject": "Asunto", "contact.form.msg": "Mensaje", "contact.form.send": "Enviar mensaje",
     "contact.form.preview": "Esto es una vista previa, así que no se envió nada. El formulario enviará a la finca cuando el sitio esté publicado en elporvenir.farm.",
     "contact.form.sending": "Enviando…",
-    "about.enrique": "Dirige la finca en Rio Grande do Sul.",
-    "about.francesco": "El lado europeo de la finca.",
-    "about.alessandro": "El lado europeo de la finca.",
-    "about.photo": "Retrato «TBD»",
     "about.quoteLabel": "¿Por qué “El Porvenir”?",
-    "about.quote": "«TBD: la historia detrás del nombre, contada por la familia»",
+    "about.quote": "«TBD: la historia detrás del nombre»",
 
     "land.kicker": "La tierra",
     "land.s1t": "Sudamérica.",
@@ -1338,7 +1308,7 @@ window.EP_I18N = {
     "gallery.hint": "Selecciona una foto para verla a pantalla completa. Usa las flechas del teclado para pasar de una a otra.",
     "gallery.1": "El huerto desde el aire: jóvenes hileras de pecaneros, el lago y la casa de la finca.",
     "gallery.2": "Hileras que bajan hasta el tajamar, con las colinas detrás.",
-    "gallery.t1": "La familia en la cosecha «TBD»",
+    "gallery.t1": "Día de cosecha «TBD»",
     "gallery.t2": "Amentos en primavera «TBD»",
     "gallery.t3": "Poda de invierno «TBD»",
     "gallery.t4": "Los primeros árboles «TBD»",

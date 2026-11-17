@@ -21,7 +21,7 @@ La pregunta de cada sección fue la del brief: *¿esto hace sentir lo que es El 
 Seguí la estructura propuesta, con un cambio de concepto en cómo se encadenan las estaciones:
 
 1. **Inicio:** una nuez cae, se abre y crece un árbol completo, rama a rama. Detrás, la palabra *Porvenir* enorme; las ramas la atraviesan. Una línea: "Un huerto familiar de pecanas en el sur de Brasil, donde el tiempo se mide en estaciones." Y la definición de *porvenir* ("el futuro; lo que está por venir"), porque el nombre ya cuenta la historia.
-2. **La familia:** Enrique, Francesco y Alessandro, con marcos de retrato vacíos marcados [TBD]. La historia, las fechas y el origen del nombre son [TBD]. No inventé nada.
+2. **Nuestra historia:** la historia de la finca (texto de la web antigua), con fechas y origen del nombre como [TBD]. No inventé nada.
 3. **La tierra:** mapa animado dibujado en código. Hace zoom de Sudamérica (con el Trópico de Capricornio, que explica las cuatro estaciones) a Rio Grande do Sul (con la Laguna de los Patos y el Atlántico), a Monte Alverne (curvas de nivel) y termina fundiéndose con la foto aérea real de la finca. Mientras el mapa ocupa la escena, el árbol desaparece y la estación avanza "por detrás": cuando vuelve, es invierno.
 4. **El año del huerto:** sección fija (sticky) en la que el scroll mueve el año: invierno (poda, escarcha, ramitas cortadas que caen), primavera (brotes, amentos colgando, abejas), verano (copa cerrada, cáscaras verdes que crecen) y otoño (hojas amarillas que caen, cáscaras que se abren y pecanas que caen y se pueden atrapar). Un dial de 12 meses (hemisferio sur) y una barra de progreso acompañan.
 5. **Del árbol a la nuez:** recorrido horizontal con cuatro escenas SVG animadas en bucle suave: recoger, secar, limpiar, seleccionar. Es narración, no ficha técnica; el "cómo se hace en El Porvenir" queda [TBD].
@@ -108,8 +108,7 @@ Pendientes principales:
 
 - número de árboles (6.000 [VERIFY]), hectáreas (72 [VERIFY]), años (12 desde 2014 [VERIFY]), cosechas [TBD];
 - meses de cosecha [VERIFY];
-- historia de la familia y del nombre [TBD];
-- retratos [TBD];
+- historia de la finca (fechas) y del nombre [TBD];
 - teléfono, WhatsApp y dirección completa [TBD/VERIFY];
 - ubicación exacta de la finca en el mapa [VERIFY];
 - suelo y altitud [TBD];
@@ -161,6 +160,8 @@ Las costas del mapa están simplificadas a mano: es una ilustración, no cartogr
    Los textos en español de la web antigua venían sin tildes: se corrigieron. El portugués es nuevo. Se dejaron fuera, a propósito, las páginas de producto (formatos de pecana y tabla nutricional), porque el sitio es de exposición. El Dock sigue teniendo 8 entradas: las dos subsecciones nuevas encienden "La familia" y "La tierra".
 
 6. **Pasada 6, ritmo (a pedido de Francesco):** el scroll suave era demasiado lento, así que se redujo la inercia de Lenis y se acortaron las secciones fijas (el sitio pasó de unas 29 a unas 24 pantallas). Se eliminó el cursor personalizado y se volvió al puntero normal, porque un cursor dibujado por la página siempre va un poco por detrás cuando la página está ocupada; sobre una pecana que cae, el puntero pasa a ser una mano. El árbol ya no queda fijo al bajar: sube con el inicio como el resto del contenido, desaparece y solo vuelve en El año del huerto y en el huerto final.
+
+7. **Pasada 7, sin personas (a pedido de Francesco):** se quitaron los nombres y las personas (Enrique, Francesco, Alessandro, los retratos y "el lado europeo"). El capítulo pasa a llamarse "Nuestra historia" y cuenta la historia de la finca, no de la familia. La misión, la visión y los valores se mantienen.
 
 ## 11. Tiempo
 

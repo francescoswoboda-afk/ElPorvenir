@@ -196,7 +196,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 /* 02 about */
 .about { padding: 22vh 0 18vh; }
 .about .col { max-width: 1440px; }
-.about .col > * { max-width: 46%; }
+.about .col > * { max-width: 56%; }
 .about .h1 { margin-bottom: 40px; }
 .about .lead { margin-bottom: 30px; }
 .people { list-style: none; padding: 0; margin: 64px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 46% !important; }
