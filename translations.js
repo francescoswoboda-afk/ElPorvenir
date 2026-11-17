@@ -1,7 +1,7 @@
 (function () {
   var translations = {
     en: {
-      "meta.home.title": "El Porvenir Farm",
+      "meta.home.title": "El Porvenir Farm | Sustainable Pecan Farm in Brazil",
       "meta.about.title": "About Us | El Porvenir Farm",
       "meta.farm.title": "Our Farm | El Porvenir Farm",
       "meta.pecan.title": "Pecan Nuts | El Porvenir Farm",
@@ -12,7 +12,7 @@
       "nav.pecan": "Pecan nuts",
       "nav.contact": "Contact us",
       "menu.open": "Open menu",
-      "home.hero.title": "<span>Rooted in nature.</span><span>Growing the future.</span>",
+      "home.hero.title": "<span>Rooted in nature.</span> <span>Growing the future.</span>",
       "home.hero.body": "El Porvenir is a family-owned, working pecan farm. With over 20 years of experience in agriculture,<br />since 2014 we have pursued our passion for dried fruits.",
       "about.hero.title": "About Us",
       "about.hero.body": "El Porvenir Farm is a family-owned farm dedicated to cultivating a better future with respect for nature, people and the land.",
@@ -119,7 +119,7 @@
       "contact.footer.body": "Thank you for your interest in El Porvenir Farm."
     },
     es: {
-      "meta.home.title": "El Porvenir Farm",
+      "meta.home.title": "El Porvenir Farm | Finca de pecanas sostenible en Brasil",
       "meta.about.title": "Nosotros | El Porvenir Farm",
       "meta.farm.title": "Nuestra finca | El Porvenir Farm",
       "meta.pecan.title": "Nueces pecan | El Porvenir Farm",
@@ -130,7 +130,7 @@
       "nav.pecan": "Nueces pecan",
       "nav.contact": "Contacto",
       "menu.open": "Abrir menu",
-      "home.hero.title": "<span>Arraigados en la naturaleza.</span><span>Cultivando el futuro.</span>",
+      "home.hero.title": "<span>Arraigados en la naturaleza.</span> <span>Cultivando el futuro.</span>",
       "home.hero.body": "El Porvenir es una finca de pecanas familiar y en produccion. Con mas de 20 anos de experiencia en la agricultura,<br />desde 2014 seguimos nuestra pasion por los frutos secos.",
       "about.hero.title": "Nosotros",
       "about.hero.body": "El Porvenir Farm es una finca familiar dedicada a cultivar un mejor futuro con respeto por la naturaleza, las personas y la tierra.",
