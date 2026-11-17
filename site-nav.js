@@ -170,11 +170,11 @@
   // ---------- Hard scroll past the top/bottom edge moves to the previous/next page ----------
   // Only a gesture that *starts* at the edge counts, so the momentum that carried the visitor
   // to the bottom never flips the page by itself.
-  var WHEEL_THRESHOLD = 600; // wheel distance (px) needed within one gesture
+  var WHEEL_THRESHOLD = 240; // wheel distance (px) needed within one gesture (about 2-3 wheel notches)
   var WHEEL_GESTURE_GAP = 200; // ms without wheel events that ends a gesture
-  var SWIPE_THRESHOLD = 120; // finger travel (px) on touch screens
-  var SWIPE_MAX_DURATION = 700; // ms; slower drags are ordinary scrolling
-  var EDGE_ARM_DELAY = 1600; // ms after arriving before the edges react (covers the slide)
+  var SWIPE_THRESHOLD = 60; // finger travel (px) on touch screens
+  var SWIPE_MAX_DURATION = 1000; // ms; slower drags are ordinary scrolling
+  var EDGE_ARM_DELAY = 1000; // ms after arriving before the edges react (covers the 700ms slide)
   var SCROLL_ARRIVAL_KEY = 'ep-scroll-arrival';
   var armedAt = window.performance.now() + EDGE_ARM_DELAY;
   var wheelGesture = null;
