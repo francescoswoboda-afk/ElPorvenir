@@ -287,7 +287,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 body.dusk .msg, body.dusk .msg-intro { color: #ece6d6; } body.dusk .msg label span { color: rgba(236,230,214,.75); } body.dusk .msg { border-color: rgba(236,230,214,.2); }
 
 /* 03 land */
-.land { height: 520vh; }
+.land { height: 380vh; }
 .land-stage { display: grid; place-items: center; }
 .map-wrap { position: absolute; inset: 0; }
 .map { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -307,8 +307,8 @@ body.dusk .msg, body.dusk .msg-intro { color: #ece6d6; } body.dusk .msg label sp
 .land-photo figcaption { position: absolute; left: var(--pad); bottom: 24px; color: #fff; font-size: var(--fs-small); text-shadow: 0 1px 12px rgba(0,0,0,.5); max-width: 30em; }
 .land-label { position: absolute; left: var(--pad); top: 96px; margin: 0; z-index: 3; }
 .land-steps { position: relative; z-index: 3; margin-top: -100vh; }
-.land-steps .step { height: 130vh; display: flex; align-items: center; padding: 0 var(--pad); }
-.land-steps .step:first-child { height: 110vh; }
+.land-steps .step { height: 96vh; display: flex; align-items: center; padding: 0 var(--pad); }
+.land-steps .step:first-child { height: 92vh; }
 .land-steps .step > * { max-width: 520px; }
 .land-steps .step { flex-direction: column; justify-content: center; align-items: flex-end; text-align: left; }
 .land-steps .step > h2, .land-steps .step > p { width: min(460px, 40vw); }
@@ -316,7 +316,7 @@ body.dusk .msg, body.dusk .msg-intro { color: #ece6d6; } body.dusk .msg label sp
 .land-steps .step[data-step="3"] h2, .land-steps .step[data-step="3"] p { color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.55); }
 
 /* 04 year */
-.year { height: 560vh; }
+.year { height: 420vh; }
 .year-stage { padding: 96px var(--pad) 70px; }
 .year-head { position: absolute; left: var(--pad); top: 96px; max-width: 360px; z-index: 3; }
 .year-title { color: var(--ink-2); --wght: 330; }
@@ -337,7 +337,7 @@ body.dusk .msg, body.dusk .msg-intro { color: #ece6d6; } body.dusk .msg label sp
 .year-progress i { position: absolute; left: 0; top: -1px; height: 3px; width: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
 
 /* 05 harvest */
-.harvest { height: 480vh; }
+.harvest { height: 360vh; }
 .harvest-stage { display: flex; flex-direction: column; justify-content: center; }
 .harvest-head { position: absolute; left: var(--pad); top: 96px; z-index: 3; max-width: 620px; }
 .track { display: flex; gap: 6vw; padding: 0 var(--pad); margin-top: 120px; will-change: transform; width: max-content; }
@@ -469,7 +469,7 @@ body.dusk .contact-list > div { border-color: rgba(236,230,214,.2); }
 .has-cursor .cursor { display: block; }
 .has-cursor, .has-cursor a, .has-cursor button, .has-cursor .wall { cursor: none; }
 .c-dot { position: absolute; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--ink); transition: background .3s, transform .3s; }
-.c-ring { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; border: 1px solid var(--ink); opacity: .45; transition: width .45s var(--e-out), height .45s var(--e-out), margin .45s var(--e-out), opacity .3s, background .3s, border-color .3s; }
+.c-ring { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; border: 1px solid var(--ink); opacity: .45; transition: width .25s var(--e-out), height .25s var(--e-out), margin .25s var(--e-out), opacity .2s, background .2s, border-color .2s; }
 .c-label { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); font: 600 10px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); opacity: 0; transition: opacity .3s; white-space: nowrap; }
 .cursor.link .c-ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; opacity: .8; }
 .cursor.link .c-dot { transform: scale(0); }

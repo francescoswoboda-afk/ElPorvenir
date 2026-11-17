@@ -82,7 +82,7 @@
   /* ---------- scroll engine ---------- */
   var lenis = null;
   if (animated && window.Lenis) {
-    lenis = new Lenis({ lerp: .085, wheelMultiplier: .95, smoothWheel: true });
+    lenis = new Lenis({ lerp: .16, wheelMultiplier: 1.35, touchMultiplier: 1.5, smoothWheel: true });
     lenis.on("scroll", ScrollTrigger.update);
     root.classList.add("lenis");
   }
@@ -92,7 +92,7 @@
     var el = doc.getElementById(id); if (!el) return;
     var y = sectionTop(el);
     if (id === "rest") y = sectionTop(el);
-    if (lenis) lenis.scrollTo(y, { duration: 1.9, easing: function (t) { return t < .5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2; }, force: true });
+    if (lenis) lenis.scrollTo(y, { duration: 1.25, easing: function (t) { return t < .5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2; }, force: true });
     else window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
     try { history.replaceState(null, "", "#" + id); } catch (e) {}
   }
@@ -349,7 +349,7 @@
   doc.addEventListener("pointerover", function (e) { hoverEl = e.target; });
   function moveCursor() {
     if (!useCursor) return;
-    cx = px; cy = py; rx += (cx - rx) * .2; ry += (cy - ry) * .2;
+    cx = px; cy = py; rx += (cx - rx) * .55; ry += (cy - ry) * .55;
     cDot.style.transform = "translate(" + cx + "px," + cy + "px)";
     cRing.style.transform = cLabel.style.transform = "translate(" + rx + "px," + ry + "px)";
     cLabel.style.transform = "translate(" + rx + "px," + ry + "px) translate(-50%,-50%)";
