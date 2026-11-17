@@ -1060,90 +1060,6 @@ body.inner-page {
   color: var(--ink-soft);
 }
 
-.pecan-products-slider { position: relative; }
-
-.pecan-products-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 18px);
-}
-
-.pecan-product-photo {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 6px;
-  background-image:
-    radial-gradient(circle at 28% 26%, rgba(255, 231, 186, 0.2) 0%, rgba(255, 231, 186, 0) 42%),
-    linear-gradient(180deg, rgba(28, 20, 13, 0.2) 0%, rgba(28, 20, 13, 0.04) 100%),
-    url("ElPorvenir-PecanNutHeader.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.pecan-photo-mammoth { background-position: 8% 48%; }
-.pecan-photo-junior { background-position: 26% 50%; }
-.pecan-photo-granules { background-position: 45% 54%; }
-.pecan-photo-meal { background-position: 64% 54%; }
-.pecan-photo-whole { background-position: 86% 45%; }
-
-.pecan-product-item h3 {
-  margin: 14px 0 6px;
-  font-family: "Oswald", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-
-.pecan-product-item p {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--ink-soft);
-}
-
-/* Prev/next controls appear only in the phone-width slider. */
-.pecan-slider-controls { display: none; }
-
-.pecan-slider-button,
-.pecan-slider-dot {
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.pecan-slider-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: var(--icon-bg);
-  color: var(--accent);
-}
-
-.pecan-slider-button:disabled { opacity: 0.4; cursor: default; }
-
-.pecan-slider-dots {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.pecan-slider-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(94, 107, 47, 0.26);
-}
-
-.pecan-slider-dot.active { background: var(--accent); }
-
 .nutrition-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1391,7 +1307,6 @@ body.inner-page {
   .text-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .text-columns > .section-title { grid-column: 1 / -1; }
 
-  .pecan-products-grid,
   .nutrition-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1414,30 +1329,4 @@ body.inner-page {
   .nutrition-item-highlight { grid-column: 1 / -1; }
 
   .image-banner { padding: 36px 24px; }
-
-  /* Products become a swipeable one-at-a-time slider (driven by the page script). */
-  .pecan-products-grid {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .pecan-products-grid::-webkit-scrollbar { display: none; }
-
-  .pecan-product-item {
-    min-width: 100%;
-    scroll-snap-align: start;
-  }
-
-  .pecan-product-photo { aspect-ratio: 16 / 10; }
-
-  .pecan-slider-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 16px;
-  }
 }
