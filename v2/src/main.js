@@ -347,12 +347,16 @@
   if (useCursor) root.classList.add("has-cursor");
   var hoverEl = null;
   doc.addEventListener("pointerover", function (e) { hoverEl = e.target; });
+  // the cursor is positioned straight from the mouse event (no easing, no waiting for the animation frame)
+  function placeCursor(x, y) {
+    if (!useCursor) return;
+    var t = "translate3d(" + x + "px," + y + "px,0)";
+    cDot.style.transform = t; cRing.style.transform = t;
+    cLabel.style.transform = t + " translate(-50%,-50%)";
+  }
+  if (useCursor) window.addEventListener("pointermove", function (e) { placeCursor(e.clientX, e.clientY); }, { passive: true });
   function moveCursor() {
     if (!useCursor) return;
-    cx = px; cy = py; rx += (cx - rx) * .55; ry += (cy - ry) * .55;
-    cDot.style.transform = "translate(" + cx + "px," + cy + "px)";
-    cRing.style.transform = cLabel.style.transform = "translate(" + rx + "px," + ry + "px)";
-    cLabel.style.transform = "translate(" + rx + "px," + ry + "px) translate(-50%,-50%)";
     var mode = "";
     if (hoverEl && hoverEl.closest) {
       if (hoverEl.closest(".wall") && !hoverEl.closest(".frame-btn")) mode = "drag";

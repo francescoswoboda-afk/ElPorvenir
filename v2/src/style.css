@@ -466,6 +466,7 @@ body.dusk .contact-list > div { border-color: rgba(236,230,214,.2); }
 
 /* custom cursor */
 .cursor { position: fixed; left: 0; top: 0; z-index: 140; pointer-events: none; display: none; }
+.c-dot, .c-ring, .c-label { will-change: transform; top: 0; left: 0; }
 .has-cursor .cursor { display: block; }
 .has-cursor, .has-cursor a, .has-cursor button, .has-cursor .wall { cursor: none; }
 .c-dot { position: absolute; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--ink); transition: background .3s, transform .3s; }
