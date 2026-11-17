@@ -99,12 +99,14 @@
   function sectionTop(el) { var r = el.getBoundingClientRect(); return r.top + scrollY(); }
 
   /* ---------- layout / keyframes ---------- */
-  var IDS = ["home", "about", "land", "year", "harvest", "gallery", "numbers", "contact", "rest"];
+  var IDS = ["home", "about", "values", "land", "nature", "year", "harvest", "gallery", "numbers", "contact", "rest"];
+  var NAV = ["home", "about", "land", "year", "harvest", "gallery", "numbers", "contact"];
+  var NAV_OF = { values: "about", nature: "land", rest: "contact" };
   var SEC = {}, VH = 0, VW = 0, MAXY = 1, keysPose = [], keysS = [];
   // season at the start and end of each section; tree pose [x, base, H, alpha] for desktop and mobile
-  var SEASON = { home: [2, 2], about: [2.05, 2.5], land: [2.55, 2.9], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
-  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
-  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .92, .9, .3], land: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
+  var SEASON = { home: [2, 2], about: [2.05, 2.35], values: [2.38, 2.55], land: [2.58, 2.9], nature: [2.95, 3.98], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
+  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], values: [.88, .97, .62, .35], land: [.8, .96, .7, 0], nature: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
+  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .92, .9, .3], values: [.5, .95, .8, .15], land: [.5, .95, .7, 0], nature: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
 
   function measure() {
     VH = window.innerHeight; VW = window.innerWidth;
@@ -140,7 +142,7 @@
   function currentSection() {
     var y = scrollY() + VH * .45, cur = "home";
     IDS.forEach(function (id) { if (SEC[id] && y >= SEC[id].top) cur = id; });
-    return cur === "rest" ? "contact" : cur;
+    return NAV_OF[cur] || cur;
   }
 
   /* ---------- tree ---------- */
@@ -241,7 +243,7 @@
   function setActive(id) {
     activeId = id;
     navLinks.forEach(function (a) { var on = a.dataset.nav === id; a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
-    var idx = IDS.indexOf(id); dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
+    var idx = NAV.indexOf(id); dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
   }
   navLinks.forEach(function (a) {
     a.addEventListener("click", function (e) { e.preventDefault(); var inDrawer = drawer.classList.contains("open"); closeDrawer(); setTimeout(function () { goTo(a.dataset.nav); }, inDrawer ? 120 : 0); if (a.closest(".dock")) a.blur(); });
@@ -320,7 +322,7 @@
   window.addEventListener("touchmove", function (e) { var t0 = e.touches[0]; tree.pointer(t0.clientX, t0.clientY, 30); }, { passive: true });
   var trunkHits = [];
   window.addEventListener("pointerdown", function (e) {
-    if (e.target.closest("a,button,input,textarea,.dock,.drawer,.tab,.viewer,.legal-dlg,.wall")) return;
+    if (e.target.closest("a,button,input,textarea,label,form,.dock,.drawer,.tab,.viewer,.legal-dlg,.wall")) return;
     if (tree.catchAt(e.clientX, e.clientY)) {
       sound.crack();
       toast(tr(tree.caught === 1 ? "ui.caught" : "ui.caughtN").replace("{n}", num(tree.caught)));
@@ -408,6 +410,7 @@
     entries.forEach(function (en) {
       var el = en.target;
       if (el.classList.contains("scene")) { el.classList.toggle("play", en.isIntersecting); return; }
+      if (el.classList.contains("card")) { el.classList.toggle("play", en.isIntersecting); if (en.isIntersecting && el.querySelector(".expand")) growExpand(); if (!el.classList.contains("in")) el.classList.add("in"); return; }
       if (!en.isIntersecting) return;
       if (el.classList.contains("reveal")) { el.classList.add("in"); io.unobserve(el); }
       if (el.classList.contains("split") && animated && !el.dataset.seen) {
@@ -426,6 +429,32 @@
       }
     });
   }, { threshold: .2, rootMargin: "0px 0px -8% 0px" });
+
+  /* ---------- +200 ha: today's land, then the planned expansion ---------- */
+  var expandSvg = $(".expand"), expandDone = false;
+  (function buildExpand() {
+    var NS = "http://www.w3.org/2000/svg", cols = 20, size = 8.4, gap = 1.4, x0 = (200 - cols * (size + gap)) / 2, y0 = 4;
+    for (var i = 0; i < 272; i++) {
+      var r = doc.createElementNS(NS, "rect"), c = i % cols, row = Math.floor(i / cols);
+      r.setAttribute("x", (x0 + c * (size + gap)).toFixed(1)); r.setAttribute("y", (y0 + row * (size + gap)).toFixed(1));
+      r.setAttribute("width", size); r.setAttribute("height", size); r.setAttribute("rx", 1.6);
+      r.setAttribute("class", i < 72 ? "on" : "off"); if (animated) r.style.opacity = 0; expandSvg.appendChild(r);
+    }
+  })();
+  function growExpand() {
+    if (expandDone || !animated) return; expandDone = true;
+    var rs = expandSvg.querySelectorAll("rect");
+    gsap.to(rs, { opacity: function (i) { return i < 72 ? .9 : .55; }, duration: .25, stagger: { each: .006 }, ease: "none" });
+  }
+
+  /* ---------- contact form: posts to the farm's inbox only on the real domain ---------- */
+  var form = $(".msg"), note = $(".msg-note");
+  form.addEventListener("submit", function (e) {
+    var ok = form.checkValidity();
+    if (!ok) { e.preventDefault(); form.reportValidity(); return; }
+    if (!/(^|\.)elporvenir\.farm$/.test(location.hostname)) { e.preventDefault(); note.textContent = tr("contact.form.preview"); return; }
+    note.textContent = tr("contact.form.sending");
+  });
 
   /* ---------- dial ---------- */
   (function buildDial() {
@@ -464,7 +493,7 @@
   /* ---------- boot ---------- */
   render(); dialLabels();
   measure();
-  $$(".reveal,.split,.count,.scene").forEach(function (el) { if (!el.closest(".hero")) io.observe(el); });
+  $$(".reveal,.split,.count,.scene,.card").forEach(function (el) { if (!el.closest(".hero")) io.observe(el); });
   intro();
   var _render = render; render = function () { _render(); dialLabels(); };
   if (hasGsap) {

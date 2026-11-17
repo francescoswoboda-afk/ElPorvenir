@@ -224,6 +224,80 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .name-note { margin: 64px 0 0; padding: 26px 0 0; border-top: 1px solid var(--line); }
 .name-note blockquote { margin: 0; font: italic 400 var(--fs-lead)/var(--lh-lead) var(--text); }
 
+
+/* 02b values */
+.values { padding: 12vh 0 18vh; }
+.values .col { max-width: 1440px; }
+.mv { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 90px); max-width: 74%; margin-bottom: clamp(70px, 10vw, 140px); }
+.mv-item { margin: 0; padding-top: 22px; border-top: 1px solid var(--ink); }
+.mv-item .label { margin-bottom: 18px; }
+.mv-item blockquote { margin: 0; font: italic 400 var(--fs-lead)/var(--lh-lead) var(--text); }
+.values-title { margin-bottom: 30px; }
+.vlist { list-style: none; padding: 0; margin: 0 0 clamp(80px, 12vw, 170px); max-width: 74%; }
+.vlist li { display: grid; grid-template-columns: 64px minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 30px 0; border-top: 1px solid var(--line); transition: padding .5s var(--e-out); }
+.vlist li:last-child { border-bottom: 1px solid var(--line); }
+.vlist .v-n { font: italic 300 22px/1 var(--display); color: var(--accent); }
+.vlist h3 { font: 400 var(--fs-h3)/1.08 var(--display); font-variation-settings: "SOFT" 50, "wght" 340; transition: font-variation-settings .6s var(--e-out), color .4s; }
+.vlist p { margin: 0; color: var(--ink-2); font-size: var(--fs-small); line-height: 1.6; }
+.vlist li:hover { padding-left: 14px; }
+.vlist li:hover h3 { font-variation-settings: "SOFT" 100, "wght" 520; color: var(--accent); }
+.big-quote { font: 300 clamp(36px, 5.4vw, 92px)/1.02 var(--display); letter-spacing: -.03em; font-variation-settings: "SOFT" 100, "wght" var(--wght, 300); max-width: 15em; margin: 0; color: var(--ink); }
+
+/* 03b nature */
+.nature { padding: 20vh 0 18vh; }
+.nature .h1 { margin-bottom: 40px; max-width: 12em; }
+.nature-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(30px, 5vw, 90px); max-width: 1100px; align-items: start; }
+.cards { list-style: none; padding: 0; margin: clamp(60px, 8vw, 110px) 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(18px, 2vw, 30px); }
+.card { grid-column: span 2; background: color-mix(in srgb, var(--paper) 55%, #fff); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px 26px; transition: transform .6s var(--e-out), box-shadow .6s var(--e-out); }
+.card:nth-child(4), .card:nth-child(5) { grid-column: span 3; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -36px rgba(31,38,24,.5); }
+.card svg { width: 100%; height: auto; display: block; margin-bottom: 16px; overflow: visible; }
+.card h3 { font: 400 26px/1.1 var(--display); font-variation-settings: "SOFT" 60, "wght" 360; margin-bottom: 10px; }
+.card p { margin: 0; color: var(--ink-2); font-size: var(--fs-small); line-height: 1.6; }
+.soon { display: inline-block; vertical-align: middle; margin-left: 6px; padding: 4px 9px; border-radius: 99px; background: var(--gold); color: var(--ink); font: 600 10px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase; }
+.card svg * { vector-effect: non-scaling-stroke; }
+.card .g-ground { fill: var(--ink); opacity: .07; }
+.card .forest circle { fill: #4f6e30; opacity: .85; } .card .forest path, .card .rows path { stroke: #4a3a2c; stroke-width: 2; }
+.card .rows circle { fill: var(--accent); opacity: .75; }
+.card .divide { stroke: var(--ink); stroke-dasharray: 3 4; opacity: .35; }
+.card .vars ellipse { fill: #8a5a35; stroke: #4f321b; stroke-width: 1.3; } .card .vars path { stroke: #4f321b; stroke-width: 1.2; }
+.card .tags text { font: italic 400 14px var(--display); fill: var(--accent); text-anchor: middle; }
+.card .stem { fill: none; stroke: #4f6e30; stroke-width: 2; }
+.card .f1 .petals circle { fill: #e9c6d6; } .card .f2 .petals circle { fill: #f0dc8a; }
+.card .heart { fill: var(--gold); }
+.card .bee .body { fill: #e0a92c; } .card .bee .stripes { stroke: #2a2116; stroke-width: 1.6; } .card .bee .wing { fill: rgba(255,255,255,.85); stroke: rgba(0,0,0,.15); }
+.card .jar .glass { fill: rgba(255,255,255,.35); stroke: var(--ink); stroke-width: 1.5; } .card .jar .lid { fill: #6b4a2a; } .card .jar .honey { fill: #e0a92c; opacity: .9; } .card .jar .label-band { fill: #fbf7ef; opacity: .85; }
+.card .drip { fill: #e0a92c; }
+.card .expand rect.on { fill: var(--accent); opacity: .9; } .card .expand rect.off { fill: none; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 2; opacity: .55; }
+.card .expand rect { transition: opacity .4s; }
+.card * { animation-play-state: paused; } .card.play * { animation-play-state: running; }
+.card .bee { offset-path: path("M40 60 C70 20 120 30 140 76 C150 100 100 110 70 90 C50 76 30 80 40 60"); offset-rotate: 0deg; animation: beepath 6s ease-in-out infinite; }
+@keyframes beepath { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+.card .bee .wing { animation: flap .12s linear infinite alternate; transform-origin: 0 -3px; }
+@keyframes flap { to { transform: scaleY(.3); } }
+.card .flower { transform-origin: 60px 122px; animation: sway 4s ease-in-out infinite; } .card .f2 { transform-origin: 140px 122px; animation-delay: -1.5s; }
+@keyframes sway { 50% { transform: rotate(3deg); } }
+.card .drip { animation: drip2 2.6s ease-in infinite; }
+@keyframes drip2 { 0% { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(30px); opacity: 0; } }
+.card .rows circle { transform-box: fill-box; transform-origin: center bottom; animation: grow 3s ease-in-out infinite alternate; }
+@keyframes grow { from { transform: scale(.8); } to { transform: scale(1.05); } }
+
+/* contact form */
+.msg { margin-top: 70px; padding-top: 34px; border-top: 1px solid var(--line); max-width: 760px; }
+.msg .h3 { margin-bottom: 10px; }
+.msg-intro { color: var(--ink-2); max-width: 32em; }
+.msg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; margin: 26px 0 30px; }
+.msg-grid .full { grid-column: 1 / -1; }
+.msg label span { display: block; font: 600 var(--fs-label)/1.3 var(--ui); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; }
+.msg input, .msg textarea { width: 100%; background: transparent; border: 0; border-bottom: 1px solid currentColor; color: inherit; font: 400 20px/1.4 var(--text); padding: 6px 0 10px; resize: vertical; border-radius: 0; opacity: .9; }
+.msg input:focus, .msg textarea:focus { outline: none; border-color: var(--gold); opacity: 1; }
+.send { display: inline-flex; gap: 14px; align-items: center; background: var(--gold); color: var(--ink); border: 0; border-radius: 99px; padding: 16px 26px; font: 600 12px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; transition: transform .4s var(--e-out), background .3s; }
+.send:hover { transform: translateY(-2px); background: #e8bb52; }
+.send span:last-child { transition: transform .4s var(--e-out); } .send:hover span:last-child { transform: translateX(4px); }
+.msg-note { margin: 16px 0 0; font-size: var(--fs-small); min-height: 1.5em; }
+.hp { position: absolute !important; left: -9999px; }
+body.dusk .msg, body.dusk .msg-intro { color: #ece6d6; } body.dusk .msg label span { color: rgba(236,230,214,.75); } body.dusk .msg { border-color: rgba(236,230,214,.2); }
+
 /* 03 land */
 .land { height: 520vh; }
 .land-stage { display: grid; place-items: center; }
@@ -522,6 +596,17 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   .v-prev, .v-next { top: auto; bottom: 24px; }
   .v-prev { left: 24px; } .v-next { right: 24px; }
 }
+@media (max-width: 820px) {
+  .mv, .vlist { max-width: 100%; }
+  .mv { grid-template-columns: 1fr; gap: 34px; }
+  .vlist li { grid-template-columns: 36px 1fr; gap: 6px 14px; }
+  .vlist li p { grid-column: 2; }
+  .values .col, .nature .col { background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--paper) 86%, transparent) 6%, color-mix(in srgb, var(--paper) 86%, transparent) 94%, transparent); padding-top: 30px; padding-bottom: 30px; }
+  .nature-intro { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .card, .card:nth-child(4), .card:nth-child(5) { grid-column: auto; }
+  .msg-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 380px) {
   .people { grid-template-columns: 1fr 1fr; }
 }
@@ -632,6 +717,26 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
     </div>
   </section>
 
+
+  <!-- 02b WHAT WE STAND FOR -->
+  <section class="sec values" id="values" data-sec="values">
+    <div class="col wide">
+      <p class="label"><span class="n">02</span> <span data-t="values.kicker">What we stand for</span></p>
+      <div class="mv">
+        <figure class="mv-item reveal"><figcaption class="label" data-t="values.mission.t">Our mission</figcaption><blockquote data-t="values.mission"></blockquote></figure>
+        <figure class="mv-item reveal"><figcaption class="label" data-t="values.vision.t">Our vision</figcaption><blockquote data-t="values.vision"></blockquote></figure>
+      </div>
+      <h2 class="h2 split values-title" data-t="values.title">Our values</h2>
+      <ol class="vlist">
+        <li class="reveal"><span class="v-n">i</span><h3 data-t="values.1.t"></h3><p data-t="values.1.p"></p></li>
+        <li class="reveal"><span class="v-n">ii</span><h3 data-t="values.2.t"></h3><p data-t="values.2.p"></p></li>
+        <li class="reveal"><span class="v-n">iii</span><h3 data-t="values.3.t"></h3><p data-t="values.3.p"></p></li>
+        <li class="reveal"><span class="v-n">iv</span><h3 data-t="values.4.t"></h3><p data-t="values.4.p"></p></li>
+      </ol>
+      <p class="big-quote split" data-t="values.quote">Sustainability is not just a goal. It's the way we farm, every day.</p>
+    </div>
+  </section>
+
   <!-- 03 THE LAND -->
   <section class="sec land" id="land" data-sec="land">
     <div class="sticky land-stage">
@@ -649,6 +754,57 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
       <div class="step" data-step="1"><h2 class="h2" data-t="land.s2t">Rio Grande do Sul.</h2><p data-t="land.s2"></p></div>
       <div class="step" data-step="2"><h2 class="h2" data-t="land.s3t">Monte Alverne.</h2><p data-t="land.s3"></p></div>
       <div class="step" data-step="3"><h2 class="h2" data-t="land.s4t">El Porvenir.</h2><p data-t="land.s4"></p></div>
+    </div>
+  </section>
+
+
+  <!-- 03b WORKING WITH NATURE -->
+  <section class="sec nature" id="nature" data-sec="nature">
+    <div class="col wide">
+      <p class="label"><span class="n">03</span> <span data-t="nature.kicker">Working with nature</span></p>
+      <h2 class="h1 split" data-t="nature.title">Chosen, not cleared.</h2>
+      <div class="nature-intro">
+        <p class="lead reveal" data-t="nature.lead"></p>
+        <p class="body reveal" data-t="nature.p"></p>
+      </div>
+      <ul class="cards">
+        <li class="card reveal">
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <path class="g-ground" d="M0 118 H200 V140 H0z" />
+            <g class="forest"><path d="M18 118 V84 M34 118 V76 M52 118 V88 M68 118 V80" /><circle cx="18" cy="78" r="14" /><circle cx="34" cy="66" r="17" /><circle cx="52" cy="80" r="13" /><circle cx="68" cy="70" r="15" /></g>
+            <g class="rows"><path d="M104 118 V104 M124 118 V104 M144 118 V104 M164 118 V104 M184 118 V104" /><circle cx="104" cy="99" r="6" /><circle cx="124" cy="99" r="6" /><circle cx="144" cy="99" r="6" /><circle cx="164" cy="99" r="6" /><circle cx="184" cy="99" r="6" /></g>
+            <path class="divide" d="M86 128 V40" />
+          </svg>
+          <h3 data-t="nature.c1.t"></h3><p data-t="nature.c1.p"></p>
+        </li>
+        <li class="card reveal">
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <g class="vars"><ellipse cx="40" cy="70" rx="12" ry="22" /><ellipse cx="80" cy="70" rx="10" ry="25" /><ellipse cx="120" cy="70" rx="14" ry="19" /><ellipse cx="160" cy="70" rx="11" ry="21" /><path d="M40 50 V90 M80 47 V93 M120 53 V87 M160 51 V89" /></g>
+            <g class="tags"><text x="40" y="118">I</text><text x="80" y="118">II</text><text x="120" y="118">III</text><text x="160" y="118">IV</text></g>
+          </svg>
+          <h3 data-t="nature.c2.t"></h3><p data-t="nature.c2.p"></p>
+        </li>
+        <li class="card reveal">
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <path class="g-ground" d="M0 122 H200 V140 H0z" />
+            <g class="flower f1"><path class="stem" d="M60 122 C58 104 62 92 60 78" /><g class="petals"><circle cx="60" cy="66" r="7" /><circle cx="71" cy="74" r="7" /><circle cx="67" cy="87" r="7" /><circle cx="53" cy="87" r="7" /><circle cx="49" cy="74" r="7" /></g><circle class="heart" cx="60" cy="77" r="5" /></g>
+            <g class="flower f2"><path class="stem" d="M140 122 C142 110 138 102 140 94" /><g class="petals"><circle cx="140" cy="86" r="5" /><circle cx="148" cy="92" r="5" /><circle cx="145" cy="101" r="5" /><circle cx="135" cy="101" r="5" /><circle cx="132" cy="92" r="5" /></g><circle class="heart" cx="140" cy="94" r="3.6" /></g>
+            <g class="bee"><ellipse class="wing" cx="-2" cy="-6" rx="5" ry="3" /><ellipse class="wing" cx="4" cy="-6" rx="5" ry="3" /><ellipse class="body" cx="0" cy="0" rx="7" ry="5" /><path class="stripes" d="M-2 -4.5 V4.5 M2 -4.5 V4.5" /></g>
+          </svg>
+          <h3 data-t="nature.c3.t"></h3><p data-t="nature.c3.p"></p>
+        </li>
+        <li class="card reveal">
+          <svg viewBox="0 0 200 140" aria-hidden="true">
+            <g class="jar"><path class="lid" d="M78 34 H122 V46 H78z" /><path class="glass" d="M74 46 H126 Q132 46 132 54 V112 Q132 124 120 124 H80 Q68 124 68 112 V54 Q68 46 74 46z" /><path class="honey" d="M71 72 Q86 66 100 72 T129 72 V112 Q129 121 120 121 H80 Q71 121 71 112z" /><path class="label-band" d="M70 84 H130 V102 H70z" /></g>
+            <path class="drip" d="M100 46 C100 52 97 56 97 60 A3 3 0 0 0 103 60 C103 56 100 52 100 46" />
+          </svg>
+          <h3><span data-t="nature.c4.t"></span> <span class="soon" data-t="nature.planned">Planned</span></h3><p data-t="nature.c4.p"></p>
+        </li>
+        <li class="card reveal">
+          <svg viewBox="0 0 200 140" aria-hidden="true" class="expand"></svg>
+          <h3 data-t="nature.c5.t"></h3><p data-t="nature.c5.p"></p>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -787,8 +943,24 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
         <div class="reveal"><dt data-t="contact.email">Email</dt><dd><a class="big-link" href="mailto:info@elporvenir.farm">info@elporvenir.farm</a> <mark class="ph" data-k="VERIFY"></mark> <button type="button" class="copy" data-copy="info@elporvenir.farm" data-t="ui.copy">Copy</button></dd></div>
         <div class="reveal"><dt data-t="contact.phone">Phone</dt><dd><mark class="ph" data-k="TBD"></mark></dd></div>
         <div class="reveal"><dt data-t="contact.wa">WhatsApp</dt><dd><mark class="ph" data-k="TBD"></mark></dd></div>
+        <div class="reveal"><dt data-t="contact.ig">Instagram</dt><dd><a class="big-link" href="https://www.instagram.com/elporvenirfarm/" rel="noopener">@elporvenirfarm</a> <mark class="ph" data-k="VERIFY"></mark></dd></div>
         <div class="reveal"><dt data-t="contact.addr">The farm</dt><dd data-t="contact.addrv"></dd></div>
       </dl>
+      <form class="msg reveal" action="https://formsubmit.co/info@elporvenir.farm" method="post" novalidate>
+        <h3 class="h3" data-t="contact.form.t">Send us a message</h3>
+        <p class="msg-intro" data-t="contact.form.p"></p>
+        <input type="hidden" name="_subject" value="New message from elporvenir.farm" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="msg-grid">
+          <label><span data-t="contact.form.name">Full name</span><input name="name" required autocomplete="name" /></label>
+          <label><span data-t="contact.form.email">Email address</span><input type="email" name="email" required autocomplete="email" /></label>
+          <label class="full"><span data-t="contact.form.subject">Subject</span><input name="subject" /></label>
+          <label class="full"><span data-t="contact.form.msg">Message</span><textarea name="message" rows="4" required></textarea></label>
+        </div>
+        <button type="submit" class="send"><span data-t="contact.form.send">Send message</span><span aria-hidden="true">→</span></button>
+        <p class="msg-note" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -855,7 +1027,34 @@ window.EP_I18N = {
     "about.title": "A family, a hillside and a great deal of patience.",
     "about.lead": "El Porvenir is run by Enrique Swoboda. His sons, Francesco and Alessandro, look after the farm's European side.",
     "about.p1": "A pecan tree takes years before its first real harvest, so a farm like this is planted for the next generation as much as for this one. Perhaps that is why the family named it <i>the future</i>.",
-    "about.p2": "How it all began: «TBD: the family's story, in their own words». Over twenty years in agriculture, and working with nuts since 2014 «VERIFY».",
+    "about.p2": "El Porvenir was born from a passion for the land and a vision for the future. What began as a dream to create something lasting has grown into a farm that combines tradition, innovation and responsibility. Over twenty years in agriculture, and working with nuts since 2014 «VERIFY». Dates and family stories: «TBD».",
+    "values.kicker": "What we stand for",
+    "values.mission.t": "Our mission",
+    "values.mission": "To cultivate high-quality products through responsible farming, honouring the land and delivering long-term value to our families, partners and community.",
+    "values.vision.t": "Our vision",
+    "values.vision": "To be a leading farm recognised for sustainable innovation, positive social impact and a lasting legacy of excellence for future generations.",
+    "values.title": "Our values",
+    "values.1.t": "Respect for nature", "values.1.p": "We work in harmony with the environment, protecting and enhancing what nature gives us.",
+    "values.2.t": "Family & community", "values.2.p": "We believe in the power of people and strong relationships. Our farm supports local families and grows together with our community.",
+    "values.3.t": "Sustainability", "values.3.p": "Sustainable practices guide every decision we make, today and for the future.",
+    "values.4.t": "Quality & integrity", "values.4.p": "We are committed to excellence in everything we do, with honesty, transparency and dedication.",
+    "values.quote": "Sustainability is not just a goal. It's the way we farm, every day.",
+    "nature.kicker": "Working with nature",
+    "nature.title": "Chosen, not cleared.",
+    "nature.lead": "Before planting the first tree, we spent months researching where a pecan orchard could grow in the best possible conditions. We chose land that did not need any deforestation, with a clear plan: a productive orchard that protects the nature around it.",
+    "nature.p": "We look after the soil, the surrounding vegetation and the local biodiversity as carefully as the trees.",
+    "nature.c1.t": "The forest stays", "nature.c1.p": "No forest was cleared for the orchard. The land around it is kept as native forest, water and open land «VERIFY».",
+    "nature.c2.t": "Four varieties", "nature.c2.p": "After years of study and field testing, four pecan varieties were chosen for their adaptability, productivity and resistance to disease and pests «VERIFY».",
+    "nature.c3.t": "Flowers for the bees", "nature.c3.p": "Flowering plants grow between the rows to support the bees and pollination, and to bring more life into the orchard.",
+    "nature.c4.t": "Our own honey", "nature.c4.p": "As the project grows, El Porvenir plans to produce its own raw honey, straight from the farm.",
+    "nature.c5.t": "200 more hectares", "nature.c5.p": "Part of the farm's long-term expansion plan «VERIFY».",
+    "nature.planned": "Planned",
+    "contact.ig": "Instagram",
+    "contact.form.t": "Send us a message",
+    "contact.form.p": "A question about the farm, the trees or anything else? We'd love to hear from you.",
+    "contact.form.name": "Full name", "contact.form.email": "Email address", "contact.form.subject": "Subject", "contact.form.msg": "Message", "contact.form.send": "Send message",
+    "contact.form.preview": "This is a preview, so nothing was sent. The form will send to the farm once the site is live on elporvenir.farm.",
+    "contact.form.sending": "Sending…",
     "about.enrique": "Runs the farm in Rio Grande do Sul.",
     "about.francesco": "The farm's European side.",
     "about.alessandro": "The farm's European side.",
@@ -947,7 +1146,34 @@ window.EP_I18N = {
     "about.title": "Uma família, uma encosta e muita paciência.",
     "about.lead": "A El Porvenir é dirigida por Enrique Swoboda. Os seus filhos, Francesco e Alessandro, cuidam do lado europeu da fazenda.",
     "about.p1": "Uma nogueira-pecã leva anos até a primeira colheita de verdade, por isso uma fazenda assim é plantada tanto para a próxima geração como para esta. Talvez seja por isso que a família a chamou de <i>o futuro</i>.",
-    "about.p2": "Como tudo começou: «TBD: a história da família, nas palavras dela». Mais de vinte anos na agricultura, e trabalhando com nozes desde 2014 «VERIFY».",
+    "about.p2": "A El Porvenir nasceu de uma paixão pela terra e de uma visão para o futuro. O que começou como o sonho de criar algo duradouro tornou-se uma fazenda que une tradição, inovação e responsabilidade. Mais de vinte anos na agricultura, e trabalhando com nozes desde 2014 «VERIFY». Datas e histórias da família: «TBD».",
+    "values.kicker": "No que acreditamos",
+    "values.mission.t": "Nossa missão",
+    "values.mission": "Cultivar produtos de alta qualidade por meio de uma agricultura responsável, honrando a terra e gerando valor a longo prazo para as nossas famílias, parceiros e comunidade.",
+    "values.vision.t": "Nossa visão",
+    "values.vision": "Ser uma fazenda de referência, reconhecida pela inovação sustentável, pelo impacto social positivo e por um legado duradouro de excelência para as futuras gerações.",
+    "values.title": "Nossos valores",
+    "values.1.t": "Respeito pela natureza", "values.1.p": "Trabalhamos em harmonia com o meio ambiente, protegendo e fortalecendo o que a natureza nos dá.",
+    "values.2.t": "Família e comunidade", "values.2.p": "Acreditamos na força das pessoas e das relações sólidas. A nossa fazenda apoia as famílias locais e cresce junto com a comunidade.",
+    "values.3.t": "Sustentabilidade", "values.3.p": "Práticas sustentáveis orientam cada decisão que tomamos, hoje e para o futuro.",
+    "values.4.t": "Qualidade e integridade", "values.4.p": "Temos o compromisso com a excelência em tudo o que fazemos, com honestidade, transparência e dedicação.",
+    "values.quote": "Sustentabilidade não é só uma meta. É a nossa forma de cultivar, todos os dias.",
+    "nature.kicker": "Trabalhando com a natureza",
+    "nature.title": "Escolhida, não desmatada.",
+    "nature.lead": "Antes de plantar a primeira árvore, passamos meses pesquisando onde um pomar de nogueiras-pecã cresceria nas melhores condições possíveis. Escolhemos uma terra que não exigia nenhum desmatamento, com um plano claro: um pomar produtivo que protege a natureza ao seu redor.",
+    "nature.p": "Cuidamos do solo, da vegetação ao redor e da biodiversidade local com o mesmo cuidado que temos com as árvores.",
+    "nature.c1.t": "A mata fica", "nature.c1.p": "Nenhuma mata foi derrubada para o pomar. A terra ao redor é mantida como mata nativa, água e campo aberto «VERIFY».",
+    "nature.c2.t": "Quatro variedades", "nature.c2.p": "Depois de anos de estudo e testes no campo, quatro variedades de noz-pecã foram escolhidas pela adaptabilidade, produtividade e resistência a doenças e pragas «VERIFY».",
+    "nature.c3.t": "Flores para as abelhas", "nature.c3.p": "Plantas com flores crescem entre as fileiras para apoiar as abelhas e a polinização, e para trazer mais vida ao pomar.",
+    "nature.c4.t": "O nosso próprio mel", "nature.c4.p": "À medida que o projeto cresce, a El Porvenir planeja produzir o seu próprio mel cru, direto da fazenda.",
+    "nature.c5.t": "Mais 200 hectares", "nature.c5.p": "Parte do plano de expansão de longo prazo da fazenda «VERIFY».",
+    "nature.planned": "Planejado",
+    "contact.ig": "Instagram",
+    "contact.form.t": "Envie-nos uma mensagem",
+    "contact.form.p": "Uma pergunta sobre a fazenda, as árvores ou qualquer outra coisa? Vamos adorar ouvir você.",
+    "contact.form.name": "Nome completo", "contact.form.email": "E-mail", "contact.form.subject": "Assunto", "contact.form.msg": "Mensagem", "contact.form.send": "Enviar mensagem",
+    "contact.form.preview": "Isto é uma pré-visualização, por isso nada foi enviado. O formulário vai enviar para a fazenda quando o site estiver no ar em elporvenir.farm.",
+    "contact.form.sending": "Enviando…",
     "about.enrique": "Dirige a fazenda no Rio Grande do Sul.",
     "about.francesco": "O lado europeu da fazenda.",
     "about.alessandro": "O lado europeu da fazenda.",
@@ -1039,7 +1265,34 @@ window.EP_I18N = {
     "about.title": "Una familia, una ladera y mucha paciencia.",
     "about.lead": "El Porvenir lo dirige Enrique Swoboda. Sus hijos, Francesco y Alessandro, se ocupan del lado europeo de la finca.",
     "about.p1": "Un pecanero tarda años en dar su primera cosecha de verdad, así que una finca como esta se planta tanto para la próxima generación como para esta. Quizá por eso la familia la llamó <i>el porvenir</i>.",
-    "about.p2": "Cómo empezó todo: «TBD: la historia de la familia, en sus propias palabras». Más de veinte años en la agricultura, y trabajando con nueces desde 2014 «VERIFY».",
+    "about.p2": "El Porvenir nació de una pasión por la tierra y de una visión de futuro. Lo que comenzó como el sueño de crear algo duradero se convirtió en una finca que combina tradición, innovación y responsabilidad. Más de veinte años en la agricultura, y trabajando con nueces desde 2014 «VERIFY». Fechas e historias de la familia: «TBD».",
+    "values.kicker": "Lo que defendemos",
+    "values.mission.t": "Nuestra misión",
+    "values.mission": "Cultivar productos de alta calidad mediante una agricultura responsable, honrando la tierra y entregando valor a largo plazo a nuestras familias, socios y comunidad.",
+    "values.vision.t": "Nuestra visión",
+    "values.vision": "Ser una finca líder reconocida por su innovación sostenible, su impacto social positivo y un legado duradero de excelencia para las futuras generaciones.",
+    "values.title": "Nuestros valores",
+    "values.1.t": "Respeto por la naturaleza", "values.1.p": "Trabajamos en armonía con el entorno, protegiendo y fortaleciendo lo que la naturaleza nos brinda.",
+    "values.2.t": "Familia y comunidad", "values.2.p": "Creemos en el poder de las personas y de las relaciones sólidas. Nuestra finca apoya a las familias locales y crece junto con su comunidad.",
+    "values.3.t": "Sostenibilidad", "values.3.p": "Las prácticas sostenibles guían cada decisión que tomamos, hoy y para el futuro.",
+    "values.4.t": "Calidad e integridad", "values.4.p": "Estamos comprometidos con la excelencia en todo lo que hacemos, con honestidad, transparencia y dedicación.",
+    "values.quote": "La sostenibilidad no es solo una meta. Es nuestra forma de cultivar, todos los días.",
+    "nature.kicker": "Trabajando con la naturaleza",
+    "nature.title": "Elegida, no desmontada.",
+    "nature.lead": "Antes de plantar el primer árbol, pasamos meses investigando dónde un huerto de pecanas podría crecer en las mejores condiciones posibles. Elegimos una tierra que no requería ninguna deforestación, con un plan claro: un huerto productivo que protege la naturaleza que lo rodea.",
+    "nature.p": "Cuidamos el suelo, la vegetación de alrededor y la biodiversidad local con la misma atención que los árboles.",
+    "nature.c1.t": "El monte se queda", "nature.c1.p": "No se taló ningún monte para el huerto. La tierra de alrededor se conserva como monte nativo, agua y campo abierto «VERIFY».",
+    "nature.c2.t": "Cuatro variedades", "nature.c2.p": "Tras años de estudio y pruebas en el campo, se eligieron cuatro variedades de pecana por su adaptabilidad, productividad y resistencia a enfermedades y plagas «VERIFY».",
+    "nature.c3.t": "Flores para las abejas", "nature.c3.p": "Plantas con flores crecen entre las hileras para apoyar a las abejas y la polinización, y para dar más vida al huerto.",
+    "nature.c4.t": "Nuestra propia miel", "nature.c4.p": "A medida que el proyecto crece, El Porvenir planea producir su propia miel cruda, directamente de la finca.",
+    "nature.c5.t": "200 hectáreas más", "nature.c5.p": "Parte del plan de expansión a largo plazo de la finca «VERIFY».",
+    "nature.planned": "Previsto",
+    "contact.ig": "Instagram",
+    "contact.form.t": "Envíanos un mensaje",
+    "contact.form.p": "¿Una pregunta sobre la finca, los árboles o cualquier otra cosa? Nos encantará saber de ti.",
+    "contact.form.name": "Nombre completo", "contact.form.email": "Correo electrónico", "contact.form.subject": "Asunto", "contact.form.msg": "Mensaje", "contact.form.send": "Enviar mensaje",
+    "contact.form.preview": "Esto es una vista previa, así que no se envió nada. El formulario enviará a la finca cuando el sitio esté publicado en elporvenir.farm.",
+    "contact.form.sending": "Enviando…",
     "about.enrique": "Dirige la finca en Rio Grande do Sul.",
     "about.francesco": "El lado europeo de la finca.",
     "about.alessandro": "El lado europeo de la finca.",
@@ -1926,12 +2179,14 @@ window.EP_I18N = {
   function sectionTop(el) { var r = el.getBoundingClientRect(); return r.top + scrollY(); }
 
   /* ---------- layout / keyframes ---------- */
-  var IDS = ["home", "about", "land", "year", "harvest", "gallery", "numbers", "contact", "rest"];
+  var IDS = ["home", "about", "values", "land", "nature", "year", "harvest", "gallery", "numbers", "contact", "rest"];
+  var NAV = ["home", "about", "land", "year", "harvest", "gallery", "numbers", "contact"];
+  var NAV_OF = { values: "about", nature: "land", rest: "contact" };
   var SEC = {}, VH = 0, VW = 0, MAXY = 1, keysPose = [], keysS = [];
   // season at the start and end of each section; tree pose [x, base, H, alpha] for desktop and mobile
-  var SEASON = { home: [2, 2], about: [2.05, 2.5], land: [2.55, 2.9], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
-  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
-  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .92, .9, .3], land: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
+  var SEASON = { home: [2, 2], about: [2.05, 2.35], values: [2.38, 2.55], land: [2.58, 2.9], nature: [2.95, 3.98], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
+  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], values: [.88, .97, .62, .35], land: [.8, .96, .7, 0], nature: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
+  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .92, .9, .3], values: [.5, .95, .8, .15], land: [.5, .95, .7, 0], nature: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
 
   function measure() {
     VH = window.innerHeight; VW = window.innerWidth;
@@ -1967,7 +2222,7 @@ window.EP_I18N = {
   function currentSection() {
     var y = scrollY() + VH * .45, cur = "home";
     IDS.forEach(function (id) { if (SEC[id] && y >= SEC[id].top) cur = id; });
-    return cur === "rest" ? "contact" : cur;
+    return NAV_OF[cur] || cur;
   }
 
   /* ---------- tree ---------- */
@@ -2068,7 +2323,7 @@ window.EP_I18N = {
   function setActive(id) {
     activeId = id;
     navLinks.forEach(function (a) { var on = a.dataset.nav === id; a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
-    var idx = IDS.indexOf(id); dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
+    var idx = NAV.indexOf(id); dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
   }
   navLinks.forEach(function (a) {
     a.addEventListener("click", function (e) { e.preventDefault(); var inDrawer = drawer.classList.contains("open"); closeDrawer(); setTimeout(function () { goTo(a.dataset.nav); }, inDrawer ? 120 : 0); if (a.closest(".dock")) a.blur(); });
@@ -2147,7 +2402,7 @@ window.EP_I18N = {
   window.addEventListener("touchmove", function (e) { var t0 = e.touches[0]; tree.pointer(t0.clientX, t0.clientY, 30); }, { passive: true });
   var trunkHits = [];
   window.addEventListener("pointerdown", function (e) {
-    if (e.target.closest("a,button,input,textarea,.dock,.drawer,.tab,.viewer,.legal-dlg,.wall")) return;
+    if (e.target.closest("a,button,input,textarea,label,form,.dock,.drawer,.tab,.viewer,.legal-dlg,.wall")) return;
     if (tree.catchAt(e.clientX, e.clientY)) {
       sound.crack();
       toast(tr(tree.caught === 1 ? "ui.caught" : "ui.caughtN").replace("{n}", num(tree.caught)));
@@ -2235,6 +2490,7 @@ window.EP_I18N = {
     entries.forEach(function (en) {
       var el = en.target;
       if (el.classList.contains("scene")) { el.classList.toggle("play", en.isIntersecting); return; }
+      if (el.classList.contains("card")) { el.classList.toggle("play", en.isIntersecting); if (en.isIntersecting && el.querySelector(".expand")) growExpand(); if (!el.classList.contains("in")) el.classList.add("in"); return; }
       if (!en.isIntersecting) return;
       if (el.classList.contains("reveal")) { el.classList.add("in"); io.unobserve(el); }
       if (el.classList.contains("split") && animated && !el.dataset.seen) {
@@ -2253,6 +2509,32 @@ window.EP_I18N = {
       }
     });
   }, { threshold: .2, rootMargin: "0px 0px -8% 0px" });
+
+  /* ---------- +200 ha: today's land, then the planned expansion ---------- */
+  var expandSvg = $(".expand"), expandDone = false;
+  (function buildExpand() {
+    var NS = "http://www.w3.org/2000/svg", cols = 20, size = 8.4, gap = 1.4, x0 = (200 - cols * (size + gap)) / 2, y0 = 4;
+    for (var i = 0; i < 272; i++) {
+      var r = doc.createElementNS(NS, "rect"), c = i % cols, row = Math.floor(i / cols);
+      r.setAttribute("x", (x0 + c * (size + gap)).toFixed(1)); r.setAttribute("y", (y0 + row * (size + gap)).toFixed(1));
+      r.setAttribute("width", size); r.setAttribute("height", size); r.setAttribute("rx", 1.6);
+      r.setAttribute("class", i < 72 ? "on" : "off"); if (animated) r.style.opacity = 0; expandSvg.appendChild(r);
+    }
+  })();
+  function growExpand() {
+    if (expandDone || !animated) return; expandDone = true;
+    var rs = expandSvg.querySelectorAll("rect");
+    gsap.to(rs, { opacity: function (i) { return i < 72 ? .9 : .55; }, duration: .25, stagger: { each: .006 }, ease: "none" });
+  }
+
+  /* ---------- contact form: posts to the farm's inbox only on the real domain ---------- */
+  var form = $(".msg"), note = $(".msg-note");
+  form.addEventListener("submit", function (e) {
+    var ok = form.checkValidity();
+    if (!ok) { e.preventDefault(); form.reportValidity(); return; }
+    if (!/(^|\.)elporvenir\.farm$/.test(location.hostname)) { e.preventDefault(); note.textContent = tr("contact.form.preview"); return; }
+    note.textContent = tr("contact.form.sending");
+  });
 
   /* ---------- dial ---------- */
   (function buildDial() {
@@ -2291,7 +2573,7 @@ window.EP_I18N = {
   /* ---------- boot ---------- */
   render(); dialLabels();
   measure();
-  $$(".reveal,.split,.count,.scene").forEach(function (el) { if (!el.closest(".hero")) io.observe(el); });
+  $$(".reveal,.split,.count,.scene,.card").forEach(function (el) { if (!el.closest(".hero")) io.observe(el); });
   intro();
   var _render = render; render = function () { _render(); dialLabels(); };
   if (hasGsap) {
