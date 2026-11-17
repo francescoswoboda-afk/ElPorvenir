@@ -135,21 +135,13 @@ body.dusk .controls { background: rgba(18,22,28,.5); }
 .brand span { font: 500 21px/1 var(--display); letter-spacing: -.01em; font-variation-settings: "SOFT" 80; }
 .controls { position: fixed; z-index: 80; left: var(--pad); bottom: 20px; display: flex; gap: 14px; align-items: center; font: 600 11px/1 var(--ui); letter-spacing: .14em; }
 .langs { display: flex; gap: 2px; }
-.langs button, .sound {
+.langs button {
   background: none; border: 0; padding: 9px 9px; cursor: pointer; color: var(--ink-2); border-radius: 99px; letter-spacing: inherit; font: inherit;
   transition: color .3s, background .3s;
 }
 .langs button[aria-pressed="true"] { color: var(--ink); background: rgba(31,38,24,.08); }
-.langs button:hover, .sound:hover { color: var(--ink); }
-.sound { display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
-.sound-bars { display: flex; gap: 2px; align-items: flex-end; height: 12px; }
-.sound-bars i { width: 2px; height: 3px; background: currentColor; border-radius: 1px; transition: height .3s; }
-.sound[aria-pressed="true"] .sound-bars i { animation: bars 1s ease-in-out infinite; }
-.sound[aria-pressed="true"] .sound-bars i:nth-child(2) { animation-delay: -.3s; }
-.sound[aria-pressed="true"] .sound-bars i:nth-child(3) { animation-delay: -.6s; }
-.sound[aria-pressed="true"] .sound-bars i:nth-child(4) { animation-delay: -.15s; }
-@keyframes bars { 50% { height: 12px; } }
-body.dusk .brand, body.dusk .controls, body.dusk .langs button, body.dusk .sound { color: #e9e3d2; }
+.langs button:hover { color: var(--ink); }
+body.dusk .brand, body.dusk .controls, body.dusk .langs button { color: #e9e3d2; }
 body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12); }
 
 /* ---------- dock navigation (right edge, macOS Dock) ---------- */
@@ -517,7 +509,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
 .static .dial, .static .year-progress { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .grain, .scroll-line, .sound-bars i, .viewer-fig img { animation: none !important; }
+  .grain, .scroll-line, .viewer-fig img { animation: none !important; }
   .scene * { animation: none !important; }}
 
 /* ============ mobile ============ */
@@ -526,9 +518,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   .dock { display: none; }
   .brand { top: 16px; }
   .brand span { font-size: 19px; }
-  .controls { bottom: 14px; gap: 6px; }
-  .controls .sound-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .tab {
+  .controls { bottom: 14px; gap: 6px; }  .tab {
     display: flex; position: fixed; z-index: 86; right: 0; top: 58%; transform: translateY(-50%);
     flex-direction: column; align-items: center; gap: 10px; padding: 16px 7px 16px 9px;
     background: #0f130e; color: #fff; border: 0; border-radius: 14px 0 0 14px; cursor: pointer;
@@ -549,10 +539,8 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   .drawer a.on, .drawer a:active { color: var(--gold); font-style: italic; }
   .drawer a.on b { color: var(--gold); }
   .drawer-foot { margin-top: 26px; display: flex; gap: 8px; align-items: center; font: 600 11px/1 var(--ui); letter-spacing: .14em; }
-  .drawer-foot .langs button, .drawer-foot .sound { color: rgba(255,255,255,.7); }
-  .drawer-foot .langs button[aria-pressed="true"] { color: #fff; background: rgba(255,255,255,.12); }
-  .drawer-foot .sound-label { display: inline; }
-  .drawer-scrim { display: block; position: fixed; inset: 0; z-index: 94; background: rgba(10,12,10,.45); opacity: 0; transition: opacity .5s; }
+  .drawer-foot .langs button { color: rgba(255,255,255,.7); }
+  .drawer-foot .langs button[aria-pressed="true"] { color: #fff; background: rgba(255,255,255,.12); }  .drawer-scrim { display: block; position: fixed; inset: 0; z-index: 94; background: rgba(10,12,10,.45); opacity: 0; transition: opacity .5s; }
   .drawer-scrim.open { opacity: 1; }
   .drawer-scrim[hidden] { display: none; }
 
@@ -637,17 +625,13 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   <span>El Porvenir</span>
 </a>
 
-<!-- language + sound -->
+<!-- language -->
 <div class="controls">
   <div class="langs" role="group" aria-label="Language / Idioma">
     <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
     <button type="button" data-lang="pt" lang="pt" aria-pressed="false">PT</button>
     <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
   </div>
-  <button type="button" class="sound" aria-pressed="false">
-    <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <span class="sound-label" data-t="ui.sound.off">Sound off</span>
-  </button>
 </div>
 
 <!-- right dock navigation -->
@@ -1001,7 +985,6 @@ window.EP_I18N = {
   en: {
     "meta.title": "El Porvenir Farm · A pecan orchard in southern Brazil",
     "skip": "Skip to content",
-    "ui.sound.on": "Sound on", "ui.sound.off": "Sound off",
     "ui.menu": "Menu", "ui.close": "Close",
     "ui.caught": "{n} pecan caught", "ui.caughtN": "{n} pecans caught",
     "ui.hummingbird": "A beija-flor came to visit. You found the hummingbird.",
@@ -1115,7 +1098,6 @@ window.EP_I18N = {
   pt: {
     "meta.title": "El Porvenir Farm · Um pomar de nozes-pecã no sul do Brasil",
     "skip": "Pular para o conteúdo",
-    "ui.sound.on": "Som ligado", "ui.sound.off": "Som desligado",
     "ui.menu": "Menu", "ui.close": "Fechar",
     "ui.caught": "{n} noz apanhada", "ui.caughtN": "{n} nozes apanhadas",
     "ui.hummingbird": "Um beija-flor veio visitar. Você encontrou o beija-flor.",
@@ -1229,7 +1211,6 @@ window.EP_I18N = {
   es: {
     "meta.title": "El Porvenir Farm · Un huerto de pecanas en el sur de Brasil",
     "skip": "Ir al contenido",
-    "ui.sound.on": "Sonido activado", "ui.sound.off": "Sonido desactivado",
     "ui.menu": "Menú", "ui.close": "Cerrar",
     "ui.caught": "{n} pecana atrapada", "ui.caughtN": "{n} pecanas atrapadas",
     "ui.hummingbird": "Vino a visitarnos un picaflor. Encontraste el colibrí.",
@@ -2050,94 +2031,6 @@ window.EP_I18N = {
   window.EPMap = EPMap;
 })();
 
-/* Ambient sound, synthesised with the Web Audio API. No samples. Off by default. */
-(function () {
-  "use strict";
-  function Sound() { this.ctx = null; this.on = false; this.season = 2; this.birdTimer = null; }
-  var P = Sound.prototype;
-
-  P.init = function () {
-    var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return false;
-    var c = this.ctx = new AC();
-    this.master = c.createGain(); this.master.gain.value = 0; this.master.connect(c.destination);
-    // pink-ish noise buffer
-    var len = c.sampleRate * 4, buf = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0), b0 = 0, b1 = 0, b2 = 0;
-    for (var i = 0; i < len; i++) { var w = Math.random() * 2 - 1; b0 = .99765 * b0 + w * .099046; b1 = .963 * b1 + w * .2965164; b2 = .57 * b2 + w * 1.0526913; d[i] = (b0 + b1 + b2 + w * .1848) * .18; }
-    this.noise = buf;
-    // wind: noise -> bandpass swept by a slow LFO
-    var src = c.createBufferSource(); src.buffer = buf; src.loop = true;
-    var bp = c.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 520; bp.Q.value = .7;
-    var wg = c.createGain(); wg.gain.value = .5;
-    var lfo = c.createOscillator(); lfo.frequency.value = .07; var lg = c.createGain(); lg.gain.value = 260; lfo.connect(lg); lg.connect(bp.frequency);
-    var lfo2 = c.createOscillator(); lfo2.frequency.value = .11; var lg2 = c.createGain(); lg2.gain.value = .22; lfo2.connect(lg2); lg2.connect(wg.gain);
-    src.connect(bp); bp.connect(wg); wg.connect(this.master);
-    // leaves: high, airy rustle
-    var src2 = c.createBufferSource(); src2.buffer = buf; src2.loop = true; src2.playbackRate.value = 1.7;
-    var hp = c.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 3200;
-    var rg = c.createGain(); rg.gain.value = .0; this.rustle = rg;
-    var lfo3 = c.createOscillator(); lfo3.frequency.value = .23; var lg3 = c.createGain(); lg3.gain.value = .05; lfo3.connect(lg3); lg3.connect(rg.gain);
-    src2.connect(hp); hp.connect(rg); rg.connect(this.master);
-    src.start(); src2.start(); lfo.start(); lfo2.start(); lfo3.start();
-    this.wind = wg;
-    return true;
-  };
-
-  P.toggle = function () {
-    if (!this.ctx && !this.init()) return false;
-    this.on = !this.on;
-    var c = this.ctx, now = c.currentTime;
-    if (c.state === "suspended") c.resume();
-    this.master.gain.cancelScheduledValues(now);
-    this.master.gain.setTargetAtTime(this.on ? .55 : 0, now, .6);
-    var self = this;
-    clearTimeout(this.birdTimer);
-    if (this.on) (function loop() { self.birdTimer = setTimeout(function () { self.bird(); loop(); }, self.birdGap()); })();
-    return this.on;
-  };
-
-  P.setSeason = function (s) {
-    this.season = ((s % 4) + 4) % 4;
-    if (!this.ctx || !this.on) return;
-    var m = this.season, leafy = m > .9 && m < 3.8 ? 1 : 0;
-    this.rustle.gain.setTargetAtTime(leafy * .09, this.ctx.currentTime, 1.5);
-    this.wind.gain.setTargetAtTime(m < .8 || m > 3.6 ? .7 : .42, this.ctx.currentTime, 2);
-  };
-
-  P.birdGap = function () { var m = this.season; var busy = m > .8 && m < 2.6; return (busy ? 2500 : 7000) + Math.random() * (busy ? 4000 : 9000); };
-
-  P.bird = function () {
-    if (!this.on) return;
-    var c = this.ctx, t = c.currentTime + .05, n = 2 + (Math.random() * 4 | 0), base = 2300 + Math.random() * 1600, pan = c.createStereoPanner ? c.createStereoPanner() : null;
-    if (pan) { pan.pan.value = Math.random() * 1.6 - .8; pan.connect(this.master); }
-    for (var i = 0; i < n; i++) {
-      var o = c.createOscillator(), g = c.createGain(), st = t + i * (.09 + Math.random() * .06), du = .06 + Math.random() * .05;
-      o.type = "sine"; o.frequency.setValueAtTime(base * (1 + Math.random() * .15), st);
-      o.frequency.exponentialRampToValueAtTime(base * (1.35 + Math.random() * .4), st + du * .6);
-      o.frequency.exponentialRampToValueAtTime(base * .9, st + du);
-      g.gain.setValueAtTime(0, st); g.gain.linearRampToValueAtTime(.05, st + .01); g.gain.exponentialRampToValueAtTime(.0005, st + du);
-      o.connect(g); g.connect(pan || this.master); o.start(st); o.stop(st + du + .02);
-    }
-  };
-
-  P.crack = function () {
-    if (!this.on) return;
-    var c = this.ctx, t = c.currentTime;
-    var s = c.createBufferSource(); s.buffer = this.noise;
-    var bp = c.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 2400; bp.Q.value = 1.4;
-    var g = c.createGain(); g.gain.setValueAtTime(1.4, t); g.gain.exponentialRampToValueAtTime(.001, t + .07);
-    s.connect(bp); bp.connect(g); g.connect(this.master); s.start(t, Math.random() * 2, .1);
-    var o = c.createOscillator(), og = c.createGain(); o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(70, t + .09);
-    og.gain.setValueAtTime(.4, t); og.gain.exponentialRampToValueAtTime(.001, t + .12); o.connect(og); og.connect(this.master); o.start(t); o.stop(t + .14);
-    var s2 = c.createBufferSource(); s2.buffer = this.noise; var hp = c.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 5000;
-    var g2 = c.createGain(); g2.gain.setValueAtTime(.5, t + .03); g2.gain.exponentialRampToValueAtTime(.001, t + .09);
-    s2.connect(hp); hp.connect(g2); g2.connect(this.master); s2.start(t + .03, Math.random() * 2, .08);
-  };
-
-  P.chirpHello = function () { if (this.on) { this.bird(); var self = this; setTimeout(function () { self.bird(); }, 260); } };
-
-  window.EPSound = Sound;
-})();
-
 /* ============================================================
    El Porvenir — choreography
    ============================================================ */
@@ -2175,7 +2068,6 @@ window.EP_I18N = {
   /* ---------- controls duplicated into the mobile drawer ---------- */
   var drawerFoot = $(".drawer-foot");
   drawerFoot.appendChild($(".langs").cloneNode(true));
-  drawerFoot.appendChild($(".sound").cloneNode(true));
 
   /* ---------- i18n ---------- */
   var lang = "en";
@@ -2204,7 +2096,6 @@ window.EP_I18N = {
     $$("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
     root.lang = lang === "pt" ? "pt-BR" : lang;
     doc.title = tr("meta.title");
-    soundLabel();
     if (map) map.relabel(tr);
     $$(".split").forEach(function (el) { if (el.dataset.seen || !animated) el.classList.add("done"); });
     $$(".count[data-to]").forEach(function (el) { el.textContent = num(el.dataset.seen || !animated ? +el.dataset.to : 0); });
@@ -2320,7 +2211,7 @@ window.EP_I18N = {
   var lastSky = "";
 
   /* ---------- per-frame update ---------- */
-  var pose = [0, 0, 0, 0], lastT = 0, seasonForSound = -1, activeId = "", yearArts = $$(".season"), track = $(".track"), trackW = 0;
+  var pose = [0, 0, 0, 0], lastT = 0, activeId = "", yearArts = $$(".season"), track = $(".track"), trackW = 0;
   var dialNeedle = $(".dial-needle"), yearBar = $(".year-progress i");
   function update(time) {
     var t = time, dt = Math.min(.05, lastT ? t - lastT : .016); lastT = t;
@@ -2393,8 +2284,6 @@ window.EP_I18N = {
     // active nav
     var cur = currentSection();
     if (cur !== activeId) setActive(cur);
-    // sound follows the season
-    if (Math.abs(st.s - seasonForSound) > .05) { seasonForSound = st.s; sound.setSeason(st.s); }
     // cursor
     moveCursor();
     // draw
@@ -2456,14 +2345,9 @@ window.EP_I18N = {
     if (d > 70) closeDrawer();
   });
 
-  /* ---------- language + sound controls ---------- */
-  var sound = new window.EPSound();
-  function soundLabel() {
-    $$(".sound").forEach(function (b) { b.setAttribute("aria-pressed", String(sound.on)); var l = b.querySelector(".sound-label"); if (l) l.textContent = tr(sound.on ? "ui.sound.on" : "ui.sound.off"); });
-  }
+  /* ---------- language controls ---------- */
   doc.addEventListener("click", function (e) {
     var lb = e.target.closest("[data-lang]"); if (lb) { setLang(lb.dataset.lang); return; }
-    var sb = e.target.closest(".sound"); if (sb) { sound.toggle(); sound.setSeason(st.s); soundLabel(); return; }
     var cp = e.target.closest(".copy"); if (cp) {
       var txt = cp.dataset.copy;
       var pr; try { pr = navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject(); } catch (er) { pr = Promise.reject(er); }
@@ -2488,14 +2372,13 @@ window.EP_I18N = {
     if (e.target.closest("a,button,input,textarea,label,form,.dock,.drawer,.tab,.viewer,.legal-dlg,.wall")) return;
     var cy = canvasY(e.clientY);
     if (tree.catchAt(e.clientX, cy)) {
-      sound.crack();
       toast(tr(tree.caught === 1 ? "ui.caught" : "ui.caughtN").replace("{n}", num(tree.caught)));
       if (navigator.vibrate) try { navigator.vibrate(12); } catch (er) {}
       return;
     }
     if (tree.trunkAt(e.clientX, cy)) {
       var now = performance.now(); trunkHits.push(now); trunkHits = trunkHits.filter(function (h) { return now - h < 1400; });
-      if (trunkHits.length >= 3) { trunkHits = []; tree.callBird(); sound.chirpHello(); toast(tr("ui.hummingbird")); }
+      if (trunkHits.length >= 3) { trunkHits = []; tree.callBird(); toast(tr("ui.hummingbird")); }
     }
   });
   var typed = "";
