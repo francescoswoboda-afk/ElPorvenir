@@ -97,7 +97,7 @@
   // season at the start and end of each section; tree pose [x, base, H, alpha] for desktop and mobile
   var SEASON = { home: [2, 2], about: [2.05, 2.5], land: [2.55, 2.9], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
   var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
-  var POSE_M = { home: [.5, .87, 1, 1], about: [.5, .92, .9, .3], land: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, .2], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
+  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .92, .9, .3], land: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
 
   function measure() {
     VH = window.innerHeight; VW = window.innerWidth;
@@ -170,7 +170,7 @@
     // pose & season
     interp(keysPose, y, pose);
     var unit = isMobile() ? Math.min(VH * .62, VW * 1.15) : Math.min(VH * .78, VW * .62);
-    st.x = pose[0] * VW; st.base = pose[1] * VH; st.H = pose[2] * unit; st.alpha = pose[3];
+    st.x = pose[0] * VW; st.base = pose[1] * VH; st.H = pose[2] * unit; st.alpha = pose[3]; st.sx = isMobile() ? .8 : 1;
     var yr = SEC.year;
     st.s = interp(keysS, y);
     // the orchard at rest + dusk

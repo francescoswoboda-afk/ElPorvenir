@@ -431,7 +431,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   .brand { top: 16px; }
   .brand span { font-size: 19px; }
   .controls { bottom: 14px; gap: 6px; }
-  .sound-label { display: none; }
+  .controls .sound-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .tab {
     display: flex; position: fixed; z-index: 86; right: 0; top: 58%; transform: translateY(-50%);
     flex-direction: column; align-items: center; gap: 10px; padding: 16px 7px 16px 9px;
@@ -463,7 +463,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
   .hero { padding: 76px var(--pad) 70px; }
   .hero-top { flex-direction: column; gap: 10px; }
   .def { text-align: left; }
-  .wordmark { top: 40%; }
+  .wordmark { top: 31%; }
   .wordmark .wm-el { display: block; font-size: .32em; vertical-align: 0; margin: 0 0 .05em; }
   .hero-bottom { flex-direction: column; align-items: flex-start; gap: 18px; }
   .scroll-hint { margin-right: 0; }

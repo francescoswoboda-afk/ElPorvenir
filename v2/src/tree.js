@@ -459,11 +459,12 @@
     }
     if (!drawn && st.alpha > .005) {
       ctx.globalAlpha = st.alpha;
+      var sx = st.sx || 1; if (sx !== 1) { ctx.translate(st.x, 0); ctx.scale(sx, 1); ctx.translate(-st.x, 0); }
       this.drawGround(ctx, st.x, st.base, st.H, S, t, smooth(0, .3, st.G + st.seed * .3), st.dusk);
       if (st.G < .12) this.drawSeed(ctx, st, t);
       this.drawTree(ctx, st.x, st.base, st.H, st.G, S, t, true, st.dusk);
       this.drawBees(ctx, st.x, st.base, st.H, S, t);
-      ctx.globalAlpha = 1;
+      ctx.globalAlpha = 1; ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     }
     this.drawParts(ctx, t, st.dusk);
     this.drawBird(ctx, t, dt);
