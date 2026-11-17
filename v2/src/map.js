@@ -29,7 +29,7 @@
 
   function EPMap(svg) {
     this.svg = svg; this.labels = [];
-    var g = el("g", {}, svg);
+    var g = el("g", {}, svg); this.g = g;
     // graticule
     var grat = "";
     for (var lon = -80; lon <= -30; lon += 10) grat += "M" + X(lon) + " " + Y(15) + "V" + Y(-60);
@@ -65,12 +65,12 @@
   }
   var P = EPMap.prototype;
   P.city = function (ll, name, stage) {
-    el("circle", { "class": "city", cx: X(ll[0]), cy: Y(ll[1]), r: .045 }, this.svg.firstChild);
+    el("circle", { "class": "city", cx: X(ll[0]), cy: Y(ll[1]), r: .045 }, this.g);
     this.text(X(ll[0]) + .1, Y(ll[1]) + .2, name, .17, stage);
   };
   P.text = function (x, y, str, size, stage, key) {
     // Chrome will not draw sub-pixel font sizes inside a zoomed viewBox: draw at 10 and scale
-    var t = el("text", { x: 0, y: 0, "font-size": 10, transform: "translate(" + x + " " + y + ") scale(" + (size / 10) + ")" }, this.svg.firstChild); t.textContent = str;
+    var t = el("text", { x: 0, y: 0, "font-size": 10, transform: "translate(" + x + " " + y + ") scale(" + (size / 10) + ")" }, this.g); t.textContent = str;
     this.labels.push({ el: t, stage: stage, key: key }); return t;
   };
   P.relabel = function (tr) {
