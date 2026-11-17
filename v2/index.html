@@ -241,7 +241,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .vlist p { margin: 0; color: var(--ink-2); font-size: var(--fs-small); line-height: 1.6; }
 .vlist li:hover { padding-left: 14px; }
 .vlist li:hover h3 { font-variation-settings: "SOFT" 100, "wght" 520; color: var(--accent); }
-.big-quote { font: 300 clamp(36px, 5.4vw, 92px)/1.02 var(--display); letter-spacing: -.03em; font-variation-settings: "SOFT" 100, "wght" var(--wght, 300); max-width: 15em; margin: 0; color: var(--ink); }
+.big-quote { font: 300 clamp(36px, 5.4vw, 92px)/1.02 var(--display); letter-spacing: -.03em; font-variation-settings: "SOFT" 100, "wght" var(--wght, 300); max-width: min(14em, 100%); margin: 0; color: var(--ink); }
 
 /* 03b nature */
 .nature { padding: 20vh 0 18vh; }
@@ -251,7 +251,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .card { grid-column: span 2; background: color-mix(in srgb, var(--paper) 55%, #fff); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px 26px; transition: transform .6s var(--e-out), box-shadow .6s var(--e-out); }
 .card:nth-child(4), .card:nth-child(5) { grid-column: span 3; }
 .card:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -36px rgba(31,38,24,.5); }
-.card svg { width: 100%; height: auto; display: block; margin-bottom: 16px; overflow: visible; }
+.card svg { width: 100%; height: 150px; display: block; margin-bottom: 16px; overflow: visible; }
 .card h3 { font: 400 26px/1.1 var(--display); font-variation-settings: "SOFT" 60, "wght" 360; margin-bottom: 10px; }
 .card p { margin: 0; color: var(--ink-2); font-size: var(--fs-small); line-height: 1.6; }
 .soon { display: inline-block; vertical-align: middle; margin-left: 6px; padding: 4px 9px; border-radius: 99px; background: var(--gold); color: var(--ink); font: 600 10px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase; }

@@ -153,6 +153,13 @@ Las costas del mapa están simplificadas a mano: es una ilustración, no cartogr
 
    Probé el Dock, el menú móvil, el cambio de idioma, el visor de la galería con teclado, atrapar nueces, los easter eggs y el sonido.
 
+5. **Pasada 5, contenido de la web antigua (a pedido de Francesco):** se recuperaron tres partes de elporvenir.farm, reescritas como piezas de exposición y no como tienda:
+   - **Misión, visión y valores** (nueva subsección "Lo que defendemos", dentro de La familia): misión y visión como dos citas; los cuatro valores como una lista que gana peso tipográfico al pasar el cursor; y la frase "La sostenibilidad no es solo una meta. Es nuestra forma de cultivar, todos los días." a gran tamaño. La historia de la familia usa ahora el texto real de la web antigua (las fechas y anécdotas siguen [TBD]).
+   - **Trabajando con la naturaleza** (nueva subsección dentro de La tierra, justo después de la foto aérea): "Elegida, no desmontada." Cinco tarjetas con dibujos animados en código: el monte se queda, cuatro variedades, flores para las abejas (con una abeja volando), miel propia (marcada "Previsto") y +200 hectáreas (una cuadrícula con las 72 hectáreas actuales llenas y las 200 del plan de expansión dibujadas en línea discontinua). El árbol se oculta en esta parte, así el salto de estación hacia el invierno queda fuera de la vista.
+   - **Contacto:** Instagram @elporvenirfarm [VERIFY] y un formulario de mensaje que envía a info@elporvenir.farm (con el mismo servicio que la web antigua, formsubmit). Solo envía cuando el sitio está publicado en elporvenir.farm; en la vista previa avisa de que no se envió nada.
+
+   Los textos en español de la web antigua venían sin tildes: se corrigieron. El portugués es nuevo. Se dejaron fuera, a propósito, las páginas de producto (formatos de pecana y tabla nutricional), porque el sitio es de exposición. El Dock sigue teniendo 8 entradas: las dos subsecciones nuevas encienden "La familia" y "La tierra".
+
 ## 11. Tiempo
 
-Unos **40 minutos** de trabajo en esta versión (de 11:16 a 11:56 del 17 de noviembre de 2026), más el tiempo previo de la primera propuesta. No pude crear el repositorio nuevo `elporvenir-new-site` en GitHub (el formulario quedó relleno, pero la creación necesita tu clic), así que el código vive en la rama `v2` del repositorio actual.
+Unos **40 minutos** para la versión inicial (de 11:16 a 11:56 del 17 de noviembre de 2026) y unos **25 minutos** para la pasada 5 (de 12:31 a 12:56), más el tiempo previo de la primera propuesta. No pude crear el repositorio nuevo `elporvenir-new-site` en GitHub (el formulario quedó relleno, pero la creación necesita tu clic), así que el código vive en la rama `v2` del repositorio actual.
