@@ -160,6 +160,8 @@ Las costas del mapa están simplificadas a mano: es una ilustración, no cartogr
 
    Los textos en español de la web antigua venían sin tildes: se corrigieron. El portugués es nuevo. Se dejaron fuera, a propósito, las páginas de producto (formatos de pecana y tabla nutricional), porque el sitio es de exposición. El Dock sigue teniendo 8 entradas: las dos subsecciones nuevas encienden "La familia" y "La tierra".
 
+6. **Pasada 6, ritmo (a pedido de Francesco):** el scroll suave era demasiado lento, así que se redujo la inercia de Lenis y se acortaron las secciones fijas (el sitio pasó de unas 29 a unas 24 pantallas). Se eliminó el cursor personalizado y se volvió al puntero normal, porque un cursor dibujado por la página siempre va un poco por detrás cuando la página está ocupada; sobre una pecana que cae, el puntero pasa a ser una mano. El árbol ya no queda fijo al bajar: sube con el inicio como el resto del contenido, desaparece y solo vuelve en El año del huerto y en el huerto final.
+
 ## 11. Tiempo
 
 Unos **40 minutos** para la versión inicial (de 11:16 a 11:56 del 17 de noviembre de 2026) y unos **25 minutos** para la pasada 5 (de 12:31 a 12:56), más el tiempo previo de la primera propuesta. No pude crear el repositorio nuevo `elporvenir-new-site` en GitHub (el formulario quedó relleno, pero la creación necesita tu clic), así que el código vive en la rama `v2` del repositorio actual.

@@ -2186,8 +2186,8 @@ window.EP_I18N = {
   var SEC = {}, VH = 0, VW = 0, MAXY = 1, keysPose = [], keysS = [];
   // season at the start and end of each section; tree pose [x, base, H, alpha] for desktop and mobile
   var SEASON = { home: [2, 2], about: [2.05, 2.35], values: [2.38, 2.55], land: [2.58, 2.9], nature: [2.95, 3.98], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
-  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], values: [.88, .97, .62, .35], land: [.8, .96, .7, 0], nature: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
-  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .92, .9, .3], values: [.5, .95, .8, .15], land: [.5, .95, .7, 0], nature: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
+  var POSE_D = { home: [.5, .9, .94, 1], about: [.5, .9, .94, 0], values: [.88, .97, .62, 0], land: [.8, .96, .7, 0], nature: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, 0], contact: [.5, .95, .8, 0], rest: [.5, .93, .8, 1] };
+  var POSE_M = { home: [.5, .755, .74, 1], about: [.5, .755, .74, 0], values: [.5, .95, .8, 0], land: [.5, .95, .7, 0], nature: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, 0], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, 0], contact: [.5, .95, .8, 0], rest: [.5, .93, .8, 1] };
 
   function measure() {
     VH = window.innerHeight; VW = window.innerWidth;
@@ -2260,7 +2260,7 @@ window.EP_I18N = {
     // pose & season
     interp(keysPose, y, pose);
     var unit = isMobile() ? Math.min(VH * .62, VW * 1.15) : Math.min(VH * .78, VW * .62);
-    st.x = pose[0] * VW; st.base = pose[1] * VH; st.H = pose[2] * unit; st.alpha = pose[3]; st.sx = isMobile() ? .8 : 1;
+    st.x = pose[0] * VW; st.base = pose[1] * VH - (y < SEC.values.top ? Math.max(0, y) : 0); st.H = pose[2] * unit; st.alpha = pose[3]; st.sx = isMobile() ? .8 : 1;
     var yr = SEC.year;
     st.s = interp(keysS, y);
     // the orchard at rest + dusk
@@ -2424,7 +2424,7 @@ window.EP_I18N = {
 
   /* ---------- custom cursor ---------- */
   var cursor = $(".cursor"), cDot = $(".c-dot"), cRing = $(".c-ring"), cLabel = $(".c-label"), cx = -100, cy = -100, rx = -100, ry = -100;
-  var useCursor = finePointer && !reduced;
+  var useCursor = false; // native pointer: always exactly in time
   if (useCursor) root.classList.add("has-cursor");
   var hoverEl = null;
   doc.addEventListener("pointerover", function (e) { hoverEl = e.target; });
@@ -2436,8 +2436,13 @@ window.EP_I18N = {
     cLabel.style.transform = t + " translate(-50%,-50%)";
   }
   if (useCursor) window.addEventListener("pointermove", function (e) { placeCursor(e.clientX, e.clientY); }, { passive: true });
+  var lastCatch = false;
   function moveCursor() {
-    if (!useCursor) return;
+    if (!useCursor) {
+      var c = finePointer && tree.nutAt(px, py) >= 0;
+      if (c !== lastCatch) { lastCatch = c; body.style.cursor = c ? "pointer" : ""; }
+      return;
+    }
     var mode = "";
     if (hoverEl && hoverEl.closest) {
       if (hoverEl.closest(".wall") && !hoverEl.closest(".frame-btn")) mode = "drag";
