@@ -237,7 +237,7 @@
     var idx = IDS.indexOf(id); dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
   }
   navLinks.forEach(function (a) {
-    a.addEventListener("click", function (e) { e.preventDefault(); goTo(a.dataset.nav); closeDrawer(); if (a.closest(".dock")) a.blur(); });
+    a.addEventListener("click", function (e) { e.preventDefault(); var inDrawer = drawer.classList.contains("open"); closeDrawer(); setTimeout(function () { goTo(a.dataset.nav); }, inDrawer ? 120 : 0); if (a.closest(".dock")) a.blur(); });
   });
   // dock: opens when the cursor comes near the right edge; items magnify like the macOS Dock
   var dock = $(".dock"), dockList = $(".dock-list"), dockItems = $$(".dock-list li"), dockOpen = false, dockFocus = false;
