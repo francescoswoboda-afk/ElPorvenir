@@ -1,127 +1,254 @@
-<!doctype html>
-<html lang="en" class="home-page-root">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="5URz5z05yRy7EAyepc12PG3xcf97HMmjUnzAMk7z5BU" />
+  <title>El Porvenir Farm | Sustainable Pecan Farm in Brazil</title>
   <meta name="description" content="El Porvenir is a family-owned pecan farm in Monte Alverne, Rio Grande do Sul, Brazil. Since 2014 we grow pecans sustainably on 72 hectares, 35 of them planted with pecan trees." />
-  <link rel="canonical" href="https://www.elporvenir.farm/" />
-  <title data-i18n="meta.home.title">El Porvenir Farm | Sustainable Pecan Farm in Brazil</title>
   <meta property="og:site_name" content="El Porvenir Farm" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "El Porvenir Farm",
-        "alternateName": "El Porvenir",
-        "url": "https://www.elporvenir.farm/"
-      },
-      {
-        "@type": "Organization",
-        "name": "El Porvenir Farm",
-        "url": "https://www.elporvenir.farm/",
-        "logo": "https://www.elporvenir.farm/favicon-512.png",
-        "description": "Family-owned sustainable pecan farm in Monte Alverne, Rio Grande do Sul, Brazil.",
-        "foundingDate": "2014",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Santa Cruz do Sul",
-          "addressRegion": "RS",
-          "addressCountry": "BR"
-        }
-      }
-    ]
-  }
-  </script>
-  <link rel="icon" href="favicon.ico" sizes="48x48" />
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <meta property="og:title" content="El Porvenir Farm | Planting the future" />
+  <meta property="og:image" content="https://www.elporvenir.farm/assets/aerial.jpg" />
+  <link rel="canonical" href="https://www.elporvenir.farm/" />
+  <link rel="icon" href="favicon.ico" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="site-nav.js"></script>
-  <link rel="preload" as="image" href="ElPorvenir-Homepage.jpg" fetchpriority="high" />
-  <link rel="prefetch" as="image" href="ElPorvenir-AboutUs.jpg" />
-  <link rel="prefetch" as="image" href="ElPorvenir-PecanNutHeader.jpg" />
-  <link rel="prefetch" href="about-us.html" />
-  <link rel="prefetch" href="our-farm.html" />
-  <link rel="prefetch" href="pecan-nuts.html" />
-  <link rel="prefetch" href="contact-us.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
 </head>
-<body class="home-page transitions-blocked">
-  <div class="side-menu" data-side-menu>
-    <div class="side-menu-zone" aria-hidden="true"></div>
-    <button class="side-menu-handle" type="button" aria-expanded="false" aria-controls="side-menu-panel" aria-label="Open menu" data-i18n-aria-label="menu.open"></button>
-    <nav class="side-menu-panel" id="side-menu-panel" aria-label="Main navigation">
-      <a href="index.html" data-i18n="nav.home" aria-current="page">Home</a>
-      <a href="about-us.html" data-i18n="nav.about">About us</a>
-      <a href="our-farm.html" data-i18n="nav.farm">Our farm</a>
-      <a href="pecan-nuts.html" data-i18n="nav.pecan">Pecan nuts</a>
-      <a href="contact-us.html" data-i18n="nav.contact">Contact us</a>
+<body>
+
+  <a class="skip" href="#land" data-i18n="skip">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="top" id="top">
+    <a href="#hero" class="brand" aria-label="El Porvenir Farm">
+      <img src="assets/tree.png" alt="" width="34" height="28" />
+      <span>El Porvenir</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#land" data-i18n="nav.land">The land</a>
+      <a href="#story" data-i18n="nav.story">Our story</a>
+      <a href="#pecans" data-i18n="nav.pecans">Pecans</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.contact">Get in touch</a>
     </nav>
-  </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span class="sr" data-i18n="menu">Menu</span>
+    </button>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+    <a href="#land" data-i18n="nav.land">The land</a>
+    <a href="#story" data-i18n="nav.story">Our story</a>
+    <a href="#pecans" data-i18n="nav.pecans">Pecans</a>
+    <a href="#contact" data-i18n="nav.contact">Get in touch</a>
+  </nav>
 
-  <main class="homepage" role="main" aria-label="El Porvenir Farm homepage">
-    <section class="hero" aria-label="Hero section">
-      <header class="topbar">
-        <a class="brand" href="#" aria-label="El Porvenir Farm home">
-          <img class="brand-logo" src="ElPorvenir-Logo.png" alt="El Porvenir Farm" />
-        </a>
-        <div class="lang-switch" aria-label="Language selector">
-          <a class="active" href="#" data-lang="en">EN</a>
-          <span>|</span>
-          <a href="#" data-lang="es">ES</a>
-        </div>
-      </header>
+  <main>
 
-      <div class="hero-content page-transition-target reveal-on-scroll">
-        <h1 data-i18n-html="home.hero.title"><span>Rooted in nature.</span> <span>Growing the future.</span></h1>
-        <span class="hero-divider" aria-hidden="true"></span>
-        <p data-i18n-html="home.hero.body">
-          El Porvenir is a family-owned, working pecan farm. With over 20 years of experience in agriculture,<br />
-          since 2014 we have pursued our passion for dried fruits.
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-img" style="background-image:url('assets/aerial.jpg')" role="img" aria-label="Aerial view of the El Porvenir pecan orchard, its lake and the surrounding forest"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-inner">
+        <p class="dict">
+          <span class="dict-word">por·ve·nir</span>
+          <span class="dict-pos" data-i18n="hero.pos">noun, Spanish</span>
+          <span class="dict-def" data-i18n="hero.def">the future; what is still to come.</span>
         </p>
+        <h1 class="hero-title">
+          <span class="line"><span data-i18n="hero.t1">We plant</span></span>
+          <span class="line"><em data-i18n="hero.t2">for the future.</em></span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.sub">A family-owned pecan farm in the hills of Monte Alverne, southern Brazil. Over twenty years in agriculture, and since 2014, a passion for nuts.</p>
+        <div class="hero-actions">
+          <a href="#pecans" class="btn btn-gold" data-i18n="hero.cta1">Discover our pecans</a>
+          <a href="#land" class="btn btn-ghost" data-i18n="hero.cta2">Walk the farm</a>
+        </div>
+      </div>
+      <a href="#land" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+      <p class="coords">Monte Alverne · Rio Grande do Sul · Brasil</p>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span data-i18n="mq">Since 2014 · 72 hectares · 35 planted with pecans · 4 selected varieties · No deforestation · Bees in the orchard · </span>
+        <span data-i18n="mq">Since 2014 · 72 hectares · 35 planted with pecans · 4 selected varieties · No deforestation · Bees in the orchard · </span>
+      </div>
+    </div>
+
+    <!-- ============ THE LAND ============ -->
+    <section class="land" id="land">
+      <div class="wrap land-grid">
+        <div class="land-copy reveal">
+          <p class="eyebrow">01 · <span data-i18n="land.eyebrow">The land</span></p>
+          <h2 data-i18n-html="land.title">Half orchard.<br /><em>Half left wild.</em></h2>
+          <p data-i18n="land.p1">Of our 72 hectares, 35 are planted with pecan trees. The rest is conserved: native forest, water and open land that protect the natural environment around the orchard.</p>
+          <p data-i18n="land.p2">Every square on this map is one hectare of El Porvenir.</p>
+          <ul class="legend">
+            <li><i class="sw sw-pecan"></i><span data-i18n="land.leg1">Pecan orchard</span><b>35 ha</b></li>
+            <li><i class="sw sw-wild"></i><span data-i18n="land.leg2">Conserved land</span><b>37 ha</b></li>
+          </ul>
+        </div>
+        <div class="hectares reveal" id="hectares" aria-label="72 hectares: 35 pecan orchard, 37 conserved land" role="img"></div>
+      </div>
+
+      <div class="wrap stats">
+        <div class="stat reveal"><b class="count" data-to="72">0</b><span data-i18n="stat1">hectares of land</span></div>
+        <div class="stat reveal"><b class="count" data-to="35">0</b><span data-i18n="stat2">hectares of pecan trees</span></div>
+        <div class="stat reveal"><b class="count" data-to="4">0</b><span data-i18n="stat3">varieties, chosen after years of field testing</span></div>
+        <div class="stat reveal"><b class="count" data-to="200" data-prefix="+">0</b><span data-i18n="stat4">hectares in our long-term expansion plan</span></div>
+      </div>
+    </section>
+
+    <!-- ============ STORY ============ -->
+    <section class="story" id="story">
+      <div class="story-media">
+        <div class="story-img" style="background-image:url('assets/orchard.jpg')" role="img" aria-label="Rows of young pecan trees running down to a pond, with the hills of Rio Grande do Sul behind"></div>
+      </div>
+      <div class="story-text">
+        <p class="eyebrow">02 · <span data-i18n="story.eyebrow">Our story</span></p>
+        <h2 data-i18n-html="story.title">Before the first tree,<br /><em>we studied the land.</em></h2>
+
+        <ol class="chapters">
+          <li class="chapter reveal">
+            <span class="ch-n">i</span>
+            <h3 data-i18n="ch1.t">Months of research</h3>
+            <p data-i18n="ch1.p">Before planting anything, we spent months studying the regions where a pecan orchard could grow in the best possible conditions.</p>
+          </li>
+          <li class="chapter reveal">
+            <span class="ch-n">ii</span>
+            <h3 data-i18n="ch2.t">Land that needed no clearing</h3>
+            <p data-i18n="ch2.p">We chose land that did not require deforestation, in Monte Alverne near Santa Cruz do Sul, where the soil and climate suit pecans.</p>
+          </li>
+          <li class="chapter reveal">
+            <span class="ch-n">iii</span>
+            <h3 data-i18n="ch3.t">Four varieties</h3>
+            <p data-i18n="ch3.p">After years of study and field testing, we selected four varieties for their adaptability, productivity and resistance to disease and pests.</p>
+          </li>
+          <li class="chapter reveal">
+            <span class="ch-n">iv</span>
+            <h3 data-i18n="ch4.t">Flowers for the bees</h3>
+            <p data-i18n="ch4.p">Flowering plants grow throughout the fields to support bees and pollination, and to bring more life into the orchard.</p>
+          </li>
+          <li class="chapter reveal">
+            <span class="ch-n">v</span>
+            <h3 data-i18n="ch5.t">Next: our own honey</h3>
+            <p data-i18n="ch5.p">As the project grows, El Porvenir plans to produce its own raw honey, straight from the farm.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ VALUES ============ -->
+    <section class="values">
+      <div class="wrap">
+        <p class="eyebrow">03 · <span data-i18n="val.eyebrow">What we stand for</span></p>
+        <ul class="value-list">
+          <li class="reveal"><span class="v-n">01</span><h3 data-i18n="v1.t">Respect for nature</h3><p data-i18n="v1.p">We work with the environment, protecting and improving what nature gives us.</p></li>
+          <li class="reveal"><span class="v-n">02</span><h3 data-i18n="v2.t">Family &amp; community</h3><p data-i18n="v2.p">The farm supports local families and grows together with its community.</p></li>
+          <li class="reveal"><span class="v-n">03</span><h3 data-i18n="v3.t">Sustainability</h3><p data-i18n="v3.p">Not just a goal. It is how we farm, every day.</p></li>
+          <li class="reveal"><span class="v-n">04</span><h3 data-i18n="v4.t">Quality &amp; integrity</h3><p data-i18n="v4.p">Honest, transparent and committed to excellence in everything we do.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PECANS ============ -->
+    <section class="pecans" id="pecans">
+      <div class="pecan-hero" style="background-image:url('assets/pecans.jpg')" role="img" aria-label="Two pecans, one cracked open, on a wooden table beside pecan leaves">
+        <div class="wrap pecan-hero-inner reveal">
+          <p class="eyebrow light">04 · <span data-i18n="pec.eyebrow">The pecan</span></p>
+          <h2 data-i18n-html="pec.title">Current-year harvest.<br /><em>Hand selected.</em></h2>
+          <p data-i18n="pec.p">Fresh, crisp and full of natural flavour: raw Brazilian pecans, farmed responsibly by people who plan to be here for generations.</p>
+        </div>
+      </div>
+
+      <div class="wrap forms">
+        <h3 class="forms-title" data-i18n="forms.title">Five ways to enjoy them</h3>
+        <ul class="form-list">
+          <li class="form reveal">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="40" cy="40" rx="18" ry="30" class="nut"/><path d="M40 12v56M30 20c4 10 4 30 0 40M50 20c-4 10-4 30 0 40" class="groove"/></svg>
+            <h4 data-i18n="f1.t">Mammoth halves</h4><p data-i18n="f1.p">Extra-large halves with a rich, buttery flavour.</p>
+          </li>
+          <li class="form reveal">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="40" cy="40" rx="13" ry="23" class="nut"/><path d="M40 19v42M33 25c3 8 3 22 0 30M47 25c-3 8-3 22 0 30" class="groove"/></svg>
+            <h4 data-i18n="f2.t">Junior mammoth halves</h4><p data-i18n="f2.p">Perfectly sized for snacking and recipes.</p>
+          </li>
+          <li class="form reveal">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><g class="nut"><rect x="22" y="28" width="9" height="7" rx="2"/><rect x="36" y="22" width="8" height="8" rx="2"/><rect x="48" y="30" width="10" height="7" rx="2"/><rect x="27" y="42" width="8" height="9" rx="2"/><rect x="41" y="40" width="9" height="7" rx="2"/><rect x="34" y="54" width="10" height="7" rx="2"/><rect x="51" y="48" width="7" height="8" rx="2"/></g></svg>
+            <h4 data-i18n="f3.t">Granules</h4><p data-i18n="f3.p">Finely chopped, for baking and toppings.</p>
+          </li>
+          <li class="form reveal">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M14 58c8-14 44-14 52 0z" class="nut"/><g class="dots"><circle cx="30" cy="48" r="1.6"/><circle cx="38" cy="45" r="1.6"/><circle cx="46" cy="47" r="1.6"/><circle cx="52" cy="52" r="1.6"/><circle cx="25" cy="54" r="1.6"/><circle cx="34" cy="53" r="1.6"/><circle cx="43" cy="53" r="1.6"/></g></svg>
+            <h4 data-i18n="f4.t">Meal</h4><p data-i18n="f4.p">Finely ground, for wholesome and gluten-free baking.</p>
+          </li>
+          <li class="form reveal">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 10c14 0 20 16 20 30s-6 30-20 30-20-16-20-30 6-30 20-30z" class="shell"/><path d="M33 20l4 6M45 30l-4 7M32 44l5 5M46 52l-4 6M38 62l3-4" class="stripe"/></svg>
+            <h4 data-i18n="f5.t">Whole nuts</h4><p data-i18n="f5.p">In shell, natural and ready for you.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="wrap nutri-row">
+        <div class="nutri reveal" aria-label="Nutrition facts per 28 gram serving">
+          <p class="nutri-head" data-i18n="nut.head">Nutrition facts</p>
+          <p class="nutri-serv" data-i18n="nut.serv">Per 28 g serving</p>
+          <dl>
+            <div class="big"><dt data-i18n="nut.cal">Calories</dt><dd>200</dd></div>
+            <div><dt data-i18n="nut.fat">Fat, mostly monounsaturated</dt><dd>19 g</dd></div>
+            <div><dt data-i18n="nut.pro">Protein</dt><dd>3 g</dd></div>
+            <div><dt data-i18n="nut.fib">Fibre</dt><dd>3 g</dd></div>
+            <div><dt data-i18n="nut.vit">Also a source of</dt><dd data-i18n="nut.vitv">Vitamin E</dd></div>
+          </dl>
+        </div>
+        <div class="nutri-copy reveal">
+          <h3 data-i18n-html="nut.title">Small nut.<br /><em>Serious nutrition.</em></h3>
+          <p data-i18n="nut.p">Pecans are naturally rich in healthy fats, fibre, plant protein, vitamins and minerals, with plenty of energy in every handful: about 690 calories per 100 g.</p>
+          <a href="#contact" class="btn btn-dark" data-i18n="nut.cta">Ask about wholesale</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow light">05 · <span data-i18n="con.eyebrow">Get in touch</span></p>
+          <h2 data-i18n-html="con.title">Let's grow something<br /><em>together.</em></h2>
+          <p data-i18n="con.p">Questions about the farm, our pecans or a partnership? We are always open to conversations that share our values.</p>
+          <dl class="contact-info">
+            <div><dt data-i18n="con.mail">Email</dt><dd><a href="mailto:info@elporvenir.farm">info@elporvenir.farm</a></dd></div>
+            <div><dt data-i18n="con.where">The farm</dt><dd>Monte Alverne, Santa Cruz do Sul<br />Rio Grande do Sul, Brasil</dd></div>
+          </dl>
+        </div>
+        <form class="contact-form reveal" action="https://formsubmit.co/info@elporvenir.farm" method="post">
+          <input type="hidden" name="_subject" value="New message from elporvenir.farm" />
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+          <label><span data-i18n="f.name">Full name</span><input name="name" required autocomplete="name" /></label>
+          <label><span data-i18n="f.email">Email address</span><input type="email" name="email" required autocomplete="email" /></label>
+          <label><span data-i18n="f.subject">Subject</span><input name="subject" /></label>
+          <label><span data-i18n="f.msg">Message</span><textarea name="message" rows="5" required></textarea></label>
+          <button type="submit" class="btn btn-gold" data-i18n="f.send">Send message</button>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>
 
-  <script src="translations.js"></script>
-  <script>
-    (function () {
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <img src="assets/logo-light.png" alt="El Porvenir Farm" width="172" height="104" />
+      <p data-i18n="foot.p">We farm for today, with respect for tomorrow.</p>
+      <p class="small">© <span id="yr">2026</span> El Porvenir Farm · Monte Alverne, Brasil</p>
+    </div>
+    <p class="foot-word" aria-hidden="true">porvenir</p>
+  </footer>
 
-      var revealElements = document.querySelectorAll('.reveal-on-scroll');
-      if (!revealElements.length) {
-        return;
-      }
-
-      if (reduceMotion || !('IntersectionObserver' in window)) {
-        revealElements.forEach(function (element) {
-          element.classList.add('is-visible');
-        });
-        return;
-      }
-
-      var observer = new IntersectionObserver(function (entries, io) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        });
-      }, {
-        threshold: 0.18,
-        rootMargin: '0px 0px -8% 0px'
-      });
-
-      revealElements.forEach(function (element) {
-        observer.observe(element);
-      });
-    })();
-  </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
