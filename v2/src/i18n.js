@@ -41,7 +41,7 @@ window.EP_I18N = {
     "land.s3": "Near Santa Cruz do Sul, in the hills of the Vale do Rio Pardo «VERIFY». The soil: «TBD». Altitude: «TBD».",
     "land.s4t": "El Porvenir.",
     "land.s4": "72 hectares «VERIFY». About half planted with pecans, the rest left as native forest, water and open land «VERIFY».",
-    "land.tropic": "Tropic of Capricorn",
+    "land.tropic": "Tropic of Capricorn", "land.ocean": "Atlantic Ocean",
     "land.approx": "Approximate location «VERIFY»",
     "land.photo": "The orchard from above, with the lake and the farmhouse.",
 
@@ -133,7 +133,7 @@ window.EP_I18N = {
     "land.s3": "Perto de Santa Cruz do Sul, nas colinas do Vale do Rio Pardo «VERIFY». O solo: «TBD». Altitude: «TBD».",
     "land.s4t": "El Porvenir.",
     "land.s4": "72 hectares «VERIFY». Cerca de metade plantada com nogueiras-pecã, o resto mantido como mata nativa, água e campo aberto «VERIFY».",
-    "land.tropic": "Trópico de Capricórnio",
+    "land.tropic": "Trópico de Capricórnio", "land.ocean": "Oceano Atlântico",
     "land.approx": "Localização aproximada «VERIFY»",
     "land.photo": "O pomar visto de cima, com o lago e a casa da fazenda.",
 
@@ -225,7 +225,7 @@ window.EP_I18N = {
     "land.s3": "Cerca de Santa Cruz do Sul, en las colinas del Vale do Rio Pardo «VERIFY». El suelo: «TBD». Altitud: «TBD».",
     "land.s4t": "El Porvenir.",
     "land.s4": "72 hectáreas «VERIFY». Cerca de la mitad plantada con pecaneros, el resto conservado como monte nativo, agua y campo abierto «VERIFY».",
-    "land.tropic": "Trópico de Capricornio",
+    "land.tropic": "Trópico de Capricornio", "land.ocean": "Océano Atlántico",
     "land.approx": "Ubicación aproximada «VERIFY»",
     "land.photo": "El huerto desde el aire, con el lago y la casa de la finca.",
 

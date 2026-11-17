@@ -112,6 +112,10 @@ mark.ph b { font-weight: 500; letter-spacing: .04em; text-transform: none; font-
 }
 @keyframes grain { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-3%,2%); } 40% { transform: translate(2%,-4%); } 60% { transform: translate(-4%,-1%); } 80% { transform: translate(3%,3%); } }
 main { position: relative; z-index: 2; }
+.topfade { position: fixed; left: 0; right: 0; top: 0; height: 78px; z-index: 79; pointer-events: none; background: linear-gradient(180deg, var(--paper) 35%, color-mix(in srgb, var(--paper) 0%, transparent)); transition: opacity .6s; }
+body.dusk .topfade { opacity: 0; }
+.controls { background: color-mix(in srgb, var(--paper) 82%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 99px; padding: 3px 10px 3px 4px; margin-left: -4px; }
+body.dusk .controls { background: rgba(18,22,28,.5); }
 .behind { position: relative; z-index: 0; }
 
 /* ---------- brand + controls ---------- */
@@ -157,11 +161,10 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .dock-list {
   list-style: none; margin: 0; padding: 22px 16px; position: relative;
   background: #0f130e; color: #fff; border-radius: 20px 0 0 20px;
-  transform: translateX(105%); visibility: hidden; transition: transform .65s var(--e-out), visibility 0s .65s;
+  transform: translateX(105%); transition: transform .65s var(--e-out);
   min-width: 270px;
 }
-.dock.open .dock-list { transform: none; visibility: visible; transition: transform .65s var(--e-out), visibility 0s; box-shadow: -20px 0 60px -20px rgba(0,0,0,.45); }
-.dock:focus-within .dock-list { visibility: visible; }
+.dock.open .dock-list { transform: none; box-shadow: -20px 0 60px -20px rgba(0,0,0,.45); }
 .dock.open .dock-strip { opacity: 0; transform: translateY(-50%) translateX(20px); }
 .dock-list li { --m: 1; transform-origin: right center; transform: scale(var(--m)); margin: calc((var(--m) - 1) * 12px) 0; transition: transform .18s ease-out, margin .18s ease-out; }
 .dock-list a {
@@ -230,6 +233,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .map .grat { stroke: var(--ink); stroke-opacity: .09; stroke-width: .15; fill: none; vector-effect: non-scaling-stroke; }
 .map .tropic { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 5 6; fill: none; vector-effect: non-scaling-stroke; opacity: .8; }
 .map .continent { fill: var(--ink); fill-opacity: .08; stroke: var(--ink); stroke-opacity: .55; stroke-width: 1.1; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.map .lagoon { fill: var(--paper); stroke: var(--ink); stroke-opacity: .45; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .map .state { fill: var(--accent); fill-opacity: .2; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .map .pin circle.core { fill: var(--ink); }
 .map .pin circle.halo { fill: none; stroke: var(--ink); vector-effect: non-scaling-stroke; stroke-width: 1; }
@@ -254,7 +258,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .year-stage { padding: 96px var(--pad) 70px; }
 .year-head { position: absolute; left: var(--pad); top: 96px; max-width: 360px; z-index: 3; }
 .year-title { color: var(--ink-2); --wght: 330; }
-.dial { position: absolute; left: var(--pad); bottom: 70px; width: clamp(120px, 13vw, 190px); z-index: 3; }
+.dial { position: absolute; left: var(--pad); bottom: 110px; width: clamp(120px, 13vw, 190px); z-index: 3; }
 .dial svg { width: 100%; overflow: visible; }
 .dial .arc { fill: none; stroke-width: 5; stroke-linecap: round; }
 .dial .mtxt { font: 600 6px var(--ui); fill: var(--ink-2); text-anchor: middle; dominant-baseline: middle; }
@@ -359,7 +363,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 
 /* 07 numbers */
 .numbers { padding: 18vh 0 16vh; }
-.nums { margin: 70px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 6vw; max-width: 1100px; }
+.nums { margin: 70px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 6vw; max-width: min(1000px, 60vw); }
 .num { border-top: 1px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column-reverse; }
 .num dd { margin: 0 0 14px; }
 .num dt { color: var(--ink-2); font-size: var(--fs-body); }
@@ -381,7 +385,7 @@ body.dusk .contact .label, body.dusk .contact dt { color: rgba(236,230,214,.75);
 body.dusk .contact-list > div { border-color: rgba(236,230,214,.2); }
 
 /* 09 rest (footer) */
-.rest { height: 130vh; display: flex; align-items: flex-start; justify-content: center; text-align: center; padding-top: 18vh; color: #ece6d6; }
+.rest { height: 150vh; display: flex; align-items: flex-start; justify-content: center; text-align: center; padding-top: 62vh; color: #ece6d6; }
 .rest-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .rest .logo { width: clamp(150px, 15vw, 210px); height: auto; margin-bottom: 18px; }
 .rest-line { font: italic 400 var(--fs-lead)/1.4 var(--text); margin: 0; }
@@ -530,6 +534,7 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
 <div class="sky" aria-hidden="true"></div>
 <canvas id="tree" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
+<div class="topfade" aria-hidden="true"></div>
 
 <!-- brand -->
 <a class="brand" href="#home" data-nav="home" aria-label="El Porvenir Farm">
@@ -750,12 +755,12 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
     </div>
     <div class="wall" role="list">
       <figure class="frame f-l" role="listitem"><button type="button" class="frame-btn" data-i="0"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-img="aerial" alt="" data-alt="gallery.1" loading="lazy" /></button><figcaption><span class="cat">I</span><span data-t="gallery.1"></span></figcaption></figure>
-      <figure class="frame f-p tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t1"></span></div><figcaption><span class="cat">II</span><span data-t="gallery.t1"></span></figcaption></figure>
+      <figure class="frame f-p tbd" role="listitem"><div class="tbd-box" aria-hidden="true"><span data-t="gallery.t1"></span></div><figcaption><span class="cat">II</span><span data-t="gallery.t1"></span></figcaption></figure>
       <figure class="frame f-m" role="listitem"><button type="button" class="frame-btn" data-i="1"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-img="orchard" alt="" data-alt="gallery.2" loading="lazy" /></button><figcaption><span class="cat">III</span><span data-t="gallery.2"></span></figcaption></figure>
-      <figure class="frame f-s tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t2"></span></div><figcaption><span class="cat">IV</span><span data-t="gallery.t2"></span></figcaption></figure>
-      <figure class="frame f-p tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t3"></span></div><figcaption><span class="cat">V</span><span data-t="gallery.t3"></span></figcaption></figure>
-      <figure class="frame f-m tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t4"></span></div><figcaption><span class="cat">VI</span><span data-t="gallery.t4"></span></figcaption></figure>
-      <figure class="frame f-s tbd" role="listitem"><div class="tbd-box"><span data-t="gallery.t5"></span></div><figcaption><span class="cat">VII</span><span data-t="gallery.t5"></span></figcaption></figure>
+      <figure class="frame f-s tbd" role="listitem"><div class="tbd-box" aria-hidden="true"><span data-t="gallery.t2"></span></div><figcaption><span class="cat">IV</span><span data-t="gallery.t2"></span></figcaption></figure>
+      <figure class="frame f-p tbd" role="listitem"><div class="tbd-box" aria-hidden="true"><span data-t="gallery.t3"></span></div><figcaption><span class="cat">V</span><span data-t="gallery.t3"></span></figcaption></figure>
+      <figure class="frame f-m tbd" role="listitem"><div class="tbd-box" aria-hidden="true"><span data-t="gallery.t4"></span></div><figcaption><span class="cat">VI</span><span data-t="gallery.t4"></span></figcaption></figure>
+      <figure class="frame f-s tbd" role="listitem"><div class="tbd-box" aria-hidden="true"><span data-t="gallery.t5"></span></div><figcaption><span class="cat">VII</span><span data-t="gallery.t5"></span></figcaption></figure>
     </div>
   </section>
 
@@ -779,9 +784,9 @@ body.dusk .c-dot { background: #f1ead8; } body.dusk .c-ring { border-color: #f1e
       <p class="label"><span class="n">08</span> <span data-t="contact.kicker">Contact</span></p>
       <h2 class="h1 split" data-t="contact.title">Come and see the trees. Or just say hello.</h2>
       <dl class="contact-list">
-        <div class="reveal"><dt data-t="contact.email">Email</dt><dd><a class="big-link" href="mailto:info@elporvenir.farm">info@elporvenir.farm</a> <mark class="ph" data-k="VERIFY">VERIFY</mark> <button type="button" class="copy" data-copy="info@elporvenir.farm" data-t="ui.copy">Copy</button></dd></div>
-        <div class="reveal"><dt data-t="contact.phone">Phone</dt><dd><mark class="ph" data-k="TBD">TBD</mark></dd></div>
-        <div class="reveal"><dt data-t="contact.wa">WhatsApp</dt><dd><mark class="ph" data-k="TBD">TBD</mark></dd></div>
+        <div class="reveal"><dt data-t="contact.email">Email</dt><dd><a class="big-link" href="mailto:info@elporvenir.farm">info@elporvenir.farm</a> <mark class="ph" data-k="VERIFY"></mark> <button type="button" class="copy" data-copy="info@elporvenir.farm" data-t="ui.copy">Copy</button></dd></div>
+        <div class="reveal"><dt data-t="contact.phone">Phone</dt><dd><mark class="ph" data-k="TBD"></mark></dd></div>
+        <div class="reveal"><dt data-t="contact.wa">WhatsApp</dt><dd><mark class="ph" data-k="TBD"></mark></dd></div>
         <div class="reveal"><dt data-t="contact.addr">The farm</dt><dd data-t="contact.addrv"></dd></div>
       </dl>
     </div>
@@ -867,7 +872,7 @@ window.EP_I18N = {
     "land.s3": "Near Santa Cruz do Sul, in the hills of the Vale do Rio Pardo «VERIFY». The soil: «TBD». Altitude: «TBD».",
     "land.s4t": "El Porvenir.",
     "land.s4": "72 hectares «VERIFY». About half planted with pecans, the rest left as native forest, water and open land «VERIFY».",
-    "land.tropic": "Tropic of Capricorn",
+    "land.tropic": "Tropic of Capricorn", "land.ocean": "Atlantic Ocean",
     "land.approx": "Approximate location «VERIFY»",
     "land.photo": "The orchard from above, with the lake and the farmhouse.",
 
@@ -959,7 +964,7 @@ window.EP_I18N = {
     "land.s3": "Perto de Santa Cruz do Sul, nas colinas do Vale do Rio Pardo «VERIFY». O solo: «TBD». Altitude: «TBD».",
     "land.s4t": "El Porvenir.",
     "land.s4": "72 hectares «VERIFY». Cerca de metade plantada com nogueiras-pecã, o resto mantido como mata nativa, água e campo aberto «VERIFY».",
-    "land.tropic": "Trópico de Capricórnio",
+    "land.tropic": "Trópico de Capricórnio", "land.ocean": "Oceano Atlântico",
     "land.approx": "Localização aproximada «VERIFY»",
     "land.photo": "O pomar visto de cima, com o lago e a casa da fazenda.",
 
@@ -1051,7 +1056,7 @@ window.EP_I18N = {
     "land.s3": "Cerca de Santa Cruz do Sul, en las colinas del Vale do Rio Pardo «VERIFY». El suelo: «TBD». Altitud: «TBD».",
     "land.s4t": "El Porvenir.",
     "land.s4": "72 hectáreas «VERIFY». Cerca de la mitad plantada con pecaneros, el resto conservado como monte nativo, agua y campo abierto «VERIFY».",
-    "land.tropic": "Trópico de Capricornio",
+    "land.tropic": "Trópico de Capricornio", "land.ocean": "Océano Atlántico",
     "land.approx": "Ubicación aproximada «VERIFY»",
     "land.photo": "El huerto desde el aire, con el lago y la casa de la finca.",
 
@@ -1268,8 +1273,8 @@ window.EP_I18N = {
     if (tr.g > 0) {
       ctx.fillStyle = rgb(bark); ctx.beginPath();
       var tw = tr.w * H * thick;
-      ctx.moveTo(bx - tw * .95, by); ctx.quadraticCurveTo(bx - tw * .5, by - tw * .8, bx - tw * .5, by - tw * 1.8);
-      ctx.lineTo(bx + tw * .5, by - tw * 1.8); ctx.quadraticCurveTo(bx + tw * .5, by - tw * .8, bx + tw * .95, by); ctx.fill();
+      ctx.moveTo(bx - tw * .9, by + 1); ctx.quadraticCurveTo(bx - tw * .46, by - tw * .5, bx - tw * .46, by - tw * 1.4);
+      ctx.lineTo(bx + tw * .46, by - tw * 1.4); ctx.quadraticCurveTo(bx + tw * .46, by - tw * .5, bx + tw * .9, by + 1); ctx.fill();
     }
     var leafG = smooth(.8, 1, G);
     if (leafG <= 0) return;
@@ -1379,13 +1384,14 @@ window.EP_I18N = {
   P.dropNut = function (x, y, r, H, rain) {
     var nr = Math.max(this.mobile ? 9 : 8, r * .75);
     var gy = rain ? this.h * (.86 + Math.random() * .1) : this.state.base + (Math.random() * .03 - .005) * H;
-    if (this.reduced && !rain) { this.parts.nuts.push({ x: x + (Math.random() - .5) * H * .3, y: gy, vx: 0, vy: 0, rot: Math.random() * 3, vr: 0, r: nr, gy: gy, ground: true, life: 0 }); return; }
-    this.parts.nuts.push({ x: x, y: y, vx: (Math.random() - .5) * 40, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 4, r: nr, gy: gy, ground: false, life: 0, bounces: 0 });
+    var tx = rain ? null : this.state.x, tb = rain ? null : this.state.base;
+    if (this.reduced && !rain) { this.parts.nuts.push({ x: x + (Math.random() - .5) * H * .3, y: gy, vx: 0, vy: 0, rot: Math.random() * 3, vr: 0, r: nr, gy: gy, ground: true, life: 0, tx: tx, tb: tb }); return; }
+    this.parts.nuts.push({ x: x, y: y, vx: (Math.random() - .5) * 40, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 4, r: nr, gy: gy, ground: false, life: 0, bounces: 0, tx: tx, tb: tb });
   };
   P.spawnLeaf = function (lf, H, S) {
     var bucket = S.turn - lf.k2 < .3 ? C.yellow : S.turn - lf.k2 < .55 ? C.amber : C.brown;
     this.parts.leaves.push({ x: lf.x, y: lf.y, vx: (Math.random() - .5) * 20, vy: 18 + Math.random() * 20, rot: Math.random() * TAU, vr: (Math.random() - .5) * 3,
-      c: bucket, s: .012 * H * lf.sz, ph: Math.random() * TAU, gy: this.state.base + Math.random() * .03 * H, life: 0 });
+      c: bucket, s: .012 * H * lf.sz, ph: Math.random() * TAU, gy: this.state.base + Math.random() * .03 * H, life: 0, tx: this.state.x, tb: this.state.base });
   };
   P.rain = function (n) {
     for (var i = 0; i < n; i++) {
@@ -1416,18 +1422,19 @@ window.EP_I18N = {
     for (i = list.length - 1; i >= 0; i--) { p = list[i]; p.life += dt; p.vy += g * dt; p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt; if (p.life > 1.2) list.splice(i, 1); }
   };
 
+  P.off = function (p) { return p.tx == null ? [0, 0, 1] : [this.state.x - p.tx, this.state.base - p.tb, this.state.alpha]; };
   P.drawParts = function (ctx, t, dusk) {
-    var i, p, a;
+    var i, p, a, o;
     var lv = this.parts.leaves;
     for (i = 0; i < lv.length; i++) {
-      p = lv[i]; a = p.y >= p.gy ? clamp(1 - (p.life - 9) / 3, 0, 1) : 1; if (a <= 0) continue;
-      ctx.fillStyle = rgb(mix(p.c, C.barkDusk, dusk * .6), a); ctx.beginPath(); ctx.ellipse(p.x, p.y, p.s, p.s * .38, p.rot, 0, TAU); ctx.fill();
+      p = lv[i]; o = this.off(p); a = (p.y >= p.gy ? clamp(1 - (p.life - 9) / 3, 0, 1) : 1) * o[2]; if (a <= .01) continue;
+      ctx.fillStyle = rgb(mix(p.c, C.barkDusk, dusk * .6), a); ctx.beginPath(); ctx.ellipse(p.x + o[0], p.y + o[1], p.s, p.s * .38, p.rot, 0, TAU); ctx.fill();
     }
     var tw = this.parts.twigs; ctx.strokeStyle = rgb(C.bark); ctx.lineCap = "round";
-    for (i = 0; i < tw.length; i++) { p = tw[i]; a = clamp(1 - (p.life - 3.5) / 1.5, 0, 1); ctx.globalAlpha = a; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(p.x - Math.cos(p.rot) * p.l, p.y - Math.sin(p.rot) * p.l); ctx.lineTo(p.x + Math.cos(p.rot) * p.l, p.y + Math.sin(p.rot) * p.l); ctx.stroke(); }
+    for (i = 0; i < tw.length; i++) { p = tw[i]; o = this.off(p); a = clamp(1 - (p.life - 3.5) / 1.5, 0, 1) * o[2]; ctx.globalAlpha = a; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(p.x + o[0] - Math.cos(p.rot) * p.l, p.y + o[1] - Math.sin(p.rot) * p.l); ctx.lineTo(p.x + o[0] + Math.cos(p.rot) * p.l, p.y + o[1] + Math.sin(p.rot) * p.l); ctx.stroke(); }
     ctx.globalAlpha = 1;
     var nu = this.parts.nuts;
-    for (i = 0; i < nu.length; i++) { p = nu[i]; a = p.ground ? clamp(1 - (p.life - 7) / 1, 0, 1) : 1; ctx.globalAlpha = a; this.nutShape(ctx, p.x, p.y - p.r * (p.ground ? .7 : 0), p.r, p.ground ? 1.45 : p.rot, dusk); }
+    for (i = 0; i < nu.length; i++) { p = nu[i]; o = this.off(p); a = (p.ground ? clamp(1 - (p.life - 7) / 1, 0, 1) : 1) * o[2]; if (a <= .01) continue; ctx.globalAlpha = a; this.nutShape(ctx, p.x + o[0], p.y + o[1] - p.r * (p.ground ? .7 : 0), p.r, p.ground ? 1.45 : p.rot, dusk); }
     ctx.globalAlpha = 1;
     var sh = this.parts.shells;
     for (i = 0; i < sh.length; i++) { p = sh[i]; ctx.globalAlpha = clamp(1 - p.life / 1.2, 0, 1); ctx.fillStyle = rgb(p.c); ctx.beginPath(); ctx.ellipse(p.x, p.y, p.s, p.s * .55, p.rot, 0, TAU); ctx.fill(); }
@@ -1463,7 +1470,7 @@ window.EP_I18N = {
   };
 
   P.drawBees = function (ctx, bx, by, H, S, t) {
-    if (S.bees <= 0 || this.reduced) return;
+    if (S.bees <= 0 || this.reduced || this.state.G < .95) return;
     var cx = bx, cy = by - H * .62;
     for (var i = 0; i < this.bees.length; i++) {
       var b = this.bees[i], a = b.a + t * b.sp;
@@ -1545,10 +1552,11 @@ window.EP_I18N = {
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);
     this.updateParts(dt, t);
+    if (st.alpha < .03) { var pl = this.parts; ["leaves", "twigs", "nuts"].forEach(function (k) { pl[k] = pl[k].filter(function (q) { return q.tx == null; }); }); }
     // winter pruning: a few cut twigs fall now and then
     if (S.prune && st.alpha > .5 && !this.reduced && Math.random() < dt * 1.1 && this.parts.twigs.length < 12) {
       var nn = this.nodes[(this.nodes.length * (.4 + Math.random() * .6)) | 0];
-      this.parts.twigs.push({ x: nn.ex, y: nn.ey, vx: (Math.random() - .5) * 30, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 6, l: 5 + Math.random() * 6, gy: st.base + Math.random() * 10, life: 0 });
+      this.parts.twigs.push({ x: nn.ex, y: nn.ey, vx: (Math.random() - .5) * 30, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 6, l: 5 + Math.random() * 6, gy: st.base + Math.random() * 10, life: 0, tx: st.x, tb: st.base });
     }
     var self = this, drawn = false;
     if (st.O > .001) {
@@ -1587,12 +1595,12 @@ window.EP_I18N = {
   /* ---------- interaction ---------- */
   P.nutAt = function (x, y) {
     var nu = this.parts.nuts, best = -1, bd = this.mobile ? 46 : 34;
-    for (var i = 0; i < nu.length; i++) { var dx = nu[i].x - x, dy = nu[i].y - y, d = Math.sqrt(dx * dx + dy * dy); if (d < bd) { bd = d; best = i; } }
+    for (var i = 0; i < nu.length; i++) { var o = this.off(nu[i]); if (o[2] < .3) continue; var dx = nu[i].x + o[0] - x, dy = nu[i].y + o[1] - y, d = Math.sqrt(dx * dx + dy * dy); if (d < bd) { bd = d; best = i; } }
     return best;
   };
   P.catchAt = function (x, y) {
     var i = this.nutAt(x, y); if (i < 0) return false;
-    var p = this.parts.nuts.splice(i, 1)[0];
+    var p = this.parts.nuts.splice(i, 1)[0], po = this.off(p); p = { x: p.x + po[0], y: p.y + po[1], r: p.r };
     for (var k = 0; k < 9; k++) {
       var a = Math.random() * TAU, sp = 140 + Math.random() * 220;
       this.parts.shells.push({ x: p.x, y: p.y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 220, rot: Math.random() * 3, vr: (Math.random() - .5) * 20, s: p.r * (k < 2 ? .55 : .3), c: k < 2 ? [196, 150, 96] : C.nutDark, life: 0 });
@@ -1616,16 +1624,25 @@ window.EP_I18N = {
   var NS = "http://www.w3.org/2000/svg", K = Math.cos(-25 * Math.PI / 180);
   function X(lon) { return (lon + 85) * K; }
   function Y(lat) { return -(lat - 14); }
-  function pts(arr) { var d = ""; for (var i = 0; i < arr.length; i++) d += (i ? "L" : "M") + X(arr[i][0]).toFixed(3) + " " + Y(arr[i][1]).toFixed(3); return d + "Z"; }
+  function pts(arr) {
+    // closed Catmull-Rom spline through the points: a hand-drawn, smooth coastline
+    var P = arr.map(function (a) { return [X(a[0]), Y(a[1])]; }), n = P.length, d = "M" + P[0][0].toFixed(3) + " " + P[0][1].toFixed(3);
+    for (var i = 0; i < n; i++) {
+      var p0 = P[(i - 1 + n) % n], p1 = P[i], p2 = P[(i + 1) % n], p3 = P[(i + 2) % n];
+      d += "C" + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(3) + " " + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(3) + " " + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(3) + " " + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(3) + " " + p2[0].toFixed(3) + " " + p2[1].toFixed(3);
+    }
+    return d + "Z";
+  }
   function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 
   var SA = [[-77.4,8.7],[-75.5,10.5],[-73.2,11.3],[-71.3,12.4],[-71.6,10.8],[-70,10.6],[-68,10.5],[-66,10.6],[-64.5,10.4],[-61.9,10.7],[-61,9.6],[-60.4,8.4],[-58.6,7.2],[-57.2,6],[-55,6],[-53.5,5.6],[-52,4.6],[-51.2,4],[-50.5,1.9],[-49.9,1.1],[-48.5,-1.2],[-47,-.7],[-44.6,-2.4],[-42,-2.8],[-40,-2.8],[-38.5,-3.7],[-37.2,-4.8],[-35.4,-5.3],[-34.8,-7.2],[-35.1,-9],[-36.4,-10.6],[-37.6,-12.2],[-38.5,-13],[-39,-15.6],[-39.2,-17.8],[-40.3,-20.3],[-41,-21.6],[-41.9,-22.9],[-43.2,-23],[-44.6,-23.3],[-46.3,-24],[-47.9,-25.3],[-48.6,-26.6],[-48.7,-28.4],[-49.8,-29.4],[-50.6,-30.6],[-51.6,-31.8],[-52.4,-32.6],[-53.4,-33.7],[-54.2,-34.6],[-55.2,-34.9],[-56.2,-34.9],[-57.4,-34.5],[-58.4,-34.6],[-57.3,-35.6],[-56.7,-36.5],[-57.6,-38.1],[-59.5,-38.7],[-62.3,-38.8],[-62.1,-40.6],[-63.8,-41.2],[-65,-41],[-64.3,-42.5],[-65.2,-44.4],[-66.4,-45.1],[-67.6,-46.4],[-66.1,-47.8],[-67.7,-49.3],[-68.4,-50.1],[-69.2,-51.6],[-68.4,-52.4],[-68.6,-53.6],[-67.2,-54.6],[-65.3,-55],[-66.8,-55.2],[-68.3,-55.5],[-70,-55.2],[-71.6,-54.2],[-73.5,-52.8],[-74.8,-51],[-75.5,-48.6],[-74.6,-46.8],[-74.3,-45],[-73.8,-43.4],[-73.6,-41.6],[-73.6,-39.6],[-73.5,-37.4],[-72.6,-35.5],[-71.7,-33],[-71.5,-30.4],[-71.3,-28.2],[-70.6,-25.4],[-70.4,-23.6],[-70.2,-21.4],[-70.3,-18.5],[-71.4,-17.6],[-72.8,-16.6],[-74.6,-15.6],[-76.2,-13.6],[-77.2,-12],[-78.2,-10.2],[-79.2,-8],[-80.6,-6.6],[-81.2,-5.2],[-81.3,-4.3],[-80.3,-3.4],[-80.9,-2.2],[-80.4,-.6],[-80.1,.8],[-78.9,1.6],[-77.8,3.4],[-77.3,4.8],[-77.4,6.5],[-77.9,7.5]];
   var RS = [[-57.6,-30.2],[-57.1,-29.8],[-56.4,-29.1],[-55.7,-28.4],[-55,-27.8],[-54.3,-27.4],[-53.8,-27.15],[-53.1,-27.2],[-52.3,-27.4],[-51.6,-27.7],[-50.9,-28.1],[-50.3,-28.6],[-49.8,-29.3],[-50.1,-29.9],[-50.6,-30.6],[-51.6,-31.8],[-52.4,-32.6],[-53.4,-33.7],[-53.5,-33.2],[-53.2,-32.6],[-53.7,-32.2],[-54.6,-31.6],[-55.5,-30.9],[-56,-31],[-56.8,-30.4]];
+  var LAGOA = [[-51.15,-30.15],[-50.8,-30.55],[-50.95,-31.05],[-51.45,-31.5],[-51.95,-31.95],[-52.2,-32.1],[-52.0,-31.65],[-51.65,-31.15],[-51.35,-30.6]];
   var SCS = [-52.43, -29.72], POA = [-51.23, -30.03], FARM = [-52.36, -29.56];
 
   var STAGES = [
     { c: [-60, -21], span: 78 },
-    { c: [-53.6, -30.3], span: 8.6 },
+    { c: [-53.4, -30.3], span: 12.5 },
     { c: [-52.4, -29.63], span: 1.1 },
     { c: [-52.36, -29.56], span: .1 }
   ];
@@ -1641,6 +1658,7 @@ window.EP_I18N = {
     el("path", { d: "M" + X(-95) + " " + Y(-23.44) + "H" + X(-20), "class": "tropic" }, g);
     el("path", { d: pts(SA), "class": "continent" }, g);
     el("path", { d: pts(RS), "class": "state" }, g);
+    el("path", { d: pts(LAGOA), "class": "lagoon" }, g);
     // hills: stylised contour rings around the farm (decorative)
     var cg = el("g", { "class": "contours" }, g);
     for (var i = 1; i <= 9; i++) {
@@ -1656,8 +1674,10 @@ window.EP_I18N = {
     var pin = el("g", { "class": "pin" }, g);
     this.halo = el("circle", { "class": "halo", cx: X(FARM[0]), cy: Y(FARM[1]), r: .2 }, pin);
     this.core = el("circle", { "class": "core", cx: X(FARM[0]), cy: Y(FARM[1]), r: .2 }, pin);
-    this.tropicLabel = this.text(X(-79), Y(-23.44) - 1, "", 1.6, 0, "tropic");
-    this.stateLabel = this.text(X(-55.2), Y(-29.1), "Rio Grande do Sul", .34, 1);
+    this.tropicLabel = this.text(X(-93), Y(-23.44) - .8, "", 1.5, 0, "tropic");
+    this.stateLabel = this.text(X(-56.4), Y(-28.7), "Rio Grande do Sul", .42, 1);
+    this.oceanLabel = this.text(X(-49.5), Y(-33.2), "", .36, 1, "ocean");
+    this.oceanLabel0 = this.text(X(-38), Y(-36), "", 1.9, 0, "ocean");
     this.farmLabel = this.text(X(FARM[0]) + .025, Y(FARM[1]) - .025, "Monte Alverne", .03, 2);
     this.approxLabel = this.text(X(FARM[0]) + .025, Y(FARM[1]) + .012, "", .009, 3, "approx");
     this.g = g;
@@ -1669,11 +1689,13 @@ window.EP_I18N = {
     this.text(X(ll[0]) + .1, Y(ll[1]) + .2, name, .17, stage);
   };
   P.text = function (x, y, str, size, stage, key) {
-    var t = el("text", { x: x, y: y, "font-size": size }, this.svg.firstChild); t.textContent = str;
+    // Chrome will not draw sub-pixel font sizes inside a zoomed viewBox: draw at 10 and scale
+    var t = el("text", { x: 0, y: 0, "font-size": 10, transform: "translate(" + x + " " + y + ") scale(" + (size / 10) + ")" }, this.svg.firstChild); t.textContent = str;
     this.labels.push({ el: t, stage: stage, key: key }); return t;
   };
   P.relabel = function (tr) {
     this.tropicLabel.textContent = tr("land.tropic");
+    this.oceanLabel.textContent = this.oceanLabel0.textContent = tr("land.ocean");
     this.approxLabel.textContent = tr("land.approx").replace(/«|»/g, "").replace("VERIFY", "[VERIFY]");
   };
   P.layout = function () {
@@ -1894,7 +1916,7 @@ window.EP_I18N = {
   var SEC = {}, VH = 0, VW = 0, MAXY = 1, keysPose = [], keysS = [];
   // season at the start and end of each section; tree pose [x, base, H, alpha] for desktop and mobile
   var SEASON = { home: [2, 2], about: [2.05, 2.5], land: [2.55, 2.9], year: [4, 7.66], harvest: [7.7, 7.92], gallery: [7.96, 8], numbers: [8, 8], contact: [8, 8], rest: [8, 8] };
-  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.43, .93, 1, 1], harvest: [.92, .97, .48, .3], gallery: [.9, .97, .5, 0], numbers: [.8, .95, .82, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
+  var POSE_D = { home: [.5, .9, .94, 1], about: [.76, .95, .95, 1], land: [.8, .96, .7, 0], year: [.35, .93, .92, 1], harvest: [.95, .97, .45, 0], gallery: [.9, .97, .5, 0], numbers: [.84, .95, .74, .9], contact: [.8, .95, .9, 1], rest: [.5, .93, .8, 1] };
   var POSE_M = { home: [.5, .87, 1, 1], about: [.5, .92, .9, .3], land: [.5, .95, .7, 0], year: [.5, .56, .52, 1], harvest: [.8, .97, .5, .2], gallery: [.5, .97, .5, 0], numbers: [.55, .95, .8, .3], contact: [.5, .95, .8, .35], rest: [.5, .93, .8, 1] };
 
   function measure() {

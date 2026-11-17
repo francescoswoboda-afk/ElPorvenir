@@ -100,6 +100,10 @@ mark.ph b { font-weight: 500; letter-spacing: .04em; text-transform: none; font-
 }
 @keyframes grain { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-3%,2%); } 40% { transform: translate(2%,-4%); } 60% { transform: translate(-4%,-1%); } 80% { transform: translate(3%,3%); } }
 main { position: relative; z-index: 2; }
+.topfade { position: fixed; left: 0; right: 0; top: 0; height: 78px; z-index: 79; pointer-events: none; background: linear-gradient(180deg, var(--paper) 35%, color-mix(in srgb, var(--paper) 0%, transparent)); transition: opacity .6s; }
+body.dusk .topfade { opacity: 0; }
+.controls { background: color-mix(in srgb, var(--paper) 82%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 99px; padding: 3px 10px 3px 4px; margin-left: -4px; }
+body.dusk .controls { background: rgba(18,22,28,.5); }
 .behind { position: relative; z-index: 0; }
 
 /* ---------- brand + controls ---------- */
@@ -145,11 +149,10 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .dock-list {
   list-style: none; margin: 0; padding: 22px 16px; position: relative;
   background: #0f130e; color: #fff; border-radius: 20px 0 0 20px;
-  transform: translateX(105%); visibility: hidden; transition: transform .65s var(--e-out), visibility 0s .65s;
+  transform: translateX(105%); transition: transform .65s var(--e-out);
   min-width: 270px;
 }
-.dock.open .dock-list { transform: none; visibility: visible; transition: transform .65s var(--e-out), visibility 0s; box-shadow: -20px 0 60px -20px rgba(0,0,0,.45); }
-.dock:focus-within .dock-list { visibility: visible; }
+.dock.open .dock-list { transform: none; box-shadow: -20px 0 60px -20px rgba(0,0,0,.45); }
 .dock.open .dock-strip { opacity: 0; transform: translateY(-50%) translateX(20px); }
 .dock-list li { --m: 1; transform-origin: right center; transform: scale(var(--m)); margin: calc((var(--m) - 1) * 12px) 0; transition: transform .18s ease-out, margin .18s ease-out; }
 .dock-list a {
@@ -218,6 +221,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .map .grat { stroke: var(--ink); stroke-opacity: .09; stroke-width: .15; fill: none; vector-effect: non-scaling-stroke; }
 .map .tropic { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 5 6; fill: none; vector-effect: non-scaling-stroke; opacity: .8; }
 .map .continent { fill: var(--ink); fill-opacity: .08; stroke: var(--ink); stroke-opacity: .55; stroke-width: 1.1; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.map .lagoon { fill: var(--paper); stroke: var(--ink); stroke-opacity: .45; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .map .state { fill: var(--accent); fill-opacity: .2; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .map .pin circle.core { fill: var(--ink); }
 .map .pin circle.halo { fill: none; stroke: var(--ink); vector-effect: non-scaling-stroke; stroke-width: 1; }
@@ -242,7 +246,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .year-stage { padding: 96px var(--pad) 70px; }
 .year-head { position: absolute; left: var(--pad); top: 96px; max-width: 360px; z-index: 3; }
 .year-title { color: var(--ink-2); --wght: 330; }
-.dial { position: absolute; left: var(--pad); bottom: 70px; width: clamp(120px, 13vw, 190px); z-index: 3; }
+.dial { position: absolute; left: var(--pad); bottom: 110px; width: clamp(120px, 13vw, 190px); z-index: 3; }
 .dial svg { width: 100%; overflow: visible; }
 .dial .arc { fill: none; stroke-width: 5; stroke-linecap: round; }
 .dial .mtxt { font: 600 6px var(--ui); fill: var(--ink-2); text-anchor: middle; dominant-baseline: middle; }
@@ -347,7 +351,7 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 
 /* 07 numbers */
 .numbers { padding: 18vh 0 16vh; }
-.nums { margin: 70px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 6vw; max-width: 1100px; }
+.nums { margin: 70px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 6vw; max-width: min(1000px, 60vw); }
 .num { border-top: 1px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column-reverse; }
 .num dd { margin: 0 0 14px; }
 .num dt { color: var(--ink-2); font-size: var(--fs-body); }
@@ -369,7 +373,7 @@ body.dusk .contact .label, body.dusk .contact dt { color: rgba(236,230,214,.75);
 body.dusk .contact-list > div { border-color: rgba(236,230,214,.2); }
 
 /* 09 rest (footer) */
-.rest { height: 130vh; display: flex; align-items: flex-start; justify-content: center; text-align: center; padding-top: 18vh; color: #ece6d6; }
+.rest { height: 150vh; display: flex; align-items: flex-start; justify-content: center; text-align: center; padding-top: 62vh; color: #ece6d6; }
 .rest-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .rest .logo { width: clamp(150px, 15vw, 210px); height: auto; margin-bottom: 18px; }
 .rest-line { font: italic 400 var(--fs-lead)/1.4 var(--text); margin: 0; }

@@ -162,8 +162,8 @@
     if (tr.g > 0) {
       ctx.fillStyle = rgb(bark); ctx.beginPath();
       var tw = tr.w * H * thick;
-      ctx.moveTo(bx - tw * .95, by); ctx.quadraticCurveTo(bx - tw * .5, by - tw * .8, bx - tw * .5, by - tw * 1.8);
-      ctx.lineTo(bx + tw * .5, by - tw * 1.8); ctx.quadraticCurveTo(bx + tw * .5, by - tw * .8, bx + tw * .95, by); ctx.fill();
+      ctx.moveTo(bx - tw * .9, by + 1); ctx.quadraticCurveTo(bx - tw * .46, by - tw * .5, bx - tw * .46, by - tw * 1.4);
+      ctx.lineTo(bx + tw * .46, by - tw * 1.4); ctx.quadraticCurveTo(bx + tw * .46, by - tw * .5, bx + tw * .9, by + 1); ctx.fill();
     }
     var leafG = smooth(.8, 1, G);
     if (leafG <= 0) return;
@@ -273,13 +273,14 @@
   P.dropNut = function (x, y, r, H, rain) {
     var nr = Math.max(this.mobile ? 9 : 8, r * .75);
     var gy = rain ? this.h * (.86 + Math.random() * .1) : this.state.base + (Math.random() * .03 - .005) * H;
-    if (this.reduced && !rain) { this.parts.nuts.push({ x: x + (Math.random() - .5) * H * .3, y: gy, vx: 0, vy: 0, rot: Math.random() * 3, vr: 0, r: nr, gy: gy, ground: true, life: 0 }); return; }
-    this.parts.nuts.push({ x: x, y: y, vx: (Math.random() - .5) * 40, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 4, r: nr, gy: gy, ground: false, life: 0, bounces: 0 });
+    var tx = rain ? null : this.state.x, tb = rain ? null : this.state.base;
+    if (this.reduced && !rain) { this.parts.nuts.push({ x: x + (Math.random() - .5) * H * .3, y: gy, vx: 0, vy: 0, rot: Math.random() * 3, vr: 0, r: nr, gy: gy, ground: true, life: 0, tx: tx, tb: tb }); return; }
+    this.parts.nuts.push({ x: x, y: y, vx: (Math.random() - .5) * 40, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 4, r: nr, gy: gy, ground: false, life: 0, bounces: 0, tx: tx, tb: tb });
   };
   P.spawnLeaf = function (lf, H, S) {
     var bucket = S.turn - lf.k2 < .3 ? C.yellow : S.turn - lf.k2 < .55 ? C.amber : C.brown;
     this.parts.leaves.push({ x: lf.x, y: lf.y, vx: (Math.random() - .5) * 20, vy: 18 + Math.random() * 20, rot: Math.random() * TAU, vr: (Math.random() - .5) * 3,
-      c: bucket, s: .012 * H * lf.sz, ph: Math.random() * TAU, gy: this.state.base + Math.random() * .03 * H, life: 0 });
+      c: bucket, s: .012 * H * lf.sz, ph: Math.random() * TAU, gy: this.state.base + Math.random() * .03 * H, life: 0, tx: this.state.x, tb: this.state.base });
   };
   P.rain = function (n) {
     for (var i = 0; i < n; i++) {
@@ -310,18 +311,19 @@
     for (i = list.length - 1; i >= 0; i--) { p = list[i]; p.life += dt; p.vy += g * dt; p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt; if (p.life > 1.2) list.splice(i, 1); }
   };
 
+  P.off = function (p) { return p.tx == null ? [0, 0, 1] : [this.state.x - p.tx, this.state.base - p.tb, this.state.alpha]; };
   P.drawParts = function (ctx, t, dusk) {
-    var i, p, a;
+    var i, p, a, o;
     var lv = this.parts.leaves;
     for (i = 0; i < lv.length; i++) {
-      p = lv[i]; a = p.y >= p.gy ? clamp(1 - (p.life - 9) / 3, 0, 1) : 1; if (a <= 0) continue;
-      ctx.fillStyle = rgb(mix(p.c, C.barkDusk, dusk * .6), a); ctx.beginPath(); ctx.ellipse(p.x, p.y, p.s, p.s * .38, p.rot, 0, TAU); ctx.fill();
+      p = lv[i]; o = this.off(p); a = (p.y >= p.gy ? clamp(1 - (p.life - 9) / 3, 0, 1) : 1) * o[2]; if (a <= .01) continue;
+      ctx.fillStyle = rgb(mix(p.c, C.barkDusk, dusk * .6), a); ctx.beginPath(); ctx.ellipse(p.x + o[0], p.y + o[1], p.s, p.s * .38, p.rot, 0, TAU); ctx.fill();
     }
     var tw = this.parts.twigs; ctx.strokeStyle = rgb(C.bark); ctx.lineCap = "round";
-    for (i = 0; i < tw.length; i++) { p = tw[i]; a = clamp(1 - (p.life - 3.5) / 1.5, 0, 1); ctx.globalAlpha = a; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(p.x - Math.cos(p.rot) * p.l, p.y - Math.sin(p.rot) * p.l); ctx.lineTo(p.x + Math.cos(p.rot) * p.l, p.y + Math.sin(p.rot) * p.l); ctx.stroke(); }
+    for (i = 0; i < tw.length; i++) { p = tw[i]; o = this.off(p); a = clamp(1 - (p.life - 3.5) / 1.5, 0, 1) * o[2]; ctx.globalAlpha = a; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(p.x + o[0] - Math.cos(p.rot) * p.l, p.y + o[1] - Math.sin(p.rot) * p.l); ctx.lineTo(p.x + o[0] + Math.cos(p.rot) * p.l, p.y + o[1] + Math.sin(p.rot) * p.l); ctx.stroke(); }
     ctx.globalAlpha = 1;
     var nu = this.parts.nuts;
-    for (i = 0; i < nu.length; i++) { p = nu[i]; a = p.ground ? clamp(1 - (p.life - 7) / 1, 0, 1) : 1; ctx.globalAlpha = a; this.nutShape(ctx, p.x, p.y - p.r * (p.ground ? .7 : 0), p.r, p.ground ? 1.45 : p.rot, dusk); }
+    for (i = 0; i < nu.length; i++) { p = nu[i]; o = this.off(p); a = (p.ground ? clamp(1 - (p.life - 7) / 1, 0, 1) : 1) * o[2]; if (a <= .01) continue; ctx.globalAlpha = a; this.nutShape(ctx, p.x + o[0], p.y + o[1] - p.r * (p.ground ? .7 : 0), p.r, p.ground ? 1.45 : p.rot, dusk); }
     ctx.globalAlpha = 1;
     var sh = this.parts.shells;
     for (i = 0; i < sh.length; i++) { p = sh[i]; ctx.globalAlpha = clamp(1 - p.life / 1.2, 0, 1); ctx.fillStyle = rgb(p.c); ctx.beginPath(); ctx.ellipse(p.x, p.y, p.s, p.s * .55, p.rot, 0, TAU); ctx.fill(); }
@@ -357,7 +359,7 @@
   };
 
   P.drawBees = function (ctx, bx, by, H, S, t) {
-    if (S.bees <= 0 || this.reduced) return;
+    if (S.bees <= 0 || this.reduced || this.state.G < .95) return;
     var cx = bx, cy = by - H * .62;
     for (var i = 0; i < this.bees.length; i++) {
       var b = this.bees[i], a = b.a + t * b.sp;
@@ -439,10 +441,11 @@
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);
     this.updateParts(dt, t);
+    if (st.alpha < .03) { var pl = this.parts; ["leaves", "twigs", "nuts"].forEach(function (k) { pl[k] = pl[k].filter(function (q) { return q.tx == null; }); }); }
     // winter pruning: a few cut twigs fall now and then
     if (S.prune && st.alpha > .5 && !this.reduced && Math.random() < dt * 1.1 && this.parts.twigs.length < 12) {
       var nn = this.nodes[(this.nodes.length * (.4 + Math.random() * .6)) | 0];
-      this.parts.twigs.push({ x: nn.ex, y: nn.ey, vx: (Math.random() - .5) * 30, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 6, l: 5 + Math.random() * 6, gy: st.base + Math.random() * 10, life: 0 });
+      this.parts.twigs.push({ x: nn.ex, y: nn.ey, vx: (Math.random() - .5) * 30, vy: 0, rot: Math.random() * 3, vr: (Math.random() - .5) * 6, l: 5 + Math.random() * 6, gy: st.base + Math.random() * 10, life: 0, tx: st.x, tb: st.base });
     }
     var self = this, drawn = false;
     if (st.O > .001) {
@@ -481,12 +484,12 @@
   /* ---------- interaction ---------- */
   P.nutAt = function (x, y) {
     var nu = this.parts.nuts, best = -1, bd = this.mobile ? 46 : 34;
-    for (var i = 0; i < nu.length; i++) { var dx = nu[i].x - x, dy = nu[i].y - y, d = Math.sqrt(dx * dx + dy * dy); if (d < bd) { bd = d; best = i; } }
+    for (var i = 0; i < nu.length; i++) { var o = this.off(nu[i]); if (o[2] < .3) continue; var dx = nu[i].x + o[0] - x, dy = nu[i].y + o[1] - y, d = Math.sqrt(dx * dx + dy * dy); if (d < bd) { bd = d; best = i; } }
     return best;
   };
   P.catchAt = function (x, y) {
     var i = this.nutAt(x, y); if (i < 0) return false;
-    var p = this.parts.nuts.splice(i, 1)[0];
+    var p = this.parts.nuts.splice(i, 1)[0], po = this.off(p); p = { x: p.x + po[0], y: p.y + po[1], r: p.r };
     for (var k = 0; k < 9; k++) {
       var a = Math.random() * TAU, sp = 140 + Math.random() * 220;
       this.parts.shells.push({ x: p.x, y: p.y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 220, rot: Math.random() * 3, vr: (Math.random() - .5) * 20, s: p.r * (k < 2 ? .55 : .3), c: k < 2 ? [196, 150, 96] : C.nutDark, life: 0 });
