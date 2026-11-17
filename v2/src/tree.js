@@ -271,6 +271,7 @@
 
   /* ---------- particles ---------- */
   P.dropNut = function (x, y, r, H, rain) {
+    if (!rain && this.parts.nuts.length > 70) return;
     var nr = Math.max(this.mobile ? 9 : 8, r * .75);
     var gy = rain ? this.h * (.86 + Math.random() * .1) : this.state.base + (Math.random() * .03 - .005) * H;
     var tx = rain ? null : this.state.x, tb = rain ? null : this.state.base;
@@ -437,6 +438,10 @@
   P.frame = function (dt, t) {
     var st = this.state, ctx = this.ctx, S = this.season(st.s);
     this.time = t;
+    // nothing to draw: clear once and rest
+    var idle = st.alpha < .005 && st.O < .001 && !this.bird && !this.parts.nuts.length && !this.parts.leaves.length && !this.parts.shells.length;
+    if (idle) { if (!this.cleared) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, this.cv.width, this.cv.height); this.cleared = true; } return; }
+    this.cleared = false;
     this.ptr.e *= Math.pow(.25, dt);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);

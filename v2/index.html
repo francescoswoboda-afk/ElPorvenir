@@ -107,10 +107,10 @@ mark.ph b { font-weight: 500; letter-spacing: .04em; text-transform: none; font-
 .sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 #tree { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 .grain {
-  position: fixed; inset: -50%; z-index: 90; pointer-events: none; opacity: .075;
-  mix-blend-mode: multiply; animation: grain 1.2s steps(6) infinite;
+  position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .55;
+  background-size: 160px 160px; animation: grain 1s steps(5) infinite;
 }
-@keyframes grain { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-3%,2%); } 40% { transform: translate(2%,-4%); } 60% { transform: translate(-4%,-1%); } 80% { transform: translate(3%,3%); } }
+@keyframes grain { 0%,100% { background-position: 0 0; } 20% { background-position: -37px 21px; } 40% { background-position: 53px -44px; } 60% { background-position: -61px -13px; } 80% { background-position: 29px 47px; } }
 main { position: relative; z-index: 2; }
 .topfade { position: fixed; left: 0; right: 0; top: 0; height: 78px; z-index: 79; pointer-events: none; background: linear-gradient(180deg, var(--paper) 35%, color-mix(in srgb, var(--paper) 0%, transparent)); transition: opacity .6s; }
 body.dusk .topfade { opacity: 0; }
@@ -159,10 +159,10 @@ body.dusk .langs button[aria-pressed="true"] { background: rgba(255,255,255,.12)
 .dock-strip i { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.4); transition: background .3s, transform .3s; }
 .dock-strip i.on { background: var(--gold); transform: scale(1.5); }
 .dock-list {
-  list-style: none; margin: 0; padding: 22px 16px; position: relative;
+  list-style: none; margin: 0; padding: 22px 18px 22px 64px; position: relative;
   background: #0f130e; color: #fff; border-radius: 20px 0 0 20px;
   transform: translateX(105%); transition: transform .65s var(--e-out);
-  min-width: 270px;
+  min-width: 300px;
 }
 .dock.open .dock-list { transform: none; box-shadow: -20px 0 60px -20px rgba(0,0,0,.45); }
 .dock.open .dock-strip { opacity: 0; transform: translateY(-50%) translateX(20px); }
@@ -1382,6 +1382,7 @@ window.EP_I18N = {
 
   /* ---------- particles ---------- */
   P.dropNut = function (x, y, r, H, rain) {
+    if (!rain && this.parts.nuts.length > 70) return;
     var nr = Math.max(this.mobile ? 9 : 8, r * .75);
     var gy = rain ? this.h * (.86 + Math.random() * .1) : this.state.base + (Math.random() * .03 - .005) * H;
     var tx = rain ? null : this.state.x, tb = rain ? null : this.state.base;
@@ -1548,6 +1549,10 @@ window.EP_I18N = {
   P.frame = function (dt, t) {
     var st = this.state, ctx = this.ctx, S = this.season(st.s);
     this.time = t;
+    // nothing to draw: clear once and rest
+    var idle = st.alpha < .005 && st.O < .001 && !this.bird && !this.parts.nuts.length && !this.parts.leaves.length && !this.parts.shells.length;
+    if (idle) { if (!this.cleared) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, this.cv.width, this.cv.height); this.cleared = true; } return; }
+    this.cleared = false;
     this.ptr.e *= Math.pow(.25, dt);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);
@@ -1843,6 +1848,13 @@ window.EP_I18N = {
   function mixc(a, b, t) { return [lerp(a[0], b[0], t) | 0, lerp(a[1], b[1], t) | 0, lerp(a[2], b[2], t) | 0]; }
   function css(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
 
+  /* ---------- paper grain, generated once (no images, no blend modes) ---------- */
+  (function grain() {
+    var c = doc.createElement("canvas"); c.width = c.height = 160; var g = c.getContext("2d"), d = g.createImageData(160, 160);
+    for (var i = 0; i < d.data.length; i += 4) { var v = Math.random(); var dark = v < .5; d.data[i] = d.data[i + 1] = d.data[i + 2] = dark ? 20 : 255; d.data[i + 3] = (Math.abs(v - .5) * 2) * (dark ? 34 : 22); }
+    g.putImageData(d, 0, 0); var el = $(".grain"); if (el) el.style.backgroundImage = "url(" + c.toDataURL() + ")";
+  })();
+
   /* ---------- images (embedded once, assigned at runtime) ---------- */
   $$("img[data-img]").forEach(function (im) { if (IMG[im.dataset.img]) im.src = IMG[im.dataset.img]; });
 
@@ -2069,7 +2081,7 @@ window.EP_I18N = {
     setDock(near || dockFocus);
     if (dockOpen) dockItems.forEach(function (li) {
       var r = li.getBoundingClientRect(), cy = r.top + r.height / 2, d = e.clientY - cy;
-      li.style.setProperty("--m", (1 + .42 * Math.exp(-(d * d) / (2 * 46 * 46))).toFixed(3));
+      li.style.setProperty("--m", (1 + .36 * Math.exp(-(d * d) / (2 * 46 * 46))).toFixed(3));
     });
   }, { passive: true });
   dock.addEventListener("focusin", function () { dockFocus = true; setDock(true); });

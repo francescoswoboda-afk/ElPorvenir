@@ -22,6 +22,13 @@
   function mixc(a, b, t) { return [lerp(a[0], b[0], t) | 0, lerp(a[1], b[1], t) | 0, lerp(a[2], b[2], t) | 0]; }
   function css(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
 
+  /* ---------- paper grain, generated once (no images, no blend modes) ---------- */
+  (function grain() {
+    var c = doc.createElement("canvas"); c.width = c.height = 160; var g = c.getContext("2d"), d = g.createImageData(160, 160);
+    for (var i = 0; i < d.data.length; i += 4) { var v = Math.random(); var dark = v < .5; d.data[i] = d.data[i + 1] = d.data[i + 2] = dark ? 20 : 255; d.data[i + 3] = (Math.abs(v - .5) * 2) * (dark ? 34 : 22); }
+    g.putImageData(d, 0, 0); var el = $(".grain"); if (el) el.style.backgroundImage = "url(" + c.toDataURL() + ")";
+  })();
+
   /* ---------- images (embedded once, assigned at runtime) ---------- */
   $$("img[data-img]").forEach(function (im) { if (IMG[im.dataset.img]) im.src = IMG[im.dataset.img]; });
 
@@ -248,7 +255,7 @@
     setDock(near || dockFocus);
     if (dockOpen) dockItems.forEach(function (li) {
       var r = li.getBoundingClientRect(), cy = r.top + r.height / 2, d = e.clientY - cy;
-      li.style.setProperty("--m", (1 + .42 * Math.exp(-(d * d) / (2 * 46 * 46))).toFixed(3));
+      li.style.setProperty("--m", (1 + .36 * Math.exp(-(d * d) / (2 * 46 * 46))).toFixed(3));
     });
   }, { passive: true });
   dock.addEventListener("focusin", function () { dockFocus = true; setDock(true); });
