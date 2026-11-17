@@ -1259,6 +1259,29 @@ body.inner-page {
   overflow-wrap: anywhere;
 }
 
+.contact-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-list a:hover,
+.contact-list a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.form-status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.form-status[data-state="success"] { color: var(--accent); font-weight: 600; }
+.form-status[data-state="error"] { color: #9b2c1f; font-weight: 600; }
+
+.contact-form button[disabled] { opacity: 0.6; cursor: wait; }
+
 .contact-note {
   margin: 26px 0 0;
   font-size: 13.5px;
