@@ -1,4 +1,4 @@
-// Side menu (Dock-style, right edge) and the vertical page slide between the five pages.
+// Side menu (Dock-style, right edge) and the soft page transition between the five pages.
 // Loaded in <head> so the `pagereveal` listener is registered before the first frame renders.
 (function () {
   // Pages are treated as one long stack in this order; moving down the list slides up, and vice versa.
@@ -174,7 +174,7 @@
   var WHEEL_GESTURE_GAP = 200; // ms without wheel events that ends a gesture
   var SWIPE_THRESHOLD = 60; // finger travel (px) on touch screens
   var SWIPE_MAX_DURATION = 1000; // ms; slower drags are ordinary scrolling
-  var EDGE_ARM_DELAY = 1000; // ms after arriving before the edges react (covers the 700ms slide)
+  var EDGE_ARM_DELAY = 1000; // ms after arriving before the edges react (covers the 650ms transition)
   var SCROLL_ARRIVAL_KEY = 'ep-scroll-arrival';
   var armedAt = window.performance.now() + EDGE_ARM_DELAY;
   var wheelGesture = null;

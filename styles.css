@@ -29,22 +29,24 @@ body.transitions-blocked {
   navigation: auto;
 }
 
+/* Soft hand-off: the old page stays put while the new one fades in on top, drifting a short way
+   in the direction of travel and easing gently to rest. The old page stays opaque, so the fade
+   never shows a blank background between the dark and cream pages. */
 ::view-transition-group(root) {
-  animation-duration: 700ms;
+  animation-duration: 650ms;
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 700ms;
-  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  animation-duration: 650ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   animation-fill-mode: both;
   mix-blend-mode: normal;
 }
 
-html[data-nav-direction="down"]::view-transition-old(root) { animation-name: page-slide-out-up; }
-html[data-nav-direction="down"]::view-transition-new(root) { animation-name: page-slide-in-from-bottom; }
-html[data-nav-direction="up"]::view-transition-old(root) { animation-name: page-slide-out-down; }
-html[data-nav-direction="up"]::view-transition-new(root) { animation-name: page-slide-in-from-top; }
+html[data-nav-direction]::view-transition-old(root) { animation-name: page-hold; }
+html[data-nav-direction="down"]::view-transition-new(root) { animation-name: page-soft-in-from-below; }
+html[data-nav-direction="up"]::view-transition-new(root) { animation-name: page-soft-in-from-above; }
 
 /* The menu has its own snapshots, so it stays fixed while the pages move; an open panel slides away. */
 ::view-transition-group(side-menu-handle) {
@@ -494,20 +496,16 @@ body.home-page .lang-switch a:hover { color: #f2c14e; }
   text-align: center;
 }
 
-@keyframes page-slide-out-up {
-  to { transform: translateY(-100%); }
+@keyframes page-hold {
+  from, to { opacity: 1; }
 }
 
-@keyframes page-slide-in-from-bottom {
-  from { transform: translateY(100%); }
+@keyframes page-soft-in-from-below {
+  from { opacity: 0; transform: translateY(6%); }
 }
 
-@keyframes page-slide-out-down {
-  to { transform: translateY(100%); }
-}
-
-@keyframes page-slide-in-from-top {
-  from { transform: translateY(-100%); }
+@keyframes page-soft-in-from-above {
+  from { opacity: 0; transform: translateY(-6%); }
 }
 
 @keyframes side-menu-panel-out {
